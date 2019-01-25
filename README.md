@@ -1,2 +1,2 @@
 # basic_tests_zvs
-python autotests for Zadat' Vopros service
+Repository for python autotests for Zadat' Vopros service
