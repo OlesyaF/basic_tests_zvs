@@ -1,6 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 import time
+import datetime
 import logging, logging.config
 from selenium.common.exceptions import NoSuchElementException, NoAlertPresentException
 from selenium.webdriver.common.by import By
@@ -81,6 +82,18 @@ class Application:
         input_field_name.clear()
         input_field_name.send_keys(client_name)
         log.info("В поле 'Имя' введено новое значение")
+        button_submit = driver.find_element_by_id("CustomerDataSubmit")
+        button_submit.click()
+        log.info("Нажата кнопка 'Сохранить'")
+
+    def changing_client_email(self, email):
+        log = logging.getLogger('main')
+        driver = self.driver
+        input_field_name = driver.find_element_by_id("FormCustomerEmail")
+        input_field_name.click()
+        input_field_name.clear()
+        input_field_name.send_keys(email)
+        log.info("В поле 'Email' введено новое значение")
         button_submit = driver.find_element_by_id("CustomerDataSubmit")
         button_submit.click()
         log.info("Нажата кнопка 'Сохранить'")
@@ -329,6 +342,23 @@ class Application:
             return True
         except:
             return False
+
+    def calc_check_sum(self):
+        print("Расчет контрольной суммы даты и времени:")
+        now = str(datetime.datetime.now())
+        print("Дата и время: now = " + now)
+        now = now.replace("-", "")
+        now = now.replace(" ", "")
+        now = now.replace(":", "")
+        now = now.replace(".", "")
+        print("Дата и время после удаления {- :,} : now = " + now)
+        check_list = list(now)
+        print("Список символов даты и времени check_list: ", check_list)
+        i = 0
+        for chr in check_list:
+            i = i + ord(chr)
+        print("Контрольная сумма даты и времени = ", i)
+        return i
 
     def destroy(self):
         self.driver.quit()

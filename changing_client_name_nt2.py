@@ -17,7 +17,7 @@ def app(request):
 
 # Изменение имени клиента (негативный тест): нельзя сохранить имя, состоящее из одного символа
 
-def test_changing_client_name_nt1(app):
+def test_changing_client_name_nt2(app):
     locator1 = "//div[contains(@class, 'FormCustomerFullnameError') and contains(text(),'Введите корректное имя')]"
 
     logging.config.fileConfig('log.conf')

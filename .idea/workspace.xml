@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58688b4d-c806-4016-bde0-be95a17afdca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/changing_client_name_nt1.py" beforeDir="false" afterPath="$PROJECT_DIR$/changing_client_name_nt1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application.py" beforeDir="false" afterPath="$PROJECT_DIR$/application.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/changing_client_name_nt2.py" beforeDir="false" afterPath="$PROJECT_DIR$/changing_client_name_nt2.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,22 +21,24 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="4" />
+          <entry key="py" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="4" />
+          <entry key="Python" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="2956" />
+          <entry key="dummy" value="5" />
+          <entry key="py" value="3650" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="2956" />
+          <entry key="PLAIN_TEXT" value="5" />
+          <entry key="Python" value="3650" />
         </counts>
       </usages-collector>
     </session>
@@ -45,8 +48,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1547">
-              <caret line="68" column="129" lean-forward="true" selection-start-line="68" selection-start-column="36" selection-end-line="68" selection-end-column="129" />
+            <state relative-caret-position="229">
+              <caret line="353" column="49" selection-start-line="353" selection-start-column="49" selection-end-line="353" selection-end-column="49" />
+              <folding>
+                <element signature="e#27#38#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -63,11 +69,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/changing_client_name_nt2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="17" column="94" lean-forward="true" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="94" />
+            <state relative-caret-position="226">
+              <caret line="19" column="33" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
+              <folding>
+                <element signature="e#27#42#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/changing_client_email.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-46">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
               <folding>
                 <element signature="e#27#42#0" expanded="true" />
               </folding>
@@ -78,8 +96,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/changing_client_name.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" selection-start-line="21" selection-end-line="21" selection-end-column="62" />
+            <state relative-caret-position="17">
+              <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
               <folding>
                 <element signature="e#27#42#0" expanded="true" />
               </folding>
@@ -102,16 +120,18 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/changing_client_name.py" />
-        <option value="$PROJECT_DIR$/application.py" />
         <option value="$PROJECT_DIR$/changing_client_name_nt1.py" />
+        <option value="$PROJECT_DIR$/changing_client_name.py" />
         <option value="$PROJECT_DIR$/changing_client_name_nt2.py" />
+        <option value="$PROJECT_DIR$/changing_client_phone.py" />
+        <option value="$PROJECT_DIR$/application.py" />
+        <option value="$PROJECT_DIR$/changing_client_email.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="237" />
-    <option name="y" value="30" />
+    <option name="x" value="260" />
+    <option name="y" value="63" />
     <option name="width" value="1323" />
     <option name="height" value="927" />
   </component>
@@ -153,7 +173,22 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.pytest in changing_client_name_nt2.py">
+  <component name="RunManager" selected="Python tests.pytest in changing_client_name.py">
+    <configuration name="pytest in changing_client_email.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="basic_tests_zvs" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/changing_client_email.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration name="pytest in changing_client_name_nt1.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="basic_tests_zvs" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -203,12 +238,14 @@
       <item itemvalue="Python tests.pytest in changing_client_name.py" />
       <item itemvalue="Python tests.pytest in changing_client_name_nt1.py" />
       <item itemvalue="Python tests.pytest in changing_client_name_nt2.py" />
+      <item itemvalue="Python tests.pytest in changing_client_email.py" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.pytest in changing_client_name.py" />
+        <item itemvalue="Python tests.pytest in changing_client_email.py" />
         <item itemvalue="Python tests.pytest in changing_client_name_nt2.py" />
         <item itemvalue="Python tests.pytest in changing_client_name_nt1.py" />
-        <item itemvalue="Python tests.pytest in changing_client_name.py" />
       </list>
     </recent_temporary>
   </component>
@@ -226,39 +263,39 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="pytest_in_changing_client_name_nt1_py - 2019.01.28 at 13h 57m 21s.xml">
-      <configuration name="pytest in changing_client_name_nt1.py" configurationId="tests" />
+    <history-entry file="pytest_in_changing_client_email_py - 2019.01.28 at 16h 13m 43s.xml">
+      <configuration name="pytest in changing_client_email.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_changing_client_name_nt1_py - 2019.01.28 at 13h 58m 21s.xml">
-      <configuration name="pytest in changing_client_name_nt1.py" configurationId="tests" />
+    <history-entry file="pytest_in_changing_client_email_py - 2019.01.28 at 16h 14m 23s.xml">
+      <configuration name="pytest in changing_client_email.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_changing_client_name_nt1_py - 2019.01.28 at 14h 07m 06s.xml">
-      <configuration name="pytest in changing_client_name_nt1.py" configurationId="tests" />
+    <history-entry file="pytest_in_changing_client_email_py - 2019.01.28 at 16h 17m 04s.xml">
+      <configuration name="pytest in changing_client_email.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_changing_client_name_nt1_py - 2019.01.28 at 14h 08m 49s.xml">
-      <configuration name="pytest in changing_client_name_nt1.py" configurationId="tests" />
+    <history-entry file="pytest_in_changing_client_email_py - 2019.01.28 at 16h 17m 54s.xml">
+      <configuration name="pytest in changing_client_email.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_changing_client_name_nt1_py - 2019.01.28 at 14h 10m 05s.xml">
-      <configuration name="pytest in changing_client_name_nt1.py" configurationId="tests" />
+    <history-entry file="pytest_in_changing_client_email_py - 2019.01.28 at 16h 18m 37s.xml">
+      <configuration name="pytest in changing_client_email.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_changing_client_name_nt1_py - 2019.01.28 at 14h 14m 03s.xml">
-      <configuration name="pytest in changing_client_name_nt1.py" configurationId="tests" />
+    <history-entry file="pytest_in_changing_client_email_py - 2019.01.28 at 16h 19m 57s.xml">
+      <configuration name="pytest in changing_client_email.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_changing_client_name_nt2_py - 2019.01.28 at 14h 57m 55s.xml">
-      <configuration name="pytest in changing_client_name_nt2.py" configurationId="tests" />
+    <history-entry file="pytest_in_changing_client_email_py - 2019.01.28 at 16h 20m 05s.xml">
+      <configuration name="pytest in changing_client_email.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_changing_client_name_nt2_py - 2019.01.28 at 14h 58m 33s.xml">
-      <configuration name="pytest in changing_client_name_nt2.py" configurationId="tests" />
+    <history-entry file="pytest_in_changing_client_email_py - 2019.01.28 at 16h 27m 43s.xml">
+      <configuration name="pytest in changing_client_email.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_changing_client_name_nt2_py - 2019.01.28 at 14h 58m 59s.xml">
-      <configuration name="pytest in changing_client_name_nt2.py" configurationId="tests" />
+    <history-entry file="pytest_in_changing_client_email_py - 2019.01.28 at 16h 27m 58s.xml">
+      <configuration name="pytest in changing_client_email.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_changing_client_name_nt2_py - 2019.01.28 at 15h 00m 05s.xml">
-      <configuration name="pytest in changing_client_name_nt2.py" configurationId="tests" />
+    <history-entry file="pytest_in_changing_client_email_py - 2019.01.28 at 16h 30m 50s.xml">
+      <configuration name="pytest in changing_client_email.py" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="237" y="30" width="1323" height="927" extended-state="0" />
+    <frame x="260" y="63" width="1323" height="927" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
@@ -284,23 +321,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1547">
-          <caret line="68" column="129" lean-forward="true" selection-start-line="68" selection-start-column="36" selection-end-line="68" selection-end-column="129" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/changing_client_name.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" selection-start-line="21" selection-end-line="21" selection-end-column="62" />
-          <folding>
-            <element signature="e#27#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/changing_client_name_nt1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -313,8 +333,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/changing_client_name_nt2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="17" column="94" lean-forward="true" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="94" />
+        <state relative-caret-position="226">
+          <caret line="19" column="33" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
+          <folding>
+            <element signature="e#27#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/changing_client_name.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+          <folding>
+            <element signature="e#27#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="353" column="49" selection-start-line="353" selection-start-column="49" selection-end-line="353" selection-end-column="49" />
+          <folding>
+            <element signature="e#27#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/changing_client_email.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-46">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
           <folding>
             <element signature="e#27#42#0" expanded="true" />
           </folding>
