@@ -14,7 +14,7 @@ def app(request):
     return fixture
 
 
-# Изменение имени клиента (негативный тест): нельзя сохранить пустое значение
+# Изменение имени клиента (негативный тест): нельзя сохранить поле 'Имя' незаполненным
 
 def test_changing_client_name_nt1(app):
     locator1 = "//div[contains(@class, 'FormCustomerFullnameError') and contains(text(),'Заполните это поле')]"
@@ -23,7 +23,7 @@ def test_changing_client_name_nt1(app):
     logging.config.fileConfig('log.conf')
     log = logging.getLogger('main')
     fh = logging.FileHandler(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'logs/',
-                                          'changing_client_name {}.log'.format(
+                                          'changing_client_name_nt1 {}.log'.format(
                                               datetime.datetime.now().strftime('%Y-%m-%d-%H.%M.%S'))))
     formatter = logging.Formatter('%(asctime)s | %(levelname)-8s | '"%(module)-12s"' | line %(lineno)04d | %(message)s')
     fh.setFormatter(formatter)
@@ -44,7 +44,7 @@ def test_changing_client_name_nt1(app):
             "под полем 'Имя' - 'Заполните это поле', после нажатия на 'Сохранить' остались в окне 'Изменить контактные данные') "
             "- ТЕСТ УСПЕШНЫЙ")
     else:
-        log.info("ОШИБКА: В ОД не найдено: в поле 'Имя' - 'Введите Ваше имя', под полем 'Имя' - 'Заполните это поле' "
+        log.info("ОШИБКА: Не найдено: в поле 'Имя' - 'Введите Ваше имя', под полем 'Имя' - 'Заполните это поле' "
                  "- ТЕСТ НЕ УСПЕШНЫЙ!!!")
     assert (app.is_element_present_main(locator1) == True and app.is_element_present_main(locator2) == True)
 
