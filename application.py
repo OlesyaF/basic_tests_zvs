@@ -11,7 +11,6 @@ from selenium.webdriver.chrome.webdriver import WebDriver
 
 # noinspection PyDeprecation
 class Application:
-
     logging.config.fileConfig('log.conf')
 
     def __init__(self):
@@ -66,11 +65,13 @@ class Application:
         button_client_info = driver.find_element_by_css_selector("div.authEdit.ChangeUserInfo")
         button_client_info.click()
         # КЛИЕНТ Проверяем, что перешли в окно "Изменить контактные данные"
-        if (self.is_element_present(driver, "//div[contains(@class, 'UserInfoHeader') and contains(text(),'Изменить контактные данные')]") == True):
+        if (self.is_element_present(driver,
+                                    "//div[contains(@class, 'UserInfoHeader') and contains(text(),'Изменить контактные данные')]") == True):
             log.info("Клиент перешел в окно 'Изменить контактные данные'")
         else:
             log.error("ОШИБКА!!! Клиент не перешел в окно 'Изменить контактные данные'! - Не найдено название окна")
-            assert (self.is_element_present(driver, "//div[contains(@class, 'UserInfoHeader') and contains(text(),'Изменить контактные данные')]") == True)
+            assert (self.is_element_present(driver,
+                                            "//div[contains(@class, 'UserInfoHeader') and contains(text(),'Изменить контактные данные')]") == True)
 
     def changing_client_name(self, client_name):
         log = logging.getLogger('main')
@@ -79,17 +80,10 @@ class Application:
         input_field_name.click()
         input_field_name.clear()
         input_field_name.send_keys(client_name)
-        log.info("В поле 'Имя' введено новое имя Клиента")
+        log.info("В поле 'Имя' введено новое значение")
         button_submit = driver.find_element_by_id("CustomerDataSubmit")
         button_submit.click()
-        # КЛИЕНТ Проверяем, что имя клиента изменено
-        try:
-            WebDriverWait(driver, 10).until(EC.presence_of_element_located(
-                (By.XPATH, "//span[contains(text(),'" + client_name + "')]")))
-            log.info("Имя Клиента изменено (в ОД отображается новое значение)")
-        except:
-            log.error("ОШИБКА!!! Имя клиента отличается от введенного!")
-            assert (self.is_element_present(driver, "//span[contains(text(),'" + client_name + "')]") == True)
+        log.info("Нажата кнопка 'Сохранить'")
 
     def client_send_message(self, mess_client):
         log = logging.getLogger('main')
@@ -106,7 +100,8 @@ class Application:
         driver = self.driver
         log.info("Клиент ожидает сообщение Агента")
         mess_agent_in_chat = WebDriverWait(driver, 30).until(
-            EC.presence_of_element_located((By.XPATH, "//div[contains(@class, 'message_text') and contains(text(),'" + mess_agent + "')]")))
+            EC.presence_of_element_located(
+                (By.XPATH, "//div[contains(@class, 'message_text') and contains(text(),'" + mess_agent + "')]")))
         log.info("Клиент получил сообщение Агента")
 
     def is_client_message_in_online_dialog(self, mess_client):
@@ -175,7 +170,7 @@ class Application:
         log = logging.getLogger('main')
         driver = self.driver
         driver.get(cp_link)
-        #driver.get("https://" + agent_login + ":" + agent_password + "@ric.consultant.ru/")
+        # driver.get("https://" + agent_login + ":" + agent_password + "@ric.consultant.ru/")
         # АГЕНТ Переход к сервису "Задать вопрос"
         button_zv = driver.find_element_by_id("2050")
         button_zv.click()
@@ -325,6 +320,14 @@ class Application:
             driver.find_element_by_xpath(locator)
             return True
         except NoSuchElementException:
+            return False
+
+    def is_element_present_main(self, locator):
+        driver = self.driver
+        try:
+            WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, locator)))
+            return True
+        except:
             return False
 
     def destroy(self):

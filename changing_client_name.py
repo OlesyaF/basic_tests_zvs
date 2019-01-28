@@ -13,12 +13,13 @@ def app(request):
     request.addfinalizer(fixture.destroy)
     return fixture
 
+
 # Изменение имени клиента
 
 def test_changing_client_name(app):
-
     now = str(datetime.datetime.now())
     client_name = "866712#autotest4_" + now[:16]
+    locator = "//span[contains(text(),'" + client_name + "')]"
 
     logging.config.fileConfig('log.conf')
     log = logging.getLogger('main')
@@ -38,6 +39,11 @@ def test_changing_client_name(app):
     app.go_to_client_info()
     time.sleep(2)
     app.changing_client_name(client_name)
+    if (app.is_element_present_main(locator) == True):
+        log.info("В ОД имя Клиента совпадает с новым значением - ТЕСТ УСПЕШНЫЙ")
+    else:
+        log.info("ОШИБКА: В ОД имя Клиента не совпадает с новым значением - ТЕСТ НЕ УСПЕШНЫЙ!!!")
+    assert (app.is_element_present_main(locator) == True)
 
     app.logout_client()
     log.info("changing_client_name.py is done successfully")
