@@ -1,9 +1,13 @@
 # -*- encoding: utf-8 -*-
 
 import datetime
-import pytest
+import logging
+import logging.config
+import os.path
 import time
-import logging, logging.config, os.path
+
+import pytest
+
 from application import Application
 
 
@@ -17,7 +21,6 @@ def app(request):
 # Изменение имени клиента (негативный тест): нельзя сохранить имя незаполненным
 
 def test_changing_client_name_nt1(app):
-
     locator1 = "//div[contains(@class, 'FormCustomerFullnameError') and contains(text(),'Заполните это поле')]"
     locator2 = "//input[@id='FormCustomerFullname'][@placeholder='Введите Ваше имя']"
 

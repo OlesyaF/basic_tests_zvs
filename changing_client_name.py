@@ -1,9 +1,13 @@
 # -*- encoding: utf-8 -*-
 
 import datetime
-import pytest
+import logging
+import logging.config
+import os.path
 import time
-import logging, logging.config, os.path
+
+import pytest
+
 from application import Application
 
 
@@ -17,7 +21,6 @@ def app(request):
 # Изменение имени клиента
 
 def test_changing_client_name(app):
-
     client_name = str(app.calc_check_sum_from_date()) + "#autotest4"
     print("client_name: ", client_name)
     locator = "//span[contains(text(),'" + client_name + "')]"

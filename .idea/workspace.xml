@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58688b4d-c806-4016-bde0-be95a17afdca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/application.py" beforeDir="false" afterPath="$PROJECT_DIR$/application.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/changing_client_email.py" beforeDir="false" afterPath="$PROJECT_DIR$/changing_client_email.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/changing_client_email_nt1.py" beforeDir="false" afterPath="$PROJECT_DIR$/changing_client_email_nt1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/changing_client_email_nt2.py" beforeDir="false" afterPath="$PROJECT_DIR$/changing_client_email_nt2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/changing_client_name.py" beforeDir="false" afterPath="$PROJECT_DIR$/changing_client_name.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/changing_client_name_nt1.py" beforeDir="false" afterPath="$PROJECT_DIR$/changing_client_name_nt1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/changing_client_name_nt2.py" beforeDir="false" afterPath="$PROJECT_DIR$/changing_client_name_nt2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/changing_client_phone.py" beforeDir="false" afterPath="$PROJECT_DIR$/changing_client_phone.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,24 +26,24 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="9" />
+          <entry key="py" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="9" />
+          <entry key="Python" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dummy" value="5" />
-          <entry key="py" value="5087" />
+          <entry key="dummy" value="8" />
+          <entry key="py" value="5286" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="5" />
-          <entry key="Python" value="5087" />
+          <entry key="PLAIN_TEXT" value="8" />
+          <entry key="Python" value="5286" />
         </counts>
       </usages-collector>
     </session>
@@ -51,7 +53,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
+            <state relative-caret-position="100">
               <caret line="375" column="18" selection-start-line="375" selection-start-column="18" selection-end-line="375" selection-end-column="18" />
               <folding>
                 <element signature="e#27#38#0" expanded="true" />
@@ -63,8 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/changing_client_name_nt1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-17">
-              <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+            <state relative-caret-position="357">
+              <caret line="24" column="85" lean-forward="true" selection-start-line="24" selection-start-column="51" selection-end-line="24" selection-end-column="85" />
               <folding>
                 <element signature="e#27#42#0" expanded="true" />
               </folding>
@@ -76,7 +78,19 @@
         <entry file="file://$PROJECT_DIR$/changing_client_email_nt1.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="340">
-              <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+              <caret line="24" column="48" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="48" />
+              <folding>
+                <element signature="e#27#42#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/changing_client_phone_null.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="110">
+              <caret line="20" column="62" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="62" />
               <folding>
                 <element signature="e#27#42#0" expanded="true" />
               </folding>
@@ -88,7 +102,7 @@
         <entry file="file://$PROJECT_DIR$/changing_client_email_nt2.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
-              <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+              <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
               <folding>
                 <element signature="e#27#42#0" expanded="true" />
               </folding>
@@ -99,8 +113,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/changing_client_name_nt2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-165">
-              <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+            <state relative-caret-position="141">
+              <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
               <folding>
                 <element signature="e#27#42#0" expanded="true" />
               </folding>
@@ -111,8 +125,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/changing_client_email.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+            <state relative-caret-position="153">
+              <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
               <folding>
                 <element signature="e#27#42#0" expanded="true" />
               </folding>
@@ -123,8 +137,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/changing_client_name.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-170">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="289">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
               <folding>
                 <element signature="e#27#42#0" expanded="true" />
               </folding>
@@ -132,11 +146,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/changing_client_phone.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="22" column="7" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+            <state relative-caret-position="255">
+              <caret line="48" column="33" selection-start-line="47" selection-start-column="18" selection-end-line="48" selection-end-column="33" />
               <folding>
                 <element signature="e#27#42#0" expanded="true" />
               </folding>
@@ -168,21 +182,23 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/changing_client_email.py" />
-        <option value="$PROJECT_DIR$/changing_client_name.py" />
-        <option value="$PROJECT_DIR$/changing_client_email_nt2.py" />
-        <option value="$PROJECT_DIR$/changing_client_email_nt1.py" />
-        <option value="$PROJECT_DIR$/changing_client_name_nt1.py" />
         <option value="$PROJECT_DIR$/test.py" />
-        <option value="$PROJECT_DIR$/changing_client_name_nt2.py" />
         <option value="$PROJECT_DIR$/application.py" />
+        <option value="$PROJECT_DIR$/changing_client_phone_nt1.py" />
+        <option value="$PROJECT_DIR$/changing_client_email.py" />
+        <option value="$PROJECT_DIR$/changing_client_email_nt1.py" />
+        <option value="$PROJECT_DIR$/changing_client_email_nt2.py" />
+        <option value="$PROJECT_DIR$/changing_client_name.py" />
+        <option value="$PROJECT_DIR$/changing_client_name_nt1.py" />
+        <option value="$PROJECT_DIR$/changing_client_name_nt2.py" />
         <option value="$PROJECT_DIR$/changing_client_phone.py" />
+        <option value="$PROJECT_DIR$/changing_client_phone_null.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="121" />
-    <option name="y" value="33" />
+    <option name="x" value="228" />
+    <option name="y" value="71" />
     <option name="width" value="1323" />
     <option name="height" value="927" />
   </component>
@@ -224,7 +240,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.pytest in changing_client_phone.py">
+  <component name="RunManager" selected="Python tests.pytest in changing_client_phone_null.py">
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="basic_tests_zvs" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -276,7 +292,7 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest in changing_client_name.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest in changing_client_phone_null.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="basic_tests_zvs" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -287,7 +303,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/changing_client_name.py&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/changing_client_phone_null.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
@@ -307,19 +323,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python tests.pytest in changing_client_name.py" />
       <item itemvalue="Python tests.pytest in changing_client_email_nt1.py" />
       <item itemvalue="Python tests.pytest in changing_client_email_nt2.py" />
       <item itemvalue="Python tests.pytest in changing_client_phone.py" />
       <item itemvalue="Python.test" />
+      <item itemvalue="Python tests.pytest in changing_client_phone_null.py" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.pytest in changing_client_phone_null.py" />
         <item itemvalue="Python tests.pytest in changing_client_phone.py" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python tests.pytest in changing_client_email_nt2.py" />
         <item itemvalue="Python tests.pytest in changing_client_email_nt1.py" />
-        <item itemvalue="Python tests.pytest in changing_client_name.py" />
       </list>
     </recent_temporary>
   </component>
@@ -337,18 +353,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="pytest_in_changing_client_phone_py - 2019.01.28 at 18h 07m 50s.xml">
-      <configuration name="pytest in changing_client_phone.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_changing_client_phone_py - 2019.01.28 at 18h 21m 47s.xml">
-      <configuration name="pytest in changing_client_phone.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_changing_client_phone_py - 2019.01.29 at 12h 12m 43s.xml">
-      <configuration name="pytest in changing_client_phone.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_changing_client_phone_py - 2019.01.29 at 12h 15m 24s.xml">
-      <configuration name="pytest in changing_client_phone.py" configurationId="tests" />
-    </history-entry>
     <history-entry file="pytest_in_changing_client_phone_py - 2019.01.29 at 12h 21m 32s.xml">
       <configuration name="pytest in changing_client_phone.py" configurationId="tests" />
     </history-entry>
@@ -367,9 +371,21 @@
     <history-entry file="pytest_in_changing_client_phone_py - 2019.01.29 at 13h 40m 20s.xml">
       <configuration name="pytest in changing_client_phone.py" configurationId="tests" />
     </history-entry>
+    <history-entry file="pytest_in_changing_client_phone_py - 2019.01.29 at 13h 47m 21s.xml">
+      <configuration name="pytest in changing_client_phone.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_changing_client_phone_py - 2019.01.29 at 14h 03m 12s.xml">
+      <configuration name="pytest in changing_client_phone.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_changing_client_phone_py - 2019.01.29 at 14h 04m 26s.xml">
+      <configuration name="pytest in changing_client_phone.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_changing_client_phone_null_py - 2019.01.29 at 14h 37m 07s.xml">
+      <configuration name="pytest in changing_client_phone_null.py" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="121" y="33" width="1323" height="927" extended-state="0" />
+    <frame x="228" y="71" width="1323" height="927" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
@@ -394,17 +410,6 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/changing_client_name_nt2.py</url>
-          <line>6</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -413,10 +418,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/changing_client_email.py">
+    <entry file="file://$PROJECT_DIR$/changing_client_email_nt2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
-          <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
+          <folding>
+            <element signature="e#27#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="375" column="18" selection-start-line="375" selection-start-column="18" selection-end-line="375" selection-end-column="18" />
+          <folding>
+            <element signature="e#27#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/changing_client_name_nt2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+          <folding>
+            <element signature="e#27#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/changing_client_name_nt1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="24" column="85" lean-forward="true" selection-start-line="24" selection-start-column="51" selection-end-line="24" selection-end-column="85" />
+          <folding>
+            <element signature="e#27#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/changing_client_name.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="e#27#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/changing_client_email.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
           <folding>
             <element signature="e#27#42#0" expanded="true" />
           </folding>
@@ -426,67 +481,27 @@
     <entry file="file://$PROJECT_DIR$/changing_client_email_nt1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
-          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+          <caret line="24" column="48" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="48" />
           <folding>
             <element signature="e#27#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/changing_client_email_nt2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
-          <folding>
-            <element signature="e#27#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/changing_client_name.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-170">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="e#27#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/changing_client_name_nt1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17">
-          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
-          <folding>
-            <element signature="e#27#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/changing_client_name_nt2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-165">
-          <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
-          <folding>
-            <element signature="e#27#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="375" column="18" selection-start-line="375" selection-start-column="18" selection-end-line="375" selection-end-column="18" />
-          <folding>
-            <element signature="e#27#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/changing_client_phone.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="22" column="7" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+        <state relative-caret-position="255">
+          <caret line="48" column="33" selection-start-line="47" selection-start-column="18" selection-end-line="48" selection-end-column="33" />
+          <folding>
+            <element signature="e#27#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/changing_client_phone_null.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="20" column="62" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="62" />
           <folding>
             <element signature="e#27#42#0" expanded="true" />
           </folding>

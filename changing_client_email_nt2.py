@@ -1,11 +1,15 @@
 # -*- encoding: utf-8 -*-
 
 import datetime
-import pytest
-import time
-import logging, logging.config, os.path
-from application import Application
+import logging
+import logging.config
+import os.path
 import random
+import time
+
+import pytest
+
+from application import Application
 
 
 @pytest.fixture()
@@ -18,7 +22,6 @@ def app(request):
 # Изменение email клиента (негативный тест): нельзя сохранить email, не соответствующий формату '%@%.%'
 
 def test_changing_client_email_nt2(app):
-
     locator1 = "//div[contains(@class, 'FormCustomerEmailError') and contains(text(),'Введите корректный email')]"
 
     logging.config.fileConfig('log.conf')
@@ -38,8 +41,8 @@ def test_changing_client_email_nt2(app):
     time.sleep(7)
     app.go_to_client_info()
     time.sleep(2)
-    list = ['sss@sss.','@sss.com','sss@.com','ssssss.com','sss@ssscom','яяя@sss.com','sss@sss.яяя']
-    app.changing_client_email(email= random.choice(list))
+    list = ['sss@sss.', '@sss.com', 'sss@.com', 'ssssss.com', 'sss@ssscom', 'яяя@sss.com', 'sss@sss.яяя']
+    app.changing_client_email(email=random.choice(list))
     if (app.is_element_present_main(locator1) == True):
         log.info(
             "Нельзя сохранить email, не соответствующий формату '%@%.%' (под полем 'Email' - 'Введите корректный email', "

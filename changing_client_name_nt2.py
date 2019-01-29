@@ -1,11 +1,15 @@
 # -*- encoding: utf-8 -*-
 
 import datetime
-import pytest
-import time
-import logging, logging.config, os.path
-from application import Application
+import logging
+import logging.config
+import os.path
 import random
+import time
+
+import pytest
+
+from application import Application
 
 
 @pytest.fixture()
@@ -18,7 +22,6 @@ def app(request):
 # Изменение имени клиента (негативный тест): нельзя сохранить имя, состоящее из одного символа
 
 def test_changing_client_name_nt2(app):
-
     list = ['s', 'R', 'м', 'Б', '8', '#', '/']
     client_name = random.choice(list)
     locator1 = "//div[contains(@class, 'FormCustomerFullnameError') and contains(text(),'Введите корректное имя')]"

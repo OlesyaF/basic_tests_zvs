@@ -1,9 +1,13 @@
 # -*- encoding: utf-8 -*-
 
 import datetime
-import pytest
+import logging
+import logging.config
+import os.path
 import time
-import logging, logging.config, os.path
+
+import pytest
+
 from application import Application
 
 
@@ -17,7 +21,6 @@ def app(request):
 # Изменение email клиента (негативный тест): нельзя сохранить поле 'Email' незаполненным
 
 def test_changing_client_email_nt1(app):
-
     locator1 = "//div[contains(@class, 'FormCustomerEmailError') and contains(text(),'Заполните это поле')]"
     locator2 = "//input[@id='FormCustomerEmail'][@placeholder='Введите Ваш email']"
 

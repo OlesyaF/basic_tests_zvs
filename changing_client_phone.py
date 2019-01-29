@@ -1,11 +1,14 @@
 # -*- encoding: utf-8 -*-
 
 import datetime
-import pytest
+import logging
+import logging.config
+import os.path
 import time
-import logging, logging.config, os.path
+
+import pytest
+
 from application import Application
-import random
 
 
 @pytest.fixture()
@@ -18,7 +21,6 @@ def app(request):
 # Изменение телефона клиента
 
 def test_changing_client_phone(app):
-
     phone, phone_mask = app.get_phone_as_random_set()
     locator = "//input[@value='" + phone_mask + "']"
 
@@ -46,8 +48,9 @@ def test_changing_client_phone(app):
         log.info("В окне 'Изменить контактные данные' после перевхода номер телефона совпадает с новым значением "
                  "- ТЕСТ УСПЕШНЫЙ")
     else:
-        log.info("ОШИБКА: В окне 'Изменить контактные данные' после перевхода номер телефона не совпадает с новым значением "
-                 "- ТЕСТ НЕ УСПЕШНЫЙ!!!")
+        log.info(
+            "ОШИБКА: В окне 'Изменить контактные данные' после перевхода номер телефона не совпадает с новым значением "
+            "- ТЕСТ НЕ УСПЕШНЫЙ!!!")
     assert (app.is_element_present_main(locator) == True)
 
     app.logout_client()
