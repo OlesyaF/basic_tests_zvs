@@ -8,7 +8,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.chrome.webdriver import WebDriver
-
+from selenium.webdriver.common.keys import Keys
+import random
 
 # noinspection PyDeprecation
 class Application:
@@ -94,6 +95,19 @@ class Application:
         input_field_name.clear()
         input_field_name.send_keys(email)
         log.info("В поле 'Email' введено новое значение")
+        button_submit = driver.find_element_by_id("CustomerDataSubmit")
+        button_submit.click()
+        log.info("Нажата кнопка 'Сохранить'")
+
+    def changing_client_phone(self, phone):
+        log = logging.getLogger('main')
+        driver = self.driver
+        input_field_name = driver.find_element_by_id("FormCustomerPhone")
+        input_field_name.click()
+        input_field_name.clear()
+        input_field_name.send_keys(Keys.HOME)
+        input_field_name.send_keys(phone)
+        log.info("В поле 'Телефон' введено новое значение")
         button_submit = driver.find_element_by_id("CustomerDataSubmit")
         button_submit.click()
         log.info("Нажата кнопка 'Сохранить'")
@@ -299,9 +313,6 @@ class Application:
             EC.presence_of_element_located((By.XPATH, "//span[contains(text(),'" + mess_client + "')]")))
         log.info("Агент получил сообщение Клиента")
 
-    # mess_agent_in_chat = WebDriverWait(driver, 20).until(EC.presence_of_element_located(
-    # (By.XPATH, "//div[contains(@class, 'message_text') and contains(text(),'" + mess_agent + "')]")))
-
     def logout_agent(self):
         log = logging.getLogger('main')
         driver = self.driver
@@ -343,8 +354,8 @@ class Application:
         except:
             return False
 
-    def calc_check_sum(self):
-        print("Расчет контрольной суммы даты и времени:")
+    # Расчет контрольной суммы на основе даты и времени
+    def calc_check_sum_from_date(self):
         now = str(datetime.datetime.now())
         print("Дата и время: now = " + now)
         now = now.replace("-", "")
@@ -359,6 +370,25 @@ class Application:
             i = i + ord(chr)
         print("Контрольная сумма даты и времени = ", i)
         return i
+
+    # Получение номера телефона из случайного набора цифр
+    def get_phone_as_random_set(self):
+        list1 = [num for num in range(10)]
+        print("list1: ", list1)
+        i = 0
+        list2 = []
+        while i < 10:
+            list2.append(str(random.choice(list1)))
+            i = i + 1
+        print("list2: ", list2)
+        phone = ""
+        for i in list2: phone = phone + str(i)
+        print("phone: ", phone)
+        phone_mask = "+7 (" + str(list2[0]) + str(list2[1]) + str(list2[2]) + ") " + str(list2[3]) + str(
+            list2[4]) + str(
+            list2[5]) + "-" + str(list2[6]) + str(list2[7]) + "-" + str(list2[8]) + str(list2[9])
+        print("phone_mask: ", phone_mask)
+        return phone, phone_mask
 
     def destroy(self):
         self.driver.quit()
