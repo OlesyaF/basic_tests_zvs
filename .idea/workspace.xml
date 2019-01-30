@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58688b4d-c806-4016-bde0-be95a17afdca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/changing_client_email.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/changing_client_email_nt1.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/changing_client_email_nt2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/changing_client_name.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/changing_client_name_nt1.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/changing_client_name_nt2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/changing_client_phone.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/changing_client_phone_null.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application.py" beforeDir="false" afterPath="$PROJECT_DIR$/application.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/changing_client_email.py" beforeDir="false" afterPath="$PROJECT_DIR$/changing_client_email.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,38 +22,60 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="13" />
+          <entry key="conf" value="1" />
+          <entry key="gitignore" value="1" />
+          <entry key="py" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="13" />
+          <entry key="PLAIN_TEXT" value="2" />
+          <entry key="Python" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="8" />
-          <entry key="py" value="5321" />
+          <entry key="py" value="5392" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="8" />
-          <entry key="Python" value="5321" />
+          <entry key="Python" value="5392" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="160">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
+              <caret line="89" column="8" selection-start-line="89" selection-start-column="8" selection-end-line="89" selection-end-column="8" />
               <folding>
                 <element signature="e#27#38#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/log.conf">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/changing_client_email.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="430">
+              <caret line="44" column="17" selection-start-line="44" selection-start-column="17" selection-end-line="44" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -79,15 +94,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="168">
               <caret line="957" selection-start-line="957" selection-end-line="957" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/changing_client_email.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
         </entry>
@@ -117,9 +123,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/test.py" />
-        <option value="$PROJECT_DIR$/application.py" />
         <option value="$PROJECT_DIR$/changing_client_phone_nt1.py" />
-        <option value="$PROJECT_DIR$/changing_client_email.py" />
         <option value="$PROJECT_DIR$/changing_client_email_nt1.py" />
         <option value="$PROJECT_DIR$/changing_client_email_nt2.py" />
         <option value="$PROJECT_DIR$/changing_client_name.py" />
@@ -127,6 +131,8 @@
         <option value="$PROJECT_DIR$/changing_client_name_nt2.py" />
         <option value="$PROJECT_DIR$/changing_client_phone.py" />
         <option value="$PROJECT_DIR$/changing_client_phone_null.py" />
+        <option value="$PROJECT_DIR$/changing_client_email.py" />
+        <option value="$PROJECT_DIR$/application.py" />
       </list>
     </option>
   </component>
@@ -150,11 +156,6 @@
             <path>
               <item name="basic_tests_zvs" type="b2602c69:ProjectViewProjectNode" />
               <item name="basic_tests_zvs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="basic_tests_zvs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="basic_tests_zvs" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -292,12 +293,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="pytest_in_changing_client_phone_py - 2019.01.29 at 12h 52m 18s.xml">
-      <configuration name="pytest in changing_client_phone.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_changing_client_phone_py - 2019.01.29 at 12h 53m 04s.xml">
-      <configuration name="pytest in changing_client_phone.py" configurationId="tests" />
-    </history-entry>
     <history-entry file="pytest_in_changing_client_phone_py - 2019.01.29 at 13h 40m 20s.xml">
       <configuration name="pytest in changing_client_phone.py" configurationId="tests" />
     </history-entry>
@@ -322,17 +317,23 @@
     <history-entry file="pytest_in_changing_client_phone_null_py - 2019.01.30 at 15h 43m 25s.xml">
       <configuration name="pytest in changing_client_phone_null.py" configurationId="tests" />
     </history-entry>
+    <history-entry file="pytest_in_changing_client_email_py - 2019.01.30 at 16h 41m 20s.xml">
+      <configuration name="pytest in changing_client_email.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_changing_client_email_py_(1) - 2019.01.30 at 16h 44m 36s.xml">
+      <configuration name="pytest in changing_client_email.py (1)" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="228" y="71" width="1323" height="927" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24980545" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24980545" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3299748" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3299748" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3299748" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39924434" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -384,16 +385,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
-          <folding>
-            <element signature="e#27#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/changing_client_email.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
           <folding>
             <element signature="e#27#42#0" expanded="true" />
           </folding>
@@ -458,13 +449,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/log.conf">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/application.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
+          <caret line="89" column="8" selection-start-line="89" selection-start-column="8" selection-end-line="89" selection-end-column="8" />
           <folding>
             <element signature="e#27#38#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/changing_client_email.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="44" column="17" selection-start-line="44" selection-start-column="17" selection-end-line="44" selection-end-column="17" />
         </state>
       </provider>
     </entry>
