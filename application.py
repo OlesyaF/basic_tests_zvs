@@ -21,16 +21,16 @@ class Application:
         self.driver.implicitly_wait(5)
 
     def go_to_online_version(self, ov_link):
-        log = logging.getLogger('main')
+        #log = logging.getLogger('main')
         driver = self.driver
         driver.get(ov_link)
         # КЛИЕНТ Проверяем, что ОВ доступна
         if (self.is_element_present(driver, "//input[@id='loginform-login']") != True):
-            log.error("ОШИБКА!!! Онлайн Версия не доступна! - Не найдено поле 'Логин' для авторизации")
+            print("ОШИБКА!!! Онлайн Версия не доступна! - Не найдено поле 'Логин' для авторизации")
             assert (self.is_element_present(driver, "//input[@id='loginform-login']") == True)
 
     def login_client(self, client_name, client_password):
-        log = logging.getLogger('main')
+        #log = logging.getLogger('main')
         driver = self.driver
         input_field_login = driver.find_element_by_id("loginform-login")
         input_field_login.send_keys(client_name)
@@ -40,13 +40,13 @@ class Application:
         button_login.click()
         # КЛИЕНТ Логин: Проверяем, что Клиент залогинился
         if (self.is_element_present(driver, "//div[@id='logout']") == True):
-            log.info("Клиент залогинился в ОВ")
+            print("Клиент залогинился в ОВ")
         else:
-            log.error("ОШИБКА!!! Клиент не залогинился в ОВ! - Не найдена кнопка 'Выйти'")
+            print("ОШИБКА!!! Клиент не залогинился в ОВ! - Не найдена кнопка 'Выйти'")
             assert (self.is_element_present(driver, "//div[@id='logout']") == True)
 
     def go_to_online_dialog(self):
-        log = logging.getLogger('main')
+        #log = logging.getLogger('main')
         driver = self.driver
         # КЛИЕНТ Нажимаем кнопку "Задать вопрос"
         button_zv = driver.find_element_by_xpath("//div[@class='topToolbar']/div[5]/div[2]")
@@ -56,22 +56,22 @@ class Application:
         driver.switch_to.frame(chat)
         # КЛИЕНТ Проверяем, что перешли в ОД
         if (self.is_element_present(driver, "//textarea[@id='MsgInput']") == True):
-            log.info("Клиент перешел в ОД (найдено поле для ввода сообщения)")
+            print("Клиент перешел в ОД (найдено поле для ввода сообщения)")
         else:
-            log.error("ОШИБКА!!! Онлайн Диалог не доступен! - Не найдено поле для ввода сообщения")
+            print("ОШИБКА!!! Онлайн Диалог не доступен! - Не найдено поле для ввода сообщения")
             assert (self.is_element_present(driver, "//textarea[@id='MsgInput']") == True)
 
     def go_to_client_info(self):
-        log = logging.getLogger('main')
+        #log = logging.getLogger('main')
         driver = self.driver
         button_client_info = driver.find_element_by_css_selector("div.authEdit.ChangeUserInfo")
         button_client_info.click()
         # КЛИЕНТ Проверяем, что перешли в окно "Изменить контактные данные"
         if (self.is_element_present(driver,
                                     "//div[contains(@class, 'UserInfoHeader') and contains(text(),'Изменить контактные данные')]") == True):
-            log.info("Клиент перешел в окно 'Изменить контактные данные'")
+            print("Клиент перешел в окно 'Изменить контактные данные'")
         else:
-            log.error("ОШИБКА!!! Клиент не перешел в окно 'Изменить контактные данные'! - Не найдено название окна")
+            print("ОШИБКА!!! Клиент не перешел в окно 'Изменить контактные данные'! - Не найдено название окна")
             assert (self.is_element_present(driver,
                                             "//div[contains(@class, 'UserInfoHeader') and contains(text(),'Изменить контактные данные')]") == True)
 
@@ -88,16 +88,16 @@ class Application:
         log.info("Нажата кнопка 'Сохранить'")
 
     def changing_client_email(self, email):
-        log = logging.getLogger('main')
+        #log = logging.getLogger('main')
         driver = self.driver
         input_field_name = driver.find_element_by_id("FormCustomerEmail")
         input_field_name.click()
         input_field_name.clear()
         input_field_name.send_keys(email)
-        log.info("В поле 'Email' введено новое значение")
+        print("В поле 'Email' введено новое значение")
         button_submit = driver.find_element_by_id("CustomerDataSubmit")
         button_submit.click()
-        log.info("Нажата кнопка 'Сохранить'")
+        print("Нажата кнопка 'Сохранить'")
 
     def changing_client_phone(self, phone):
         log = logging.getLogger('main')
@@ -141,7 +141,7 @@ class Application:
             assert (self.is_element_present(driver, "//div[contains(text(),'" + mess_client + "')]") == True)
 
     def logout_client(self):
-        log = logging.getLogger('main')
+        #log = logging.getLogger('main')
         driver = self.driver
         # КЛИЕНТ Логаут: Возвращаемся в основной фрейм
         driver.switch_to.parent_frame()
@@ -156,9 +156,9 @@ class Application:
         logout_confirm.click()
         # КЛИЕНТ Логаут: Проверяем, что Клиент разлогинился
         if (self.is_element_present(driver, "//input[@id='loginform-password']") == True):
-            log.info("Клиент вышел из ОВ")
+            print("Клиент вышел из ОВ")
         else:
-            log.error("ОШИБКА!!! Поле для ввода пароля не найдено. Клиент не разлогинился!")
+            print("ОШИБКА!!! Поле для ввода пароля не найдено. Клиент не разлогинился!")
             assert (self.is_element_present(driver, "//input[@id='loginform-password']") == True)
 
     def go_to_consultant_plus_agent(self, cp_link):
