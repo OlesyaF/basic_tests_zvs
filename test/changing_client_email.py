@@ -1,14 +1,10 @@
 # -*- encoding: utf-8 -*-
 
-import datetime
-import logging
-import logging.config
-import os.path
 import time
 
 import pytest
 
-from application import Application
+from fixture.application import Application
 
 
 @pytest.fixture()
@@ -24,15 +20,6 @@ def test_changing_client_email(app):
     email = str(app.calc_check_sum_from_date()) + "@autotest4.ru"
     print("email: ", email)
     locator = "//span[contains(text(),'" + email + "')]"
-
-    # logging.config.fileConfig('log.conf')
-    # log = logging.getLogger('main')
-    # fh = logging.FileHandler(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'logs/',
-    #                                       'changing_client_email {}.log'.format(
-    #                                           datetime.datetime.now().strftime('%Y-%m-%d-%H.%M.%S'))))
-    # formatter = logging.Formatter('%(asctime)s | %(levelname)-8s | '"%(module)-12s"' | line %(lineno)04d | %(message)s')
-    # fh.setFormatter(formatter)
-    # log.addHandler(fh)
 
     print("changing_client_email.py is running")
 
