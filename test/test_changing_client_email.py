@@ -7,11 +7,11 @@ import random
 # Изменение email клиента
 
 def test_changing_client_email(app):
+    print("test_changing_client_email.py is running")
+
     email = str(app.calc_check_sum_from_date()) + "@autotest4.ru"
     print("email: ", email)
     locator = "//span[contains(text(),'" + email + "')]"
-
-    print("test_changing_client_email.py is running")
 
     app.go_to_online_version(ov_link="https://login.consultant.ru")
     app.login_client(client_name="866712#autotest4", client_password="cDKgrqe7")
@@ -33,10 +33,10 @@ def test_changing_client_email(app):
 # Изменение email клиента (негативный тест): нельзя сохранить поле 'Email' незаполненным
 
 def test_changing_client_email_nt1(app):
+    print("changing_client_email_nt1.py is running")
+
     locator1 = "//div[contains(@class, 'FormCustomerEmailError') and contains(text(),'Заполните это поле')]"
     locator2 = "//input[@id='FormCustomerEmail'][@placeholder='Введите Ваш email']"
-
-    print("changing_client_email_nt1.py is running")
 
     app.go_to_online_version(ov_link="https://login.consultant.ru")
     app.login_client(client_name="866712#autotest4", client_password="cDKgrqe7")
@@ -62,9 +62,9 @@ def test_changing_client_email_nt1(app):
 # Изменение email клиента (негативный тест): нельзя сохранить email, не соответствующий формату '%@%.%'
 
 def test_changing_client_email_nt2(app):
-    locator1 = "//div[contains(@class, 'FormCustomerEmailError') and contains(text(),'Введите корректный email')]"
-
     print("changing_client_email_nt2.py is running")
+
+    locator1 = "//div[contains(@class, 'FormCustomerEmailError') and contains(text(),'Введите корректный email')]"
 
     app.go_to_online_version(ov_link="https://login.consultant.ru")
     app.login_client(client_name="866712#autotest4", client_password="cDKgrqe7")

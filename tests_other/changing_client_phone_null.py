@@ -15,10 +15,15 @@ def test_changing_client_phone_null(app):
     app.go_to_online_dialog()
     time.sleep(7)
     app.go_to_client_info()
-    time.sleep(2)
+    time.sleep(3)
     app.changing_client_phone("")
-    time.sleep(2)
+    time.sleep(3)
+    app.go_out_online_dialog()
+    time.sleep(3)
+    app.go_to_online_dialog()
+    time.sleep(7)
     app.go_to_client_info()
+    time.sleep(3)
     if (app.is_element_present_main(locator) == True):
         print(
             "В окне 'Изменить контактные данные' после перевхода в поле 'Телефон' отображается "
@@ -26,7 +31,7 @@ def test_changing_client_phone_null(app):
     else:
         print("ОШИБКА: В окне 'Изменить контактные данные' после перевхода в поле 'Телефон' не отображается "
                  "пустая маска +7 (___) ___-__-__ - ТЕСТ НЕ УСПЕШНЫЙ!!!")
-    assert (app.is_element_present_main(locator) == True and app.is_element_present_main(locator) == True)
+    assert (app.is_element_present_main(locator) == True)
 
     app.logout_client()
     print("changing_client_phone_null.py is done successfully")

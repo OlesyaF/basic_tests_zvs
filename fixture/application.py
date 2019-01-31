@@ -128,6 +128,14 @@ class Application:
             print("ОШИБКА!!! Сообщение, отправленное Клиентом, не отображается в теле Чата ОВ!")
             assert (self.is_element_present(driver, "//div[contains(text(),'" + mess_client + "')]") == True)
 
+    def go_out_online_dialog(self):
+        driver = self.driver
+        # КЛИЕНТ Логаут: Возвращаемся в основной фрейм
+        driver.switch_to.parent_frame()
+        button_close_chat = driver.find_element_by_xpath("//div[@class='icon livechatclose-16']")
+        button_close_chat.click()
+        driver.refresh()
+
     def logout_client(self):
         driver = self.driver
         # КЛИЕНТ Логаут: Возвращаемся в основной фрейм
