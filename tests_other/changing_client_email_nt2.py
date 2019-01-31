@@ -1,22 +1,7 @@
 # -*- encoding: utf-8 -*-
 
-import datetime
-import logging
-import logging.config
-import os.path
 import random
 import time
-
-import pytest
-
-from fixture.application import Application
-
-
-@pytest.fixture()
-def app(request):
-    fixture = Application()
-    request.addfinalizer(fixture.destroy)
-    return fixture
 
 
 # Изменение email клиента (негативный тест): нельзя сохранить email, не соответствующий формату '%@%.%'
