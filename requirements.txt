@@ -1,2 +1,4 @@
 pytest
 selenium
+lxml-4.3.0-cp37-cp37m-win_amd64.whl
+pytest-allure-adaptor
