@@ -1,10 +1,10 @@
 # -*- encoding: utf-8 -*-
 
-import time
 import random
+import time
+
 import allure
 import pytest
-import sys
 
 
 # Изменение email клиента
@@ -20,13 +20,14 @@ def test_changing_client_email(app):
     app.go_to_online_version(ov_link="https://login.consultant.ru")
     app.login_client(client_name="866712#autotest4", client_password="cDKgrqe7")
     app.go_to_online_dialog()
-    time.sleep(10)
+    time.sleep(7)
     app.go_to_client_info()
     time.sleep(2)
     app.changing_client_email(email)
     if (app.is_element_present_main(locator) == True):
         print("В ОД email Клиента совпадает с новым значением - ТЕСТ УСПЕШНЫЙ")
-        allure.dynamic.description('allure.dynamic.description: В ОД email Клиента совпадает с новым значением - ТЕСТ УСПЕШНЫЙ')
+        allure.dynamic.description(
+            'allure.dynamic.description: В ОД email Клиента совпадает с новым значением - ТЕСТ УСПЕШНЫЙ')
     else:
         print("ОШИБКА: В ОД email Клиента не совпадает с новым значением - ТЕСТ НЕ УСПЕШНЫЙ!!!")
         allure.dynamic.description(
@@ -41,7 +42,6 @@ def test_changing_client_email(app):
 
 @allure.title("Изменение email клиента (негативный тест): нельзя сохранить поле 'Email' незаполненным")
 def test_changing_client_email_nt1(app):
-    pytest.skip('for a MY reason!')
     print("changing_client_email_nt1.py is running")
 
     locator1 = "//div[contains(@class, 'FormCustomerEmailError') and contains(text(),'Заполните это поле')]"
@@ -59,9 +59,12 @@ def test_changing_client_email_nt1(app):
             "Нельзя сохранить пустой email Клиента (в поле 'Email' отображается 'Введите Ваш email', "
             "под полем 'Email' - 'Заполните это поле', после нажатия на 'Сохранить' остались в окне 'Изменить контактные данные') "
             "- ТЕСТ УСПЕШНЫЙ")
+        allure.dynamic.description('Нельзя сохранить пустой email Клиента - ТЕСТ УСПЕШНЫЙ')
     else:
         print("ОШИБКА: Не найдено: в поле 'Email' - 'Введите Ваш email', под полем 'Email' - 'Заполните это поле' "
-                 "- ТЕСТ НЕ УСПЕШНЫЙ!!!")
+              "- ТЕСТ НЕ УСПЕШНЫЙ!!!")
+        allure.dynamic.description(
+            'ОШИБКА: Не найдено: в поле "Email" - "Введите Ваш email", под полем "Email" - "Заполните это поле" - ТЕСТ НЕ УСПЕШНЫЙ!!!')
     assert (app.is_element_present_main(locator1) == True and app.is_element_present_main(locator2) == True)
 
     app.logout_client()
@@ -89,24 +92,12 @@ def test_changing_client_email_nt2(app):
             "Нельзя сохранить email, не соответствующий формату '%@%.%' (под полем 'Email' - 'Введите корректный email', "
             "после нажатия на 'Сохранить' остались в окне 'Изменить контактные данные') "
             "- ТЕСТ УСПЕШНЫЙ")
+        allure.dynamic.description('Нельзя сохранить email, не соответствующий формату "%@%.%" - ТЕСТ УСПЕШНЫЙ')
     else:
         print("ОШИБКА: Не найдено: под полем 'Email' - 'Введите корректный email' - ТЕСТ НЕ УСПЕШНЫЙ!!!")
+        allure.dynamic.description(
+            'ОШИБКА: Не найдено: под полем "Email" - "Введите корректный email" - ТЕСТ НЕ УСПЕШНЫЙ!!!')
     assert (app.is_element_present_main(locator1) == True)
 
     app.logout_client()
     print("changing_client_email_nt2.py is done successfully")
-
-def test_success(app):
-    """this test succeeds"""
-    assert True
-
-def test_failure(app):
-    """this test fails"""
-    assert False
-
-def test_skip(app):
-    """this test is skipped"""
-    pytest.skip('for a reason!')
-
-def test_broken(app):
-    raise Exception('oops')
