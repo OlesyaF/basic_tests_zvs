@@ -9,6 +9,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.common.keys import Keys
 import random
+import allure
 
 # noinspection PyDeprecation
 class Application:
@@ -18,14 +19,18 @@ class Application:
         self.driver.maximize_window()
         self.driver.implicitly_wait(5)
 
+    @allure.step('allure.step: Вход в ОВ')
     def go_to_online_version(self, ov_link):
         driver = self.driver
         driver.get(ov_link)
         # КЛИЕНТ Проверяем, что ОВ доступна
+        allure.dynamic.description('allure.dynamic.description: Проверка доступности ОВ')
+        allure.description("""allure.description: Проверка доступности ОВ""")
         if (self.is_element_present(driver, "//input[@id='loginform-login']") != True):
             print("ОШИБКА!!! Онлайн Версия не доступна! - Не найдено поле 'Логин' для авторизации")
             assert (self.is_element_present(driver, "//input[@id='loginform-login']") == True)
 
+    @allure.step('Авторизация в ОВ')
     def login_client(self, client_name, client_password):
         driver = self.driver
         input_field_login = driver.find_element_by_id("loginform-login")
@@ -41,6 +46,7 @@ class Application:
             print("ОШИБКА!!! Клиент не залогинился в ОВ! - Не найдена кнопка 'Выйти'")
             assert (self.is_element_present(driver, "//div[@id='logout']") == True)
 
+    @allure.step('Переход в Онлайн-Диалог')
     def go_to_online_dialog(self):
         driver = self.driver
         # КЛИЕНТ Нажимаем кнопку "Задать вопрос"
@@ -56,6 +62,7 @@ class Application:
             print("ОШИБКА!!! Онлайн Диалог не доступен! - Не найдено поле для ввода сообщения")
             assert (self.is_element_present(driver, "//textarea[@id='MsgInput']") == True)
 
+    @allure.step('Переход в окно "Изменить контактные данные"')
     def go_to_client_info(self):
         driver = self.driver
         button_client_info = driver.find_element_by_css_selector("div.authEdit.ChangeUserInfo")
@@ -69,6 +76,7 @@ class Application:
             assert (self.is_element_present(driver,
                                             "//div[contains(@class, 'UserInfoHeader') and contains(text(),'Изменить контактные данные')]") == True)
 
+    @allure.step('Изменение имени Клиента')
     def changing_client_name(self, client_name):
         driver = self.driver
         input_field_name = driver.find_element_by_id("FormCustomerFullname")
@@ -80,6 +88,7 @@ class Application:
         button_submit.click()
         print("Нажата кнопка 'Сохранить'")
 
+    @allure.step('Изменение email Клиента')
     def changing_client_email(self, email):
         driver = self.driver
         input_field_name = driver.find_element_by_id("FormCustomerEmail")
@@ -91,6 +100,7 @@ class Application:
         button_submit.click()
         print("Нажата кнопка 'Сохранить'")
 
+    @allure.step('Изменение номера телефона Клиента')
     def changing_client_phone(self, phone):
         driver = self.driver
         input_field_name = driver.find_element_by_id("FormCustomerPhone")
