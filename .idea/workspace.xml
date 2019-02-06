@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58688b4d-c806-4016-bde0-be95a17afdca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/fixture/application.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixture/application.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/test_changing_client_email.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_changing_client_email.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,24 +36,24 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="27" />
-          <entry key="py" value="6400" />
+          <entry key="py" value="6510" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="27" />
-          <entry key="Python" value="6400" />
+          <entry key="Python" value="6510" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fixture/application.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2465">
-              <caret line="148" column="29" selection-start-line="148" selection-start-column="29" selection-end-line="148" selection-end-column="29" />
+            <state relative-caret-position="152">
+              <caret line="94" selection-start-line="94" selection-end-line="94" />
               <folding>
                 <element signature="e#27#38#0" expanded="true" />
               </folding>
@@ -62,11 +61,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/test_changing_client_email.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="33" column="11" lean-forward="true" selection-start-line="33" selection-start-column="11" selection-end-line="33" selection-end-column="11" />
+            <state relative-caret-position="109">
+              <caret line="20" column="50" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="50" />
               <folding>
                 <element signature="e#27#38#0" expanded="true" />
               </folding>
@@ -99,7 +98,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/test_changing_client_name.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
+            <state relative-caret-position="328">
               <caret line="84" column="47" selection-start-line="84" selection-start-column="47" selection-end-line="84" selection-end-column="47" />
               <folding>
                 <element signature="e#27#38#0" expanded="true" />
@@ -183,8 +182,8 @@
         <option value="$PROJECT_DIR$/test/test_changing_client_phone.py" />
         <option value="$PROJECT_DIR$/test/test_changing_client_name.py" />
         <option value="$PROJECT_DIR$/conftest.py" />
-        <option value="$PROJECT_DIR$/test/test_changing_client_email.py" />
         <option value="$PROJECT_DIR$/fixture/application.py" />
+        <option value="$PROJECT_DIR$/test/test_changing_client_email.py" />
       </list>
     </option>
   </component>
@@ -370,21 +369,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="pytest_in_changing_client_email_nt1_py - 2019.02.05 at 16h 04m 45s.xml">
-      <configuration name="pytest in changing_client_email_nt1.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_test - 2019.02.05 at 16h 41m 44s.xml">
-      <configuration name="pytest in test" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_test - 2019.02.05 at 16h 42m 18s.xml">
-      <configuration name="pytest in test" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_test_changing_client_phone_py - 2019.02.05 at 17h 05m 59s.xml">
-      <configuration name="pytest in test_changing_client_phone.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_test - 2019.02.05 at 18h 12m 19s.xml">
-      <configuration name="pytest in test" configurationId="tests" />
-    </history-entry>
     <history-entry file="pytest_in_test - 2019.02.05 at 18h 12m 56s.xml">
       <configuration name="pytest in test" configurationId="tests" />
     </history-entry>
@@ -400,17 +384,32 @@
     <history-entry file="pytest_in_test_changing_client_email_py - 2019.02.06 at 13h 39m 25s.xml">
       <configuration name="pytest in test_changing_client_email.py" configurationId="tests" />
     </history-entry>
+    <history-entry file="pytest_in_test_changing_client_email_py - 2019.02.06 at 14h 42m 24s.xml">
+      <configuration name="pytest in test_changing_client_email.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_changing_client_email_py - 2019.02.06 at 15h 04m 07s.xml">
+      <configuration name="pytest in test_changing_client_email.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_changing_client_email_py - 2019.02.06 at 15h 05m 43s.xml">
+      <configuration name="pytest in test_changing_client_email.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_changing_client_email_py - 2019.02.06 at 15h 13m 24s.xml">
+      <configuration name="pytest in test_changing_client_email.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_changing_client_email_py - 2019.02.06 at 15h 14m 37s.xml">
+      <configuration name="pytest in test_changing_client_email.py" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="159" y="54" width="1323" height="927" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24980545" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24980545" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3299748" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3299748" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3299748" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39924434" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -496,16 +495,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/test_changing_client_name.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="84" column="47" selection-start-line="84" selection-start-column="47" selection-end-line="84" selection-end-column="47" />
-          <folding>
-            <element signature="e#27#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/test_changing_client_phone.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="158">
@@ -548,10 +537,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/test_changing_client_email.py">
+    <entry file="file://$PROJECT_DIR$/test/test_changing_client_name.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="33" column="11" lean-forward="true" selection-start-line="33" selection-start-column="11" selection-end-line="33" selection-end-column="11" />
+        <state relative-caret-position="328">
+          <caret line="84" column="47" selection-start-line="84" selection-start-column="47" selection-end-line="84" selection-end-column="47" />
           <folding>
             <element signature="e#27#38#0" expanded="true" />
           </folding>
@@ -560,8 +549,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/fixture/application.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2465">
-          <caret line="148" column="29" selection-start-line="148" selection-start-column="29" selection-end-line="148" selection-end-column="29" />
+        <state relative-caret-position="152">
+          <caret line="94" selection-start-line="94" selection-end-line="94" />
+          <folding>
+            <element signature="e#27#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test_changing_client_email.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="20" column="50" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="50" />
           <folding>
             <element signature="e#27#38#0" expanded="true" />
           </folding>

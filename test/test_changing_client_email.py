@@ -4,6 +4,7 @@ import time
 import random
 import allure
 import pytest
+import sys
 
 
 # Изменение email клиента
@@ -19,7 +20,7 @@ def test_changing_client_email(app):
     app.go_to_online_version(ov_link="https://login.consultant.ru")
     app.login_client(client_name="866712#autotest4", client_password="cDKgrqe7")
     app.go_to_online_dialog()
-    time.sleep(7)
+    time.sleep(10)
     app.go_to_client_info()
     time.sleep(2)
     app.changing_client_email(email)
@@ -38,7 +39,7 @@ def test_changing_client_email(app):
 # Изменение email клиента (негативный тест): нельзя сохранить поле 'Email' незаполненным
 
 @allure.title("Изменение email клиента (негативный тест): нельзя сохранить поле 'Email' незаполненным")
-@pytest.mark.skip(reason="Тестирование механизма пропуска теста")
+@pytest.mark.skipif(sys.version_info < (3,9), reason="requires python 3.9 or higher")
 def test_changing_client_email_nt1(app):
     print("changing_client_email_nt1.py is running")
 
@@ -69,6 +70,7 @@ def test_changing_client_email_nt1(app):
 # Изменение email клиента (негативный тест): нельзя сохранить email, не соответствующий формату '%@%.%'
 
 @allure.title("Изменение email клиента (негативный тест): нельзя сохранить email, не соответствующий формату '%@%.%'")
+@pytest.mark.skipif('2 + 2 != 5', reason='This test is skipped by a triggered condition in @pytest.mark.skipif')
 def test_changing_client_email_nt2(app):
     print("changing_client_email_nt2.py is running")
 
@@ -93,3 +95,18 @@ def test_changing_client_email_nt2(app):
 
     app.logout_client()
     print("changing_client_email_nt2.py is done successfully")
+
+def test_success(app):
+    """this test succeeds"""
+    assert True
+
+def test_failure(app):
+    """this test fails"""
+    assert False
+
+def test_skip(app):
+    """this test is skipped"""
+    pytest.skip('for a reason!')
+
+def test_broken(app):
+    raise Exception('oops')
