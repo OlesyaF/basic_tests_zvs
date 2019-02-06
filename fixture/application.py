@@ -19,13 +19,13 @@ class Application:
         self.driver.maximize_window()
         self.driver.implicitly_wait(5)
 
-    @allure.step('allure.step: Вход в ОВ')
+    @allure.step('Вход в ОВ')
     def go_to_online_version(self, ov_link):
         driver = self.driver
         driver.get(ov_link)
         # КЛИЕНТ Проверяем, что ОВ доступна
-        allure.dynamic.description('allure.dynamic.description: Проверка доступности ОВ')
         allure.description("""allure.description: Проверка доступности ОВ""")
+        """allure.description (три точки): Проверка доступности ОВ"""
         if (self.is_element_present(driver, "//input[@id='loginform-login']") != True):
             print("ОШИБКА!!! Онлайн Версия не доступна! - Не найдено поле 'Логин' для авторизации")
             assert (self.is_element_present(driver, "//input[@id='loginform-login']") == True)
@@ -146,6 +146,7 @@ class Application:
         button_close_chat.click()
         driver.refresh()
 
+    @allure.step('Выход из ОВ')
     def logout_client(self):
         driver = self.driver
         # КЛИЕНТ Логаут: Возвращаемся в основной фрейм

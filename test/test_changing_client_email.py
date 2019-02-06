@@ -8,7 +8,7 @@ import pytest
 
 # Изменение email клиента
 
-@allure.title("Изменение email клиента")
+@allure.title("Изменение email клиента (позитивный тест)")
 def test_changing_client_email(app):
     print("test_changing_client_email.py is running")
 
@@ -16,9 +16,7 @@ def test_changing_client_email(app):
     print("email: ", email)
     locator = "//span[contains(text(),'" + email + "')]"
 
-    allure.dynamic.description('allure.dynamic.description: Вход в ОВ')
     app.go_to_online_version(ov_link="https://login.consultant.ru")
-    allure.dynamic.description('allure.dynamic.description: Авторизация в ОВ')
     app.login_client(client_name="866712#autotest4", client_password="cDKgrqe7")
     app.go_to_online_dialog()
     time.sleep(7)
@@ -27,8 +25,8 @@ def test_changing_client_email(app):
     app.changing_client_email(email)
     if (app.is_element_present_main(locator) == True):
         print("В ОД email Клиента совпадает с новым значением - ТЕСТ УСПЕШНЫЙ")
-        allure.dynamic.description('allure.dynamic.description: В ОД email Клиента совпадает с новым значением - ТЕСТ УСПЕШНЫЙ')
         allure.description("""allure.description: В ОД email Клиента совпадает с новым значением - ТЕСТ УСПЕШНЫЙ""")
+        """allure.description (три точки): В ОД email Клиента совпадает с новым значением - ТЕСТ УСПЕШНЫЙ"""
     else:
         print("ОШИБКА: В ОД email Клиента не совпадает с новым значением - ТЕСТ НЕ УСПЕШНЫЙ!!!")
     assert (app.is_element_present_main(locator) == True)
@@ -39,8 +37,8 @@ def test_changing_client_email(app):
 
 # Изменение email клиента (негативный тест): нельзя сохранить поле 'Email' незаполненным
 
-@pytest.mark.skip
 @allure.title("Изменение email клиента (негативный тест): нельзя сохранить поле 'Email' незаполненным")
+@pytest.mark.skip(reason="Тестирование механизма пропуска теста")
 def test_changing_client_email_nt1(app):
     print("changing_client_email_nt1.py is running")
 
