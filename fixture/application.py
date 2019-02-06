@@ -24,8 +24,6 @@ class Application:
         driver = self.driver
         driver.get(ov_link)
         # КЛИЕНТ Проверяем, что ОВ доступна
-        allure.description("""allure.description: Проверка доступности ОВ""")
-        """allure.description (три точки): Проверка доступности ОВ"""
         if (self.is_element_present(driver, "//input[@id='loginform-login']") != True):
             print("ОШИБКА!!! Онлайн Версия не доступна! - Не найдено поле 'Логин' для авторизации")
             assert (self.is_element_present(driver, "//input[@id='loginform-login']") == True)
