@@ -347,6 +347,7 @@ class Application:
             return False
 
     # Расчет контрольной суммы на основе даты и времени
+    @allure.step('Расчет контрольной суммы на основе даты и времени')
     def calc_check_sum_from_date(self):
         now = str(datetime.datetime.now())
         print("Дата и время: now = " + now)
@@ -364,6 +365,7 @@ class Application:
         return i
 
     # Получение номера телефона из случайного набора цифр
+    @allure.step('Получение номера телефона из случайного набора цифр')
     def get_phone_as_random_set(self):
         list1 = [num for num in range(10)]
         print("list1: ", list1)

@@ -2,10 +2,12 @@
 
 import time
 import random
+import allure
 
 
 # Изменение имени клиента
 
+@allure.title("Изменение имени клиента (позитивный тест)")
 def test_changing_client_name(app):
     print("test_changing_client_name.py is running")
 
@@ -22,8 +24,12 @@ def test_changing_client_name(app):
     app.changing_client_name(client_name)
     if (app.is_element_present_main(locator) == True):
         print("В ОД имя Клиента совпадает с новым значением - ТЕСТ УСПЕШНЫЙ")
+        allure.dynamic.description(
+            'В ОД имя Клиента совпадает с новым значением - ТЕСТ УСПЕШНЫЙ')
     else:
         print("ОШИБКА: В ОД имя Клиента не совпадает с новым значением - ТЕСТ НЕ УСПЕШНЫЙ!!!")
+        allure.dynamic.description(
+            'ОШИБКА: В ОД имя Клиента не совпадает с новым значением - ТЕСТ НЕ УСПЕШНЫЙ!!!')
     assert (app.is_element_present_main(locator) == True)
 
     app.logout_client()
@@ -32,6 +38,7 @@ def test_changing_client_name(app):
 
 # Изменение имени клиента (негативный тест): нельзя сохранить имя незаполненным
 
+@allure.title("Изменение имени клиента (негативный тест): нельзя сохранить имя незаполненным")
 def test_changing_client_name_nt1(app):
     print("changing_client_name_nt1.py is running")
 
@@ -50,9 +57,11 @@ def test_changing_client_name_nt1(app):
             "Нельзя сохранить пустое имя Клиента (в поле 'Имя' отображается 'Введите Ваше имя', "
             "под полем 'Имя' - 'Заполните это поле', после нажатия на 'Сохранить' остались в окне 'Изменить контактные данные') "
             "- ТЕСТ УСПЕШНЫЙ")
+        allure.dynamic.description('Нельзя сохранить пустое имя Клиента - ТЕСТ УСПЕШНЫЙ')
     else:
         print("ОШИБКА: Не найдено: в поле 'Имя' - 'Введите Ваше имя', под полем 'Имя' - 'Заполните это поле' "
                  "- ТЕСТ НЕ УСПЕШНЫЙ!!!")
+        allure.dynamic.description('ОШИБКА: Не найдено требование заполнить поле с именем - ТЕСТ НЕ УСПЕШНЫЙ!!!')
     assert (app.is_element_present_main(locator1) == True and app.is_element_present_main(locator2) == True)
 
     app.logout_client()
@@ -61,6 +70,7 @@ def test_changing_client_name_nt1(app):
 
 # Изменение имени клиента (негативный тест): нельзя сохранить имя, состоящее из одного символа
 
+@allure.title("Изменение имени клиента (негативный тест): нельзя сохранить имя, состоящее из одного символа")
 def test_changing_client_name_nt2(app):
     print("changing_client_name_nt2.py is running")
 
@@ -80,8 +90,10 @@ def test_changing_client_name_nt2(app):
             "Нельзя сохранить имя Клиента, состоящее из одного символа (под полем 'Имя' - 'Введите корректное имя', "
             "после нажатия на 'Сохранить' остались в окне 'Изменить контактные данные') "
             "- ТЕСТ УСПЕШНЫЙ")
+        allure.dynamic.description('Нельзя сохранить имя Клиента, состоящее из одного символа - ТЕСТ УСПЕШНЫЙ')
     else:
-        print("ОШИБКА: Не найдено: под полем 'Имя' - 'Заполните это поле' - ТЕСТ НЕ УСПЕШНЫЙ!!!")
+        print("ОШИБКА: Не найдено: под полем 'Имя' - 'Введите корретное имя' - ТЕСТ НЕ УСПЕШНЫЙ!!!")
+        allure.dynamic.description('ОШИБКА: Не найдено требование корректно заполнить поле с именем - ТЕСТ НЕ УСПЕШНЫЙ!!!')
     assert (app.is_element_present_main(locator) == True)
 
     app.logout_client()

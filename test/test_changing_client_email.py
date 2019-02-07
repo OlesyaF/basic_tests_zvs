@@ -4,7 +4,6 @@ import random
 import time
 
 import allure
-import pytest
 
 
 # Изменение email клиента
@@ -27,11 +26,11 @@ def test_changing_client_email(app):
     if (app.is_element_present_main(locator) == True):
         print("В ОД email Клиента совпадает с новым значением - ТЕСТ УСПЕШНЫЙ")
         allure.dynamic.description(
-            'allure.dynamic.description: В ОД email Клиента совпадает с новым значением - ТЕСТ УСПЕШНЫЙ')
+            'В ОД email Клиента совпадает с новым значением - ТЕСТ УСПЕШНЫЙ')
     else:
         print("ОШИБКА: В ОД email Клиента не совпадает с новым значением - ТЕСТ НЕ УСПЕШНЫЙ!!!")
         allure.dynamic.description(
-            'allure.dynamic.description: ОШИБКА: В ОД email Клиента не совпадает с новым значением - ТЕСТ НЕ УСПЕШНЫЙ!!!')
+            'ОШИБКА: В ОД email Клиента не совпадает с новым значением - ТЕСТ НЕ УСПЕШНЫЙ!!!')
     assert (app.is_element_present_main(locator) == True)
 
     app.logout_client()

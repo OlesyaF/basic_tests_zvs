@@ -1,10 +1,12 @@
 # -*- encoding: utf-8 -*-
 
 import time
+import allure
 
 
 # Изменение телефона клиента
 
+@allure.title("Изменение телефона клиента (позитивный тест)")
 def test_changing_client_phone(app):
     print("test_changing_client_phone.py is running")
 
@@ -23,10 +25,12 @@ def test_changing_client_phone(app):
     if (app.is_element_present_main(locator) == True):
         print("В окне 'Изменить контактные данные' после перевхода номер телефона совпадает с новым значением "
               "- ТЕСТ УСПЕШНЫЙ")
+        allure.dynamic.description('Номер телефона совпадает с новым значением - ТЕСТ УСПЕШНЫЙ')
     else:
         print(
             "ОШИБКА: В окне 'Изменить контактные данные' после перевхода номер телефона не совпадает с новым значением "
             "- ТЕСТ НЕ УСПЕШНЫЙ!!!")
+        allure.dynamic.description('ОШИБКА: номер телефона не совпадает с новым значением - ТЕСТ НЕ УСПЕШНЫЙ!!!')
     assert (app.is_element_present_main(locator) == True)
 
     app.logout_client()
@@ -35,6 +39,7 @@ def test_changing_client_phone(app):
 
 # Изменение телефона клиента: можно сохранить поле 'Телефон' незаполненным
 
+@allure.title("Изменение телефона клиента (позитивный тест): можно сохранить поле 'Телефон' незаполненным")
 def test_changing_client_phone_null(app):
     print("changing_client_phone_null.py is running")
 
@@ -58,9 +63,12 @@ def test_changing_client_phone_null(app):
         print(
             "В окне 'Изменить контактные данные' после перевхода в поле 'Телефон' отображается "
             "пустая маска +7 (___) ___-__-__ - ТЕСТ УСПЕШНЫЙ")
+        allure.dynamic.description('В поле с телефоном отображается пустая маска +7 (___) ___-__-__ - ТЕСТ УСПЕШНЫЙ')
+
     else:
         print("ОШИБКА: В окне 'Изменить контактные данные' после перевхода в поле 'Телефон' не отображается "
               "пустая маска +7 (___) ___-__-__ - ТЕСТ НЕ УСПЕШНЫЙ!!!")
+        allure.dynamic.description('В поле с телефоном не отображается пустая маска +7 (___) ___-__-__ - ТЕСТ НЕ УСПЕШНЫЙ')
     assert (app.is_element_present_main(locator) == True)
 
     app.logout_client()
