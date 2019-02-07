@@ -23,6 +23,7 @@ def test_changing_client_email(app):
     app.go_to_client_info()
     time.sleep(2)
     app.changing_client_email(email)
+    app.save_client_info()
     if (app.is_element_present_main(locator) == True):
         print("В ОД email Клиента совпадает с новым значением - ТЕСТ УСПЕШНЫЙ")
         allure.dynamic.description(
@@ -53,6 +54,7 @@ def test_changing_client_email_nt1(app):
     app.go_to_client_info()
     time.sleep(2)
     app.changing_client_email(email="")
+    app.save_client_info()
     if (app.is_element_present_main(locator1) == True and app.is_element_present_main(locator2) == True):
         print(
             "Нельзя сохранить пустой email Клиента (в поле 'Email' отображается 'Введите Ваш email', "
@@ -86,6 +88,7 @@ def test_changing_client_email_nt2(app):
     time.sleep(2)
     list = ['sss@sss.', '@sss.com', 'sss@.com', 'ssssss.com', 'sss@ssscom', 'яяя@sss.com', 'sss@sss.яяя']
     app.changing_client_email(email=random.choice(list))
+    app.save_client_info()
     if (app.is_element_present_main(locator1) == True):
         print(
             "Нельзя сохранить email, не соответствующий формату '%@%.%' (под полем 'Email' - 'Введите корректный email', "

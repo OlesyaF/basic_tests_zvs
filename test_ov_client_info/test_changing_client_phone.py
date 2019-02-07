@@ -20,6 +20,7 @@ def test_changing_client_phone(app):
     app.go_to_client_info()
     time.sleep(2)
     app.changing_client_phone(phone)
+    app.save_client_info()
     time.sleep(2)
     app.go_to_client_info()
     if (app.is_element_present_main(locator) == True):
@@ -52,6 +53,7 @@ def test_changing_client_phone_null(app):
     app.go_to_client_info()
     time.sleep(3)
     app.changing_client_phone("")
+    app.save_client_info()
     time.sleep(3)
     app.go_out_online_dialog()
     time.sleep(3)
@@ -68,7 +70,7 @@ def test_changing_client_phone_null(app):
     else:
         print("ОШИБКА: В окне 'Изменить контактные данные' после перевхода в поле 'Телефон' не отображается "
               "пустая маска +7 (___) ___-__-__ - ТЕСТ НЕ УСПЕШНЫЙ!!!")
-        allure.dynamic.description('В поле с телефоном не отображается пустая маска +7 (___) ___-__-__ - ТЕСТ НЕ УСПЕШНЫЙ')
+        allure.dynamic.description('В поле с телефоном не отображается пустая маска - ТЕСТ НЕ УСПЕШНЫЙ')
     assert (app.is_element_present_main(locator) == True)
 
     app.logout_client()

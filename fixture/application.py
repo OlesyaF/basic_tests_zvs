@@ -74,6 +74,13 @@ class Application:
             assert (self.is_element_present(driver,
                                             "//div[contains(@class, 'UserInfoHeader') and contains(text(),'Изменить контактные данные')]") == True)
 
+    @allure.step('Нажатие кнопки "Сохранить" в окне "Изменить контактные данные"')
+    def save_client_info(self):
+        driver = self.driver
+        button_submit = driver.find_element_by_id("CustomerDataSubmit")
+        button_submit.click()
+        print("Нажата кнопка 'Сохранить'")
+
     @allure.step('Изменение имени Клиента')
     def changing_client_name(self, client_name):
         driver = self.driver
@@ -82,9 +89,6 @@ class Application:
         input_field_name.clear()
         input_field_name.send_keys(client_name)
         print("В поле 'Имя' введено новое значение")
-        button_submit = driver.find_element_by_id("CustomerDataSubmit")
-        button_submit.click()
-        print("Нажата кнопка 'Сохранить'")
 
     @allure.step('Изменение email Клиента')
     def changing_client_email(self, email):
@@ -94,9 +98,6 @@ class Application:
         input_field_name.clear()
         input_field_name.send_keys(email)
         print("В поле 'Email' введено новое значение")
-        button_submit = driver.find_element_by_id("CustomerDataSubmit")
-        button_submit.click()
-        print("Нажата кнопка 'Сохранить'")
 
     @allure.step('Изменение номера телефона Клиента')
     def changing_client_phone(self, phone):
@@ -107,9 +108,6 @@ class Application:
         input_field_name.send_keys(Keys.HOME)
         input_field_name.send_keys(phone)
         print("В поле 'Телефон' введено новое значение")
-        button_submit = driver.find_element_by_id("CustomerDataSubmit")
-        button_submit.click()
-        print("Нажата кнопка 'Сохранить'")
 
     def client_send_message(self, mess_client):
         driver = self.driver

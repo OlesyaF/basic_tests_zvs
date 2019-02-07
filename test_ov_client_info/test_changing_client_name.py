@@ -22,6 +22,7 @@ def test_changing_client_name(app):
     app.go_to_client_info()
     time.sleep(2)
     app.changing_client_name(client_name)
+    app.save_client_info()
     if (app.is_element_present_main(locator) == True):
         print("В ОД имя Клиента совпадает с новым значением - ТЕСТ УСПЕШНЫЙ")
         allure.dynamic.description(
@@ -52,6 +53,7 @@ def test_changing_client_name_nt1(app):
     app.go_to_client_info()
     time.sleep(2)
     app.changing_client_name(client_name="")
+    app.save_client_info()
     if (app.is_element_present_main(locator1) == True and app.is_element_present_main(locator2) == True):
         print(
             "Нельзя сохранить пустое имя Клиента (в поле 'Имя' отображается 'Введите Ваше имя', "
@@ -85,6 +87,7 @@ def test_changing_client_name_nt2(app):
     app.go_to_client_info()
     time.sleep(2)
     app.changing_client_name(client_name)
+    app.save_client_info()
     if (app.is_element_present_main(locator) == True):
         print(
             "Нельзя сохранить имя Клиента, состоящее из одного символа (под полем 'Имя' - 'Введите корректное имя', "
