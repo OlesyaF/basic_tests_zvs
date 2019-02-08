@@ -13,8 +13,8 @@ def test_changing_client_phone(app):
     phone, phone_mask = app.get_phone_as_random_set()
     locator = "//input[@value='" + phone_mask + "']"
 
-    app.go_to_online_version(ov_link="https://login.consultant.ru")
-    app.login_client(client_name="866712#autotest4", client_password="cDKgrqe7")
+    app.go_to_online_version()
+    app.login_client()
     app.go_to_online_dialog()
     time.sleep(7)
     app.go_to_client_info()
@@ -46,8 +46,8 @@ def test_changing_client_phone_null(app):
 
     locator = "//input[@id='FormCustomerPhone'][@placeholder='+7 (___) ___-__-__'][@value='']"
 
-    app.go_to_online_version(ov_link="https://login.consultant.ru")
-    app.login_client(client_name="866712#autotest4", client_password="cDKgrqe7")
+    app.go_to_online_version()
+    app.login_client()
     app.go_to_online_dialog()
     time.sleep(7)
     app.go_to_client_info()

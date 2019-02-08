@@ -14,10 +14,16 @@ import allure
 # noinspection PyDeprecation
 class Application:
 
-    def __init__(self):
+    def __init__(self, ov_url, client_login, client_password, arm_ric_url, agent_login, agent_password):
         self.driver = WebDriver()
         self.driver.maximize_window()
         self.driver.implicitly_wait(5)
+        self.ov_url = ov_url
+        self.client_login = client_login
+        self.client_password = client_password
+        self.arm_ric_url = arm_ric_url
+        self.agent_login = agent_login
+        self.agent_password = agent_password
 
     def is_valid(self):
         try:
@@ -27,19 +33,22 @@ class Application:
             return False
 
     @allure.step('Вход в ОВ')
-    def go_to_online_version(self, ov_link):
+    def go_to_online_version(self):
         driver = self.driver
-        driver.get(ov_link)
+        ov_url = self.ov_url
+        driver.get(ov_url)
         # КЛИЕНТ Проверяем, что ОВ доступна
         if (self.is_element_present(driver, "//input[@id='loginform-login']") != True):
             print("ОШИБКА!!! Онлайн Версия не доступна! - Не найдено поле 'Логин' для авторизации")
             assert (self.is_element_present(driver, "//input[@id='loginform-login']") == True)
 
     @allure.step('Авторизация в ОВ')
-    def login_client(self, client_name, client_password):
+    def login_client(self):
         driver = self.driver
+        client_login = self.client_login
+        client_password = self.client_password
         input_field_login = driver.find_element_by_id("loginform-login")
-        input_field_login.send_keys(client_name)
+        input_field_login.send_keys(client_login)
         input_field_password = driver.find_element_by_id("loginform-password")
         input_field_password.send_keys(client_password)
         button_login = driver.find_element_by_id("buttonLogin")
@@ -170,17 +179,20 @@ class Application:
             print("ОШИБКА!!! Поле для ввода пароля не найдено. Клиент не разлогинился!")
             assert (self.is_element_present(driver, "//input[@id='loginform-password']") == True)
 
-    def go_to_consultant_plus_agent(self, cp_link):
+    def go_to_arm_ric(self):
         driver = self.driver
-        driver.get(cp_link)
+        arm_ric_url = self.arm_ric_url
+        driver.get(arm_ric_url)
         # АГЕНТ Проверяем, что К+ доступен
         if (self.is_element_present(driver, "//input[@id='User']") != True):
             print("ОШИБКА!!! Консультант+ не доступен! - Не найдено поле 'Логин' для авторизации")
             assert (self.is_element_present(driver, "//input[@id='User']") == True)
 
-    # АГЕНТ Авторизация в Консультант+ на zv5/zv6
-    def login_agent(self, agent_login, agent_password):
+    # АГЕНТ Авторизация в АРМ РИЦ на zv5/zv6
+    def login_agent(self):
         driver = self.driver
+        agent_login = self.agent_login
+        agent_password = self.agent_password
         login_field = driver.find_element_by_id("User")
         login_field.send_keys(agent_login)
         password_field = driver.find_element_by_id("Password")
@@ -199,10 +211,11 @@ class Application:
                 print("ОШИБКА!!! Агент не залогинился в К+! - Не найдено меню 'Онлайн-диалог'")
                 assert (self.is_element_present(driver, "//li[@id='nav-Chat']") == True)
 
-    # АГЕНТ Авторизация в Консультант+ на ПП (HTTP Basic Authentication)
-    def login_agent_pp(self, cp_link):
+    # АГЕНТ Авторизация в АРМ РИЦ на ПП (HTTP Basic Authentication)
+    def login_agent_pp(self):
         driver = self.driver
-        driver.get(cp_link)
+        arm_ric_url = self.arm_ric_url
+        driver.get(arm_ric_url)
         # driver.get("https://" + agent_login + ":" + agent_password + "@ric.consultant.ru/")
         # АГЕНТ Переход к сервису "Задать вопрос"
         button_zv = driver.find_element_by_id("2050")
