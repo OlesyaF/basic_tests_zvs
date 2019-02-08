@@ -19,6 +19,13 @@ class Application:
         self.driver.maximize_window()
         self.driver.implicitly_wait(5)
 
+    def is_valid(self):
+        try:
+            self.driver.current_url
+            return True
+        except:
+            return False
+
     @allure.step('Вход в ОВ')
     def go_to_online_version(self, ov_link):
         driver = self.driver

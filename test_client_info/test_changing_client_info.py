@@ -65,6 +65,7 @@ def test_changing_client_info(app):
             "- ТЕСТ НЕ УСПЕШНЫЙ!!!")
         allure.dynamic.description('ОШИБКА: номер телефона не совпадает с новым значением - ТЕСТ НЕ УСПЕШНЫЙ!!!')
     assert (app.is_element_present_main(locator3) == True)
+    allure.dynamic.description('Имя, email и телефон Клиента изменены - ТЕСТ УСПЕШНЫЙ')
 
     app.logout_client()
     print("test_changing_client_info.py is done successfully")
