@@ -179,6 +179,7 @@ class Application:
             print("ОШИБКА!!! Поле для ввода пароля не найдено. Клиент не разлогинился!")
             assert (self.is_element_present(driver, "//input[@id='loginform-password']") == True)
 
+    @allure.step('Вход в АРМ РИЦ')
     def go_to_arm_ric(self):
         driver = self.driver
         arm_ric_url = self.arm_ric_url
@@ -189,6 +190,7 @@ class Application:
             assert (self.is_element_present(driver, "//input[@id='User']") == True)
 
     # АГЕНТ Авторизация в АРМ РИЦ на zv5/zv6
+    @allure.step('Авторизация в АРМ РИЦ')
     def login_agent(self):
         driver = self.driver
         agent_login = self.agent_login
@@ -220,6 +222,59 @@ class Application:
         # АГЕНТ Переход к сервису "Задать вопрос"
         button_zv = driver.find_element_by_id("2050")
         button_zv.click()
+
+    # АГЕНТ Переход в настройки доступности сервиса «‎Задать вопрос» для онлайн-версии
+    @allure.step('Переход в настройки доступности сервиса «‎Задать вопрос» для онлайн-версии')
+    def go_to_service_settings(self):
+        driver = self.driver
+        menu_ric_menu = driver.find_element_by_xpath("//li[@id='nav-RICMenu']")
+        menu_ric_menu.click()
+        menu_agent_distr_tabs = driver.find_element_by_xpath("//li[@id='nav-RICMenu-AgentDistrTabs']")
+        menu_agent_distr_tabs.click()
+        try:
+            driver.switch_to.alert.accept()
+        except:
+            NoAlertPresentException
+        if (self.is_element_present(driver, "//div[contains(text(),'Доступность сервиса «‎Задать вопрос»‎')]") == True):
+            print("Агент перешел в настройки доступности сервиса «‎Задать вопрос» для онлайн-версии")
+        else:
+           print("ОШИБКА!!! Агент не перешел в настройки доступности сервиса ‎Задать вопрос» для онлайн-версии")
+           assert (self.is_element_present(driver, "//div[contains(text(),'Доступность сервиса «‎Задать вопрос»‎')]") == True)
+
+    # АГЕНТ Переход в настройки доступности сервиса «‎Задать вопрос» для онлайн-версии
+    @allure.step('Поиск комплекта Консультант+ BUHUL_866712')
+    def kit_search(self):
+        driver = self.driver
+        button_configure = driver.find_element_by_xpath("//div[@class='button blue fl-lt']")
+        button_configure.click()
+        field_kit_list = driver.find_element_by_xpath("//input[@type='text']")
+        field_kit_list.click()
+        field_kit_list.send_keys("BUHUL_866712")
+        field_kit_list.send_keys(Keys.ENTER)
+        if (self.is_element_present(driver, "//div[@id='3124332_Row']") == True):
+            print("Комплект BUHUL_866712 найден: строка комплекта отображается в результатах поиска")
+        else:
+           print("ОШИБКА!!! Комплект BUHUL_866712 НЕ найден: строка комплекта НЕ отображается в результатах поиска")
+           assert (self.is_element_present(driver, "//div[@id='3124332_Row']") == True)
+
+
+    # АГЕНТ Установка значения чек-бокса
+    @allure.step('Установка значения чек-бокса')
+    def setting_checkbox(self, checkbox_status, checkbox_field, checkbox_click):
+        driver = self.driver
+        checkbox = driver.find_element_by_xpath(checkbox_field)
+        print("checkbox.get_attribute('checked')=", checkbox.get_attribute('checked'))
+        if (checkbox_status == "off") and (checkbox.get_attribute('checked') == 'true'):
+            driver.find_element_by_xpath(checkbox_click).click()
+        if (checkbox_status == "on") and (not checkbox.get_attribute('checked')):
+            driver.find_element_by_xpath(checkbox_click).click()
+
+    # АГЕНТ Сохранение настроек доступности сервиса «‎Задать вопрос» для онлайн-версии
+    @allure.step('Сохранение настроек доступности сервиса «‎Задать вопрос» для онлайн-версии')
+    def save_setting_checkbox(self):
+        driver = self.driver
+        button_save = driver.find_element_by_xpath("//div[@class='button blue save fl-rt']")
+        button_save.click()
 
     def agent_search_chat_and_mess(self, mess_client, wait):
         driver = self.driver
