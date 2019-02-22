@@ -18,7 +18,7 @@ def test_changing_client_email(app):
 
     app.go_to_online_version()
     app.login_client()
-    app.go_to_online_dialog()
+    app.go_to_customer_support_service()
     time.sleep(7)
     app.go_to_client_info()
     time.sleep(2)
@@ -49,7 +49,7 @@ def test_changing_client_email_nt1(app):
 
     app.go_to_online_version()
     app.login_client()
-    app.go_to_online_dialog()
+    app.go_to_customer_support_service()
     time.sleep(7)
     app.go_to_client_info()
     time.sleep(2)
@@ -82,7 +82,7 @@ def test_changing_client_email_nt2(app):
 
     app.go_to_online_version()
     app.login_client()
-    app.go_to_online_dialog()
+    app.go_to_customer_support_service()
     time.sleep(7)
     app.go_to_client_info()
     time.sleep(2)
