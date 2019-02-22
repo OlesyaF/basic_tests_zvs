@@ -57,7 +57,7 @@ def test_services_available(app):
     app.go_to_byphone()
     app.check_byphone_availability()
 
-    app.logout_client
+    app.logout_client()
     print("test_services_available.py is done successfully")
 
 
