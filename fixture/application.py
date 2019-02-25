@@ -155,7 +155,7 @@ class Application:
         print("Клиент перешел на вкладку 'Написать эксперту' в окне 'Сервис поддержки клиентов'")
 
     @allure.step('Переход на вкладку "Горячая линия/Контактная информация РИЦ" в окне "Сервис поддержки клиентов"')
-    def go_to_byphone(self):
+    def click_by_phone(self):
         driver = self.driver
         button_byphone = driver.find_element_by_xpath("//div[@id='tabLabelPhone']")
         button_byphone.click()

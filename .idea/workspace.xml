@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="58688b4d-c806-4016-bde0-be95a17afdca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/fixture/application.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixture/application.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_availability_services/test_services_available.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_availability_services/test_services_available.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,30 +45,30 @@
         <counts>
           <entry key="dummy" value="27" />
           <entry key="json" value="76" />
-          <entry key="py" value="12223" />
+          <entry key="py" value="12576" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="76" />
           <entry key="PLAIN_TEXT" value="27" />
-          <entry key="Python" value="12223" />
+          <entry key="Python" value="12576" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fixture/application.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="276" selection-start-line="276" selection-end-line="276" />
+            <state relative-caret-position="-2650">
+              <caret line="160" column="20" lean-forward="true" selection-start-line="160" selection-start-column="20" selection-end-line="160" selection-end-column="20" />
               <folding>
                 <element signature="e#27#38#0" expanded="true" />
-                <marker date="1551091907569" expanded="true" signature="971:1120" ph="..." />
-                <marker date="1551091907569" expanded="true" signature="7499:12300" ph="..." />
-                <marker date="1551091907569" expanded="true" signature="21872:21883" ph="..." />
+                <marker date="1551108489094" expanded="true" signature="971:1120" ph="..." />
+                <marker date="1551108489094" expanded="true" signature="7500:12301" ph="..." />
+                <marker date="1551108489094" expanded="true" signature="21873:21884" ph="..." />
               </folding>
             </state>
           </provider>
@@ -128,11 +129,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test_availability_services/test_services_available.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="54" column="23" lean-forward="true" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="23" />
+            <state relative-caret-position="85">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
               <folding>
                 <element signature="e#27#38#0" expanded="true" />
               </folding>
@@ -143,7 +144,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/env/Lib/site-packages/selenium/webdriver/remote/errorhandler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
+            <state relative-caret-position="297">
               <caret line="241" selection-start-line="241" selection-end-line="241" />
             </state>
           </provider>
@@ -221,14 +222,14 @@
         <option value="$PROJECT_DIR$/test_client_info/test_changing_client_info.py" />
         <option value="$PROJECT_DIR$/target.json" />
         <option value="$PROJECT_DIR$/test_client_info/test_changing_client_email.py" />
-        <option value="$PROJECT_DIR$/test_availability_services/test_services_available.py" />
         <option value="$PROJECT_DIR$/fixture/application.py" />
+        <option value="$PROJECT_DIR$/test_availability_services/test_services_available.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="535" />
-    <option name="y" value="92" />
+    <option name="x" value="108" />
+    <option name="y" value="66" />
     <option name="width" value="1323" />
     <option name="height" value="913" />
   </component>
@@ -410,27 +411,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="pytest_in_test_services_available_py - 2019.02.22 at 16h 26m 06s.xml">
-      <configuration name="pytest in test_services_available.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_test_services_available_py - 2019.02.22 at 16h 34m 47s.xml">
-      <configuration name="pytest in test_services_available.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_test_services_available_py - 2019.02.22 at 16h 36m 53s.xml">
-      <configuration name="pytest in test_services_available.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_test_changing_client_info_py - 2019.02.22 at 18h 04m 05s.xml">
-      <configuration name="pytest in test_changing_client_info.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_test_services_available_py - 2019.02.22 at 18h 06m 47s.xml">
-      <configuration name="pytest in test_services_available.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_test_changing_client_info_py - 2019.02.22 at 18h 08m 21s.xml">
-      <configuration name="pytest in test_changing_client_info.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_basic_tests_zvs - 2019.02.22 at 18h 11m 45s.xml">
-      <configuration name="pytest in basic_tests_zvs" configurationId="tests" />
-    </history-entry>
     <history-entry file="pytest_in_test_services_available_py - 2019.02.25 at 13h 34m 34s.xml">
       <configuration name="pytest in test_services_available.py" configurationId="tests" />
     </history-entry>
@@ -440,9 +420,30 @@
     <history-entry file="pytest_in_test_services_available_py - 2019.02.25 at 13h 51m 37s.xml">
       <configuration name="pytest in test_services_available.py" configurationId="tests" />
     </history-entry>
+    <history-entry file="pytest_in_test_services_available_py - 2019.02.25 at 17h 54m 44s.xml">
+      <configuration name="pytest in test_services_available.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_services_available_py - 2019.02.25 at 17h 59m 49s.xml">
+      <configuration name="pytest in test_services_available.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_services_available_py - 2019.02.25 at 18h 02m 47s.xml">
+      <configuration name="pytest in test_services_available.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_services_available_py - 2019.02.25 at 18h 04m 03s.xml">
+      <configuration name="pytest in test_services_available.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_services_available_py - 2019.02.25 at 18h 06m 54s.xml">
+      <configuration name="pytest in test_services_available.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_services_available_py - 2019.02.25 at 18h 10m 14s.xml">
+      <configuration name="pytest in test_services_available.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_services_available_py - 2019.02.25 at 18h 39m 12s.xml">
+      <configuration name="pytest in test_services_available.py" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="535" y="92" width="1323" height="913" extended-state="0" />
+    <frame x="108" y="66" width="1323" height="913" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24980545" />
@@ -515,13 +516,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/env/Lib/site-packages/selenium/webdriver/remote/errorhandler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="241" selection-start-line="241" selection-end-line="241" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_client_info/test_changing_client_name.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-238">
@@ -560,16 +554,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_availability_services/test_services_available.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="54" column="23" lean-forward="true" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="23" />
-          <folding>
-            <element signature="e#27#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_client_info/test_changing_client_email.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -580,15 +564,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/env/Lib/site-packages/selenium/webdriver/remote/errorhandler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="241" selection-start-line="241" selection-end-line="241" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/fixture/application.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="276" selection-start-line="276" selection-end-line="276" />
+        <state relative-caret-position="-2650">
+          <caret line="160" column="20" lean-forward="true" selection-start-line="160" selection-start-column="20" selection-end-line="160" selection-end-column="20" />
           <folding>
             <element signature="e#27#38#0" expanded="true" />
-            <marker date="1551091907569" expanded="true" signature="971:1120" ph="..." />
-            <marker date="1551091907569" expanded="true" signature="7499:12300" ph="..." />
-            <marker date="1551091907569" expanded="true" signature="21872:21883" ph="..." />
+            <marker date="1551108489094" expanded="true" signature="971:1120" ph="..." />
+            <marker date="1551108489094" expanded="true" signature="7500:12301" ph="..." />
+            <marker date="1551108489094" expanded="true" signature="21873:21884" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_availability_services/test_services_available.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="e#27#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
