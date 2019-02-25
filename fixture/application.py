@@ -274,11 +274,11 @@ class Application:
             driver.switch_to.alert.accept()
         except:
             NoAlertPresentException
-        if (self.is_element_present(driver, "//div[contains(text(),'Доступность сервиса «‎Задать вопрос»‎')]") == True):
+        if (self.is_element_present(driver, "//div[contains(text(),'Доступность сервиса «Задать вопрос»')]") == True):
             print("Агент перешел в настройки доступности сервиса ‎Задать вопрос для онлайн-версии")
         else:
            print("ОШИБКА!!! Агент не перешел в настройки доступности сервиса ‎Задать вопрос для онлайн-версии")
-           assert (self.is_element_present(driver, "//div[contains(text(),'Доступность сервиса «‎Задать вопрос»‎')]") == True)
+           assert (self.is_element_present(driver, "//div[contains(text(),'Доступность сервиса «Задать вопрос»‎')]") == True)
 
     @allure.step('Поиск комплекта BUHUL_866712')
     def kit_search(self):
