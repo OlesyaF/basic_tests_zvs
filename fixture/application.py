@@ -229,6 +229,25 @@ class Application:
             assert (self.is_element_present(driver, "//div[contains(@class, 'ContactInfoSubtitle p16t') and contains(text(),'КОНТАКТНАЯ ИНФОРМАЦИЯ')]") == True)
         print("Вкладка 'Горячая линия/Контактная информация РИЦ' в окне 'Сервис поддержки клиентов' выглядит корректно")
 
+    @allure.step('Отправка Клиентом сообщения в Чат')
+    def client_send_message(self, mess_client):
+         driver = self.driver
+         input_window = driver.find_element_by_id("MsgInput")
+         input_window.send_keys(mess_client)
+         button_msg_input = driver.find_element_by_id("ChatMsgSubmit")
+         button_msg_input.click()
+         print("Клиент отправил в Чат сообщение")
+
+    @allure.step('Проверка отображения отправленного Клиентом сообщения в окне Чата')
+    def is_client_message_in_online_dialog(self, mess_client):
+         driver = self.driver
+         if (self.is_element_present(driver, "//div[contains(text(),'" + mess_client + "')]") == True):
+             print("Сообщение, отправленное Клиентом, отображается в теле Чата ОВ")
+         else:
+             print("ОШИБКА!!! Сообщение, отправленное Клиентом, не отображается в теле Чата ОВ!")
+             assert (self.is_element_present(driver, "//div[contains(text(),'" + mess_client + "')]") == True)
+
+
     # АРМ РИЦ: АГЕНТ
 
     @allure.step('Вход в АРМ РИЦ')
@@ -336,6 +355,32 @@ class Application:
             print("ОШИБКА!!! Поле для ввода пароля не найдено. Агент не разлогинился!")
             assert (self.is_element_present(driver, "//input[@id='Password']") == True)
 
+    @allure.step('Поиск нужного Чата и подключение к сеансу')
+    def agent_search_chat(self, client_name):
+        driver = self.driver
+        locator_chat = "//strong[contains(text(),'" + client_name + "')]"
+        locator_connect_to_session = "//*[@id='Sessions']/div[3]/button"
+        i = 0
+        if (self.is_element_present(driver, locator_chat) == True):
+            print("Агент нашел Чат Клиента среди активных чатов")
+        else:
+            while (self.is_element_present(driver, locator_connect_to_session) == True):
+                connect_to_session_button = WebDriverWait(driver, 10).until(
+                    EC.presence_of_element_located((By.CLASS_NAME, "StartChat")))
+                connect_to_session_button.click()
+                i += 1
+                if (self.is_element_present(driver, locator_chat) == True):
+                    print("Агент нашел Чат Клиента в ", i, " очереди")
+                    break
+        time.sleep(5)
+        if (self.is_element_present(driver, locator_chat) != True):
+            print("ОШИБКА!!! Чат Клиента не обнаружен ни среди активных чатов, ни в очереди!")
+        assert (self.is_element_present(driver, locator_chat) == True)
+        #Подключение Агента к Чату
+        chat_button = driver.find_element_by_xpath(locator_chat)
+        chat_button.click()
+        print("Агент подключился к Чату")
+
     # BASIC METHODS
 
     @allure.step('Расчет контрольной суммы на основе даты и времени')
@@ -392,14 +437,6 @@ class Application:
             return False
 
 
-    # def client_send_message(self, mess_client):
-    #     driver = self.driver
-    #     input_window = driver.find_element_by_id("MsgInput")
-    #     input_window.send_keys(mess_client)
-    #     button_msg_input = driver.find_element_by_id("ChatMsgSubmit")
-    #     button_msg_input.click()
-    #     print("Клиент отправил в Чат сообщение")
-    #
     # # Клиент ожидает сообщение Агента
     # def client_wait_agent_message(self, mess_agent):
     #     driver = self.driver
@@ -408,14 +445,6 @@ class Application:
     #         EC.presence_of_element_located(
     #             (By.XPATH, "//div[contains(@class, 'message_text') and contains(text(),'" + mess_agent + "')]")))
     #     print("Клиент получил сообщение Агента")
-    #
-    # def is_client_message_in_online_dialog(self, mess_client):
-    #     driver = self.driver
-    #     if (self.is_element_present(driver, "//div[contains(text(),'" + mess_client + "')]") == True):
-    #         print("Сообщение, отправленное Клиентом, отображается в теле Чата ОВ")
-    #     else:
-    #         print("ОШИБКА!!! Сообщение, отправленное Клиентом, не отображается в теле Чата ОВ!")
-    #         assert (self.is_element_present(driver, "//div[contains(text(),'" + mess_client + "')]") == True)
     #
     # # АГЕНТ Авторизация в АРМ РИЦ на ПП (HTTP Basic Authentication)
     # def login_agent_pp(self):
