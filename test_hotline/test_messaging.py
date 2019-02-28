@@ -94,4 +94,4 @@ def test_messaging(app):
     app.check_byphone_availability()
 
     app.logout_client()
-    print("test_services_are_not_available.py is done successfully")
+    print("test_1_services_are_not_available.py is done successfully")

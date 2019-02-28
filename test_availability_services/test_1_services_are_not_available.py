@@ -1,16 +1,15 @@
 # -*- encoding: utf-8 -*-
 
 import time
-import pytest
+
 import allure
 
 
 # Проверка доступности сервисов "Задать вопрос": Онлайн-диалог и Написать эксперту не доступны
 
 @allure.title("Проверка доступности сервисов 'Задать вопрос': Онлайн-диалог и Написать эксперту не доступны")
-@pytest.mark.order1
 def test_services_are_not_available(app):
-    print("test_services_are_not_available.py is running")
+    print("test_1_services_are_not_available.py is running")
 
     app.go_to_arm_ric()
     app.login_agent()
@@ -54,4 +53,4 @@ def test_services_are_not_available(app):
     app.check_byphone_availability()
 
     app.logout_client()
-    print("test_services_are_not_available.py is done successfully")
+    print("test_1_services_are_not_available.py is done successfully")

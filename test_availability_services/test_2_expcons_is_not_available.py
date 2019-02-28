@@ -1,16 +1,15 @@
 # -*- encoding: utf-8 -*-
 
 import time
-import pytest
+
 import allure
 
 
-# Проверка доступности сервисов "Задать вопрос": Онлайн-диалог и Написать эксперту доступны
+# Проверка доступности сервисов "Задать вопрос": Онлайн-диалог доступен и Написать эксперту не доступно
 
-@allure.title("Проверка доступности сервисов 'Задать вопрос': Онлайн-диалог и Написать эксперту доступны")
-@pytest.mark.order4
-def test_services_available(app):
-    print("test_services_are_available.py is running")
+@allure.title("Проверка доступности сервисов 'Задать вопрос': Написать эксперту не доступно")
+def test_expcons_is_not_available(app):
+    print("test_2_expcons_is_not_available.py is running")
 
     app.go_to_arm_ric()
     app.login_agent()
@@ -19,7 +18,7 @@ def test_services_available(app):
     time.sleep(2)
 
     app.setting_checkbox("on", "//input[@id='3124332_HotlineValue']", "//label[@for='3124332_HotlineValue']")
-    app.setting_checkbox("on", "//input[@id='3124332_ExpconsValue']", "//label[@for='3124332_ExpconsValue']")
+    app.setting_checkbox("off", "//input[@id='3124332_ExpconsValue']", "//label[@for='3124332_ExpconsValue']")
     app.save_setting_checkbox()
     time.sleep(2)
 
@@ -38,11 +37,11 @@ def test_services_available(app):
         assert (app.is_element_present_main("//div[contains(text(),'Онлайн-диалог')]") == True)
 
     print("Проверка наличия вкладки 'Написать эксперту' в окне 'Сервис поддержки клиентов':")
-    if (app.is_element_present_main("//div[contains(text(),'Написать эксперту')]") == True):
+    if (app.is_element_present_main("//div[contains(text(),'Написать эксперту')]") == False):
         print("Вкладка 'Написать эксперту' присутствует")
     else:
         print("ОШИБКА!!! Вкладка 'Написать эксперту' отсутствует!")
-        assert (app.is_element_present_main("//div[contains(text(),'Написать эксперту')]") == True)
+        assert (app.is_element_present_main("//div[contains(text(),'Написать эксперту')]") == False)
 
     print("Проверка наличия вкладки 'Горячая линия/Контактная информация РИЦ' в окне 'Сервис поддержки клиентов':")
     if (app.is_element_present_main("//div[@id='tabLabelPhone']") == True):
@@ -52,16 +51,13 @@ def test_services_available(app):
         assert (app.is_element_present_main("//div[@id='tabLabelPhone']") == True)
 
     app.check_hotline_availability()
-    # Переход на вкладку "Написать эксперту"
-    app.go_to_expcons()
-    app.check_expcons_availability()
     # Переход на вкладку с контактами Горячей линии и РИЦ
     app.click_by_phone()
     app.check_byphone_availability()
-    # Возврат со вкладки с контактами Горячей линии и РИЦ (попадаем на вкладку "Написать эксперту")
+    # Возврат со вкладки с контактами Горячей линии и РИЦ (попадаем на вкладку "Онлайн-диалог")
     app.click_by_phone()
-    # Проверям, что папали на вкладку "Написать эксперту"
-    app.check_expcons_availability()
+    # Проверям, что папали на вкладку "Онлайн-диалог"
+    app.check_hotline_availability()
 
     app.logout_client()
-    print("test_services_are_available.py is done successfully")
+    print("test_2_expcons_is_not_available.py is done successfully")

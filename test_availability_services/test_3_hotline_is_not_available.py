@@ -1,16 +1,15 @@
 # -*- encoding: utf-8 -*-
 
 import time
-import pytest
+
 import allure
 
 
 # Проверка доступности сервисов "Задать вопрос": Онлайн-диалог не доступен и Написать эксперту доступно
 
 @allure.title("Проверка доступности сервисов 'Задать вопрос': Онлайн-диалог не доступен")
-@pytest.mark.order2
 def test_hotline_is_not_available(app):
-    print("test_hotline_is_not_available.py is running")
+    print("test_3_hotline_is_not_available.py is running")
 
     app.go_to_arm_ric()
     app.login_agent()
@@ -61,4 +60,4 @@ def test_hotline_is_not_available(app):
     app.check_expcons_availability()
 
     app.logout_client()
-    print("test_hotline_is_not_available.py is done successfully")
+    print("test_3_hotline_is_not_available.py is done successfully")
