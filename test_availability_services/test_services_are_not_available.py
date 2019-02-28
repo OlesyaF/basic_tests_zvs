@@ -1,13 +1,14 @@
 # -*- encoding: utf-8 -*-
 
 import time
-
+import pytest
 import allure
 
 
 # Проверка доступности сервисов "Задать вопрос": Онлайн-диалог и Написать эксперту не доступны
 
 @allure.title("Проверка доступности сервисов 'Задать вопрос': Онлайн-диалог и Написать эксперту не доступны")
+@pytest.mark.order1
 def test_services_are_not_available(app):
     print("test_services_are_not_available.py is running")
 

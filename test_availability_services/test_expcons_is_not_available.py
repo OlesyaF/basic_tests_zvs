@@ -1,13 +1,14 @@
 # -*- encoding: utf-8 -*-
 
 import time
-
+import pytest
 import allure
 
 
 # Проверка доступности сервисов "Задать вопрос": Онлайн-диалог доступен и Написать эксперту не доступно
 
 @allure.title("Проверка доступности сервисов 'Задать вопрос': Написать эксперту не доступно")
+@pytest.mark.order3
 def test_expcons_is_not_available(app):
     print("test_expcons_is_not_available.py is running")
 
