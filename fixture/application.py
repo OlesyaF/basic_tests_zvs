@@ -34,7 +34,7 @@ class Application:
 
     # ОНЛАЙН_ВЕРСИЯ: КЛИЕНТ
 
-    @allure.step('Вход в ОВ')
+    @allure.step('Онлайн-версия: Вход')
     def go_to_online_version(self):
         driver = self.driver
         ov_url = self.ov_url
@@ -43,7 +43,7 @@ class Application:
             print("ОШИБКА!!! Онлайн Версия не доступна! - Не найдено поле 'Логин' для авторизации")
             assert (self.is_element_present(driver, "//input[@id='loginform-login']") == True)
 
-    @allure.step('Авторизация в ОВ')
+    @allure.step('Онлайн-версия: Авторизация')
     def login_client(self):
         driver = self.driver
         client_login = self.client_login
@@ -60,7 +60,7 @@ class Application:
             print("ОШИБКА!!! Клиент не залогинился в ОВ! - Не найдена кнопка 'Выйти'")
             assert (self.is_element_present(driver, "//div[@id='logout']") == True)
 
-    @allure.step('Переход в окно сервиса Задать вопрос (окно "Сервис поддержки клиентов")')
+    @allure.step('Онлайн-версия: Переход в окно сервиса Задать вопрос (окно "Сервис поддержки клиентов")')
     def go_to_customer_support_service(self):
         driver = self.driver
         button_zv = driver.find_element_by_xpath("//div[@class='topToolbar']/div[5]/div[2]")
@@ -70,7 +70,7 @@ class Application:
         driver.switch_to.frame(chat)
         print("Клиент перешел в окно 'Сервис поддержки клиентов'")
 
-    @allure.step('Переход в окно "Изменить контактные данные"')
+    @allure.step('Онлайн-версия: Переход в окно "Изменить контактные данные"')
     def go_to_client_info(self):
         driver = self.driver
         button_client_info = driver.find_element_by_css_selector("div.authEdit.ChangeUserInfo")
@@ -83,14 +83,14 @@ class Application:
             assert (self.is_element_present(driver,
                                             "//div[contains(@class, 'UserInfoHeader') and contains(text(),'Изменить контактные данные')]") == True)
 
-    @allure.step('Нажатие кнопки "Сохранить" в окне "Изменить контактные данные"')
+    @allure.step('Онлайн-версия: Нажатие кнопки "Сохранить" в окне "Изменить контактные данные"')
     def save_client_info(self):
         driver = self.driver
         button_submit = driver.find_element_by_id("CustomerDataSubmit")
         button_submit.click()
         print("Нажата кнопка 'Сохранить'")
 
-    @allure.step('Изменение имени Клиента')
+    @allure.step('Онлайн-версия: Изменение имени Клиента')
     def changing_client_name(self, client_name):
         driver = self.driver
         input_field_name = driver.find_element_by_id("FormCustomerFullname")
@@ -99,7 +99,7 @@ class Application:
         input_field_name.send_keys(client_name)
         print("В поле 'Имя' введено новое значение")
 
-    @allure.step('Изменение email Клиента')
+    @allure.step('Онлайн-версия: Изменение email Клиента')
     def changing_client_email(self, email):
         driver = self.driver
         input_field_name = driver.find_element_by_id("FormCustomerEmail")
@@ -108,7 +108,7 @@ class Application:
         input_field_name.send_keys(email)
         print("В поле 'Email' введено новое значение")
 
-    @allure.step('Изменение номера телефона Клиента')
+    @allure.step('Онлайн-версия: Изменение номера телефона Клиента')
     def changing_client_phone(self, phone):
         driver = self.driver
         input_field_name = driver.find_element_by_id("FormCustomerPhone")
@@ -118,7 +118,7 @@ class Application:
         input_field_name.send_keys(phone)
         print("В поле 'Телефон' введено новое значение")
 
-    @allure.step('Выход из окна сервиса Задать вопрос')
+    @allure.step('Онлайн-версия: Выход из окна сервиса Задать вопрос')
     def go_out_customer_support_service(self):
         driver = self.driver
         #Возврат в основной фрейм
@@ -127,7 +127,7 @@ class Application:
         button_close_chat.click()
         driver.refresh()
 
-    @allure.step('Выход из ОВ')
+    @allure.step('Онлайн-версия: Выход')
     def logout_client(self):
         driver = self.driver
         #Возврат в основной фрейм
@@ -147,21 +147,21 @@ class Application:
             print("ОШИБКА!!! Поле для ввода пароля не найдено. Клиент не разлогинился!")
             assert (self.is_element_present(driver, "//input[@id='loginform-password']") == True)
 
-    @allure.step('Переход на вкладку "Написать эксперту" в окне "Сервис поддержки клиентов"')
+    @allure.step('Онлайн-версия: Переход на вкладку "Написать эксперту" в окне "Сервис поддержки клиентов"')
     def go_to_expcons(self):
         driver = self.driver
         button_expcons = driver.find_element_by_xpath("//div[contains(text(),'Написать эксперту')]")
         button_expcons.click()
         print("Клиент перешел на вкладку 'Написать эксперту' в окне 'Сервис поддержки клиентов'")
 
-    @allure.step('Переход на вкладку "Горячая линия/Контактная информация РИЦ" в окне "Сервис поддержки клиентов"')
+    @allure.step('Онлайн-версия: Переход на вкладку "Горячая линия/Контактная информация РИЦ" в окне "Сервис поддержки клиентов"')
     def click_by_phone(self):
         driver = self.driver
         button_byphone = driver.find_element_by_xpath("//div[@id='tabLabelPhone']")
         button_byphone.click()
         print("Клиент перешел на вкладку 'Горячая линия/Контактная информация РИЦ' в окне 'Сервис поддержки клиентов'")
 
-    @allure.step('Проверка доступности сервиса Онлайн-диалог в окне "Сервис поддержки клиентов"')
+    @allure.step('Онлайн-версия: Проверка доступности сервиса Онлайн-диалог в окне "Сервис поддержки клиентов"')
     def check_hotline_availability(self):
         driver = self.driver
         print("Проверка доступности сервиса Онлайн-диалог:")
@@ -182,7 +182,7 @@ class Application:
             assert (self.is_element_present(driver, "//div[@id='ChatMsgSubmit']") == True)
         print("Сервис Онлайн-диалог доступен")
 
-    @allure.step('Проверка доступности сервиса Написать эксперту в окне "Сервис поддержки клиентов"')
+    @allure.step('Онлайн-версия: Проверка доступности сервиса Написать эксперту в окне "Сервис поддержки клиентов"')
     def check_expcons_availability(self):
         driver = self.driver
         print("Проверка доступности сервиса Написать эксперту:")
@@ -203,7 +203,7 @@ class Application:
             assert (self.is_element_present(driver, "//div[@id='ExpconsSubmit']") == True)
         print("Сервис Написать эксперту доступен")
 
-    @allure.step('Проверка вида вкладки "Горячая линия/Контактная информация РИЦ" в окне "Сервис поддержки клиентов"')
+    @allure.step('Онлайн-версия: Проверка вида вкладки "Горячая линия/Контактная информация РИЦ" в окне "Сервис поддержки клиентов"')
     def check_byphone_availability(self):
         driver = self.driver
         print("Проверка вида вкладки 'Горячая линия/Контактная информация РИЦ' в окне 'Сервис поддержки клиентов':")
@@ -229,7 +229,7 @@ class Application:
             assert (self.is_element_present(driver, "//div[contains(@class, 'ContactInfoSubtitle p16t') and contains(text(),'КОНТАКТНАЯ ИНФОРМАЦИЯ')]") == True)
         print("Вкладка 'Горячая линия/Контактная информация РИЦ' в окне 'Сервис поддержки клиентов' выглядит корректно")
 
-    @allure.step('Отправка Клиентом сообщения в Чат')
+    @allure.step('Онлайн-версия: Отправка Клиентом сообщения в Чат')
     def client_send_message(self, mess_client):
          driver = self.driver
          input_window = driver.find_element_by_id("MsgInput")
@@ -238,8 +238,8 @@ class Application:
          button_msg_input.click()
          print("Клиент отправил в Чат сообщение")
 
-    @allure.step('Проверка отображения отправленного Клиентом сообщения в окне Чата')
-    def is_client_message_in_online_dialog(self, mess_client):
+    @allure.step('Онлайн-версия: Проверка отображения отправленного Клиентом сообщения в окне Чата')
+    def is_client_message_in_ov_chat(self, mess_client):
          driver = self.driver
          if (self.is_element_present(driver, "//div[contains(text(),'" + mess_client + "')]") == True):
              print("Сообщение, отправленное Клиентом, отображается в теле Чата ОВ")
@@ -247,10 +247,18 @@ class Application:
              print("ОШИБКА!!! Сообщение, отправленное Клиентом, не отображается в теле Чата ОВ!")
              assert (self.is_element_present(driver, "//div[contains(text(),'" + mess_client + "')]") == True)
 
+    @allure.step('Онлайн-версия: Проверка отображения отправленного Агентом сообщения в окне Чата')
+    def is_agent_message_in_ov_chat(self, mess_agent):
+        driver = self.driver
+        if (self.is_element_present(driver, "//div[contains(text(),'" + mess_agent + "')]") == True):
+            print("Сообщение, отправленное Агентом, отображается в теле Чата ОВ")
+        else:
+            print("ОШИБКА!!! Сообщение, отправленное Агентом, не отображается в теле Чата ОВ!")
+            assert (self.is_element_present(driver, "//div[contains(text(),'" + mess_agent + "')]") == True)
 
     # АРМ РИЦ: АГЕНТ
 
-    @allure.step('Вход в АРМ РИЦ')
+    @allure.step('АРМ РИЦ: Вход')
     def go_to_arm_ric(self):
         driver = self.driver
         arm_ric_url = self.arm_ric_url
@@ -260,7 +268,7 @@ class Application:
             print("ОШИБКА!!! Консультант+ не доступен! - Не найдено поле 'Логин' для авторизации")
             assert (self.is_element_present(driver, "//input[@id='User']") == True)
 
-    @allure.step('Авторизация в АРМ РИЦ (на серверах zv5/zv6)')
+    @allure.step('АРМ РИЦ: Авторизация (на серверах zv5/zv6)')
     def login_agent(self):
         driver = self.driver
         agent_login = self.agent_login
@@ -282,7 +290,7 @@ class Application:
                 print("ОШИБКА!!! Агент не залогинился в К+! - Не найдено меню 'Онлайн-диалог'")
                 assert (self.is_element_present(driver, "//li[@id='nav-Chat']") == True)
 
-    @allure.step('Переход в настройки доступности сервиса ‎Задать вопрос для онлайн-версии')
+    @allure.step('АРМ РИЦ: Переход в настройки доступности сервиса ‎Задать вопрос для онлайн-версии')
     def go_to_service_settings(self):
         driver = self.driver
         menu_ric_menu = driver.find_element_by_xpath("//li[@id='nav-RICMenu']")
@@ -299,7 +307,7 @@ class Application:
            print("ОШИБКА!!! Агент не перешел в настройки доступности сервиса ‎Задать вопрос для онлайн-версии")
            assert (self.is_element_present(driver, "//div[contains(text(),'Доступность сервиса «Задать вопрос»‎')]") == True)
 
-    @allure.step('Поиск комплекта BUHUL_866712')
+    @allure.step('АРМ РИЦ: Поиск комплекта BUHUL_866712')
     def kit_search(self):
         driver = self.driver
         button_configure = driver.find_element_by_xpath("//div[@class='button blue fl-lt']")
@@ -314,7 +322,7 @@ class Application:
            print("ОШИБКА!!! Комплект BUHUL_866712 НЕ найден! - Строка комплекта НЕ отображается в результатах поиска")
            assert (self.is_element_present(driver, "//div[@id='3124332_Row']") == True)
 
-    @allure.step('Установка значения чек-бокса')
+    @allure.step('АРМ РИЦ: Настройка доступности сервиса ‎Задать вопрос для онлайн-версии (заполнение чек-боксов)')
     def setting_checkbox(self, checkbox_status, checkbox_field, checkbox_click):
         driver = self.driver
         checkbox = driver.find_element_by_xpath(checkbox_field)
@@ -330,7 +338,7 @@ class Application:
             driver.find_element_by_xpath(checkbox_click).click()
             print("Чек-бокс установлен в требуемое положение: включен")
 
-    @allure.step('Сохранение настроек доступности сервиса ‎Задать вопрос для онлайн-версии')
+    @allure.step('АРМ РИЦ: Сохранение настроек доступности сервиса ‎Задать вопрос для онлайн-версии')
     def save_setting_checkbox(self):
         driver = self.driver
         button_save = driver.find_element_by_xpath("//div[@class='button blue save fl-rt']")
@@ -339,7 +347,7 @@ class Application:
             driver.find_element_by_xpath("//div[@class='button blue confirm fl-lt']").click()
         print("Изменения настроек доступности сервиса ‎Задать вопрос для онлайн-версии сохранены")
 
-    @allure.step('Выход из АРМ РИЦ')
+    @allure.step('АРМ РИЦ: Выход')
     def logout_agent(self):
         driver = self.driver
         #Нажатие на кнопку "Выйти", обработка alert
@@ -355,7 +363,7 @@ class Application:
             print("ОШИБКА!!! Поле для ввода пароля не найдено. Агент не разлогинился!")
             assert (self.is_element_present(driver, "//input[@id='Password']") == True)
 
-    @allure.step('Поиск нужного Чата и подключение к сеансу')
+    @allure.step('АРМ РИЦ: Поиск нужного Чата и подключение к сеансу')
     def agent_search_chat(self, client_name):
         driver = self.driver
         locator_chat = "//strong[contains(text(),'" + client_name + "')]"
@@ -380,6 +388,33 @@ class Application:
         chat_button = driver.find_element_by_xpath(locator_chat)
         chat_button.click()
         print("Агент подключился к Чату")
+
+    @allure.step('АРМ РИЦ: Проверка отображения отправленного Агентом сообщения в окне Чата')
+    def is_agent_message_in_arm_ric_chat(self, mess_agent):
+        driver = self.driver
+        if (self.is_element_present(driver, "//span[contains(text(),'" + mess_agent + "')]") == True):
+            print("Сообщение, отправленное Агентом, отображается в теле Чата К+")
+        else:
+            print("ОШИБКА!!! Сообщение, отправленное Агентом, не отображается в теле Чата К+!")
+            assert (self.is_element_present(driver, "//span[contains(text(),'" + mess_agent + "')]") == True)
+
+    @allure.step('АРМ РИЦ: Проверка отображения отправленного Клиентом сообщения в окне Чата')
+    def is_client_message_in_arm_ric_chat(self, mess_client):
+        driver = self.driver
+        if (self.is_element_present(driver, "//span[contains(text(),'" + mess_client + "')]") == True):
+            print("Сообщение, отправленное Клиентом, отображается в теле Чата К+")
+        else:
+            print("ОШИБКА!!! Сообщение, отправленное Клиентом, не отображается в теле Чата К+!")
+            assert (self.is_element_present(driver, "//span[contains(text(),'" + mess_client + "')]") == True)
+
+    @allure.step('АРМ РИЦ: Отправка Агентом сообщения в Чат')
+    def agent_send_message(self, mess_agent):
+        driver = self.driver
+        input_window = driver.find_element_by_class_name("MsgInput")
+        input_window.send_keys(mess_agent)
+        button_msg_input = driver.find_element_by_css_selector("button.MsgSubmit[name=MsgSubmit]")
+        button_msg_input.click()
+        print("Агент отправил в Чат сообщение")
 
     # BASIC METHODS
 
@@ -436,129 +471,14 @@ class Application:
         except:
             return False
 
-
-    # # Клиент ожидает сообщение Агента
-    # def client_wait_agent_message(self, mess_agent):
-    #     driver = self.driver
-    #     print("Клиент ожидает сообщение Агента")
-    #     mess_agent_in_chat = WebDriverWait(driver, 30).until(
-    #         EC.presence_of_element_located(
-    #             (By.XPATH, "//div[contains(@class, 'message_text') and contains(text(),'" + mess_agent + "')]")))
-    #     print("Клиент получил сообщение Агента")
-    #
-    # # АГЕНТ Авторизация в АРМ РИЦ на ПП (HTTP Basic Authentication)
-    # def login_agent_pp(self):
-    #     driver = self.driver
-    #     arm_ric_url = self.arm_ric_url
-    #     driver.get(arm_ric_url)
-    #     # driver.get("https://" + agent_login + ":" + agent_password + "@ric.consultant.ru/")
-    #     # АГЕНТ Переход к сервису "Задать вопрос"
-    #     button_zv = driver.find_element_by_id("2050")
-    #     button_zv.click()
-    #
-    # def agent_search_chat_and_mess(self, mess_client, wait):
-    #     driver = self.driver
-    #     # АГЕНТ Поиск Чата
-    #     locator_mess_client = "//span[contains(text(),'" + mess_client + "')]"
-    #     agent = "109_866712"
-    #     locator_agent = "//span[contains(text(),'" + agent + "')]"
-    #     locator_connect_to_session = "//*[@id='Sessions']/div[3]/button"
-    #     i = 0
-    #     if (self.is_element_present(driver, locator_agent) == True):
-    #         print("Агент нашел Чат Клиента среди активных чатов К+")
-    #     else:
-    #         while (self.is_element_present(driver, locator_connect_to_session) == True):
-    #             connect_to_session_button = WebDriverWait(driver, 10).until(
-    #                 EC.presence_of_element_located((By.CLASS_NAME, "StartChat")))
-    #             connect_to_session_button.click()
-    #             i += 1
-    #             if (self.is_element_present(driver, locator_agent) == True):
-    #                 print("Агент нашел Чат Клиента в ", i, " очереди")
-    #                 break
-    #     # АГЕНТ Проверяем, что Чат Клиента-автотеста найден
-    #     time.sleep(wait)
-    #     if (self.is_element_present(driver, locator_agent) != True):
-    #         print("ОШИБКА!!! Чат Клиента не обнаружен ни среди активных чатов, ни в очереди!")
-    #     assert (self.is_element_present(driver, locator_agent) == True)
-    #
-    #     # АГЕНТ Подключение к Чату
-    #     chat_button = driver.find_element_by_xpath(locator_agent)
-    #     chat_button.click()
-    #     print("Агент подключился к Чату")
-    #
-    #     # АГЕНТ Проверка наличия в Чате сообщения от Клиента
-    #     if (self.is_element_present(driver, locator_mess_client) == True):
-    #         print("Сообщение, отправленное Клиентом, найдено в Чате К+")
-    #     else:
-    #         print("ОШИБКА!!! Сообщение от Клиента в Чате К+ не найдено!")
-    #     assert (self.is_element_present(driver, locator_mess_client) == True)
-    #
-    # def agent_search_chat(self, wait, client_name):
-    #     driver = self.driver
-    #     # АГЕНТ Поиск Чата
-    #     locator_chat = "//strong[contains(text(),'" + client_name + "')]"
-    #     locator_connect_to_session = "//*[@id='Sessions']/div[3]/button"
-    #     i = 0
-    #     if (self.is_element_present(driver, locator_chat) == True):
-    #         print("Агент нашел Чат Клиента среди активных чатов К+")
-    #     else:
-    #         while (self.is_element_present(driver, locator_connect_to_session) == True):
-    #             connect_to_session_button = WebDriverWait(driver, 10).until(
-    #                 EC.presence_of_element_located((By.CLASS_NAME, "StartChat")))
-    #             connect_to_session_button.click()
-    #             i += 1
-    #             if (self.is_element_present(driver, locator_chat) == True):
-    #                 print("Агент нашел Чат Клиента в ", i, " очереди")
-    #                 break
-    #     # АГЕНТ Проверяем, что Чат Клиента-автотеста найден
-    #     time.sleep(wait)
-    #     if (self.is_element_present(driver, locator_chat) != True):
-    #         print("ОШИБКА!!! Чат Клиента не обнаружен ни среди активных чатов, ни в очереди!")
-    #     assert (self.is_element_present(driver, locator_chat) == True)
-    #     # АГЕНТ Подключение к Чату
-    #     chat_button = driver.find_element_by_xpath(locator_chat)
-    #     chat_button.click()
-    #     print("Агент подключился к Чату")
-    #
-    # def agent_send_message(self, mess_agent):
-    #     driver = self.driver
-    #     input_window = driver.find_element_by_class_name("MsgInput")
-    #     input_window.send_keys(mess_agent)
-    #     button_msg_input = driver.find_element_by_css_selector("button.MsgSubmit[name=MsgSubmit]")
-    #     button_msg_input.click()
-    #     print("Агент отправил в Чат сообщение")
-    #
-    # def is_agent_message_in_consultant_plus(self, mess_agent):
-    #     driver = self.driver
-    #     if (self.is_element_present(driver, "//span[contains(text(),'" + mess_agent + "')]") == True):
-    #         print("Сообщение, отправленное Агентом, отображается в теле Чата К+")
-    #     else:
-    #         print("ОШИБКА!!! Сообщение, отправленное Агентом, не отображается в теле Чата К+!")
-    #         assert (self.is_element_present(driver, "//span[contains(text(),'" + mess_agent + "')]") == True)
-    #
-    # def is_client_message_in_consultant_plus(self, mess_client):
-    #     driver = self.driver
-    #     if (self.is_element_present(driver, "//span[contains(text(),'" + mess_client + "')]") == True):
-    #         print("Сообщение, отправленное Клиентом, отображается в теле Чата К+")
-    #     else:
-    #         print("ОШИБКА!!! Сообщение, отправленное Клиентом, не отображается в теле Чата К+!")
-    #         assert (self.is_element_present(driver, "//span[contains(text(),'" + mess_client + "')]") == True)
-    #
-    # # Агент ожидает сообщение Клиента
-    # def agent_wait_client_message(self, mess_client):
-    #     driver = self.driver
-    #     print("Агент ожидает сообщение Клиента")
-    #     mess_client_in_chat = WebDriverWait(driver, 30).until(
-    #         EC.presence_of_element_located((By.XPATH, "//span[contains(text(),'" + mess_client + "')]")))
-    #     print("Агент получил сообщение Клиента")
-    #
-    # def is_agent_message_in_online_dialog(self, mess_agent):
-    #     driver = self.driver
-    #     if (self.is_element_present(driver, "//div[contains(text(),'" + mess_agent + "')]") == True):
-    #         print("Сообщение, отправленное Агентом, отображается в теле Чата ОВ")
-    #     else:
-    #         print("ОШИБКА!!! Сообщение, отправленное Агентом, не отображается в теле Чата ОВ!")
-    #         assert (self.is_element_present(driver, "//div[contains(text(),'" + mess_agent + "')]") == True)
+    #Проверка видимости элемента (для использования во внешних методах)
+    def is_element_visible_main(self, locator):
+        driver = self.driver
+        try:
+            WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH, locator)))
+            return True
+        except:
+            return False
 
     def destroy(self):
         self.driver.quit()

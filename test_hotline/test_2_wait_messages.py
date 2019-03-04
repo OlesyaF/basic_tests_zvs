@@ -8,7 +8,7 @@ import allure
 
 @allure.title("Проверка отображения сообщений во время ожидания подключения к Чату Агента")
 def test_wait_messages(app):
-    print("test_welcome_message.py is running")
+    print("test_2_wait_messages.py is running")
 
     app.go_to_online_version()
     app.login_client()
@@ -18,7 +18,16 @@ def test_wait_messages(app):
     num = app.calc_check_sum_from_date()
     mess_client = "BasicATClient_" + str(num)
     app.client_send_message(mess_client)
-    app.is_client_message_in_online_dialog(mess_client)
+    app.is_client_message_in_ov_chat(mess_client)
+
+    locator1 = "//div[contains(text(),'Здравствуйте, 866712#main_autotest!')]"
+    locator2 = "//*[contains(text(),'Введите свой вопрос. Мы подключимся к диалогу в ближайшее время.')]"
+
+    if (app.is_element_visible_main(locator1) == False and app.is_element_visible_main(locator2) == False):
+        print("После отправки Клиентом сообщения в Чате не отображаются приветственные сообщения")
+    else:
+        print("ОШИБКА: После отправки Клиентом сообщения в Чате отображаются приветственные сообщения!")
+    assert (app.is_element_present_main(locator1) == False and app.is_element_present_main(locator2) == False)
 
     locator = "//*[contains(text(),'Производится поиск свободного специалиста. Пожалуйста, подождите.')]"
     if (app.is_element_present_main(locator) == True):
@@ -57,4 +66,4 @@ def test_wait_messages(app):
     assert (app.is_element_present_main(locator) == True)
 
     app.logout_client()
-    print("test_wait_messages.py is done successfully")
+    print("test_2_wait_messages.py is done successfully")

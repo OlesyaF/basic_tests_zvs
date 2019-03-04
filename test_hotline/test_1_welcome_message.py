@@ -8,7 +8,7 @@ import allure
 
 @allure.title("Проверка отображения приветственного сообщения")
 def test_welcome_message(app):
-    print("test_welcome_message.py is running")
+    print("test_1_welcome_message.py is running")
 
     app.go_to_online_version()
     app.login_client()
@@ -16,7 +16,7 @@ def test_welcome_message(app):
     time.sleep(7)
     app.go_to_client_info()
     time.sleep(2)
-    client_name = str(app.calc_check_sum_from_date()) + "#autotest"
+    client_name = "866712#main_autotest"
     print("client_name: ", client_name)
     locator = "//span[contains(text(),'" + client_name + "')]"
     app.changing_client_name(client_name)
@@ -45,4 +45,4 @@ def test_welcome_message(app):
     assert (app.is_element_present_main(locator1) == True and app.is_element_present_main(locator2) == True)
 
     app.logout_client()
-    print("test_welcome_message.py is done successfully")
+    print("test_1_welcome_message.py is done successfully")
