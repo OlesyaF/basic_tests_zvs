@@ -2,11 +2,13 @@
 
 import time
 import allure
+import pytest
 
 
 # Проверка отображения служебных сообщений во время ожидания подключения к Чату Агента
 
 @allure.title("Проверка отображения сообщений во время ожидания подключения к Чату Агента")
+#@pytest.mark.skip(reason='This test is skipped as there is not a kit which has not written a long time!')
 def test_wait_messages(app):
     print("test_2_wait_messages.py is running")
 
@@ -20,21 +22,12 @@ def test_wait_messages(app):
     app.client_send_message(mess_client)
     app.is_client_message_in_ov_chat(mess_client)
 
-    locator1 = "//div[contains(text(),'Здравствуйте, 866712#main_autotest!')]"
-    locator2 = "//*[contains(text(),'Введите свой вопрос. Мы подключимся к диалогу в ближайшее время.')]"
-
-    if (app.is_element_visible_main(locator1) == False and app.is_element_visible_main(locator2) == False):
-        print("После отправки Клиентом сообщения в Чате не отображаются приветственные сообщения")
-    else:
-        print("ОШИБКА: После отправки Клиентом сообщения в Чате отображаются приветственные сообщения!")
-    assert (app.is_element_present_main(locator1) == False and app.is_element_present_main(locator2) == False)
-
     locator = "//*[contains(text(),'Производится поиск свободного специалиста. Пожалуйста, подождите.')]"
     if (app.is_element_present_main(locator) == True):
         print("В Чате отображается первое ожидательное сообщение (Производится поиск свободного специалиста. Пожалуйста, подождите.) - ТЕСТ УСПЕШНЫЙ")
     else:
         print("ОШИБКА: Первое ожидательно сообщение в Чате не отображается - ТЕСТ НЕ УСПЕШНЫЙ!!!")
-    assert (app.is_element_present_main(locator) == True)
+        assert (app.is_element_present_main(locator) == True)
 
     time.sleep(30)
 
@@ -43,7 +36,7 @@ def test_wait_messages(app):
         print("В Чате отображается второе ожидательное сообщение (В настоящий момент все специалисты заняты. Подождите, пожалуйста, еще немного.) - ТЕСТ УСПЕШНЫЙ")
     else:
         print("ОШИБКА: Второе ожидательно сообщение в Чате не отображается - ТЕСТ НЕ УСПЕШНЫЙ!!!")
-    assert (app.is_element_present_main(locator) == True)
+        assert (app.is_element_present_main(locator) == True)
 
     time.sleep(30)
 
@@ -53,7 +46,7 @@ def test_wait_messages(app):
             "В Чате отображается третье ожидательное сообщение (В ближайшее время специалист подключится к беседе с Вами.) - ТЕСТ УСПЕШНЫЙ")
     else:
         print("ОШИБКА: Третье ожидательно сообщение в Чате не отображается - ТЕСТ НЕ УСПЕШНЫЙ!!!")
-    assert (app.is_element_present_main(locator) == True)
+        assert (app.is_element_present_main(locator) == True)
 
     time.sleep(30)
 
@@ -63,7 +56,7 @@ def test_wait_messages(app):
             "В Чате отображается четвертое ожидательное сообщение (Пожалуйста, подождите. Мы ответим Вам очень скоро.) - ТЕСТ УСПЕШНЫЙ")
     else:
         print("ОШИБКА: Четвертое ожидательно сообщение в Чате не отображается - ТЕСТ НЕ УСПЕШНЫЙ!!!")
-    assert (app.is_element_present_main(locator) == True)
+        assert (app.is_element_present_main(locator) == True)
 
     app.logout_client()
     print("test_2_wait_messages.py is done successfully")

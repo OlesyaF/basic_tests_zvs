@@ -2,11 +2,13 @@
 
 import time
 import allure
+import pytest
 
 
 # Проверка отображения в Чате служебного приветственного сообщения
 
 @allure.title("Проверка отображения приветственного сообщения")
+#@pytest.mark.skip(reason='This test is skipped as there is not a kit which has not written a long time!')
 def test_welcome_message(app):
     print("test_1_welcome_message.py is running")
 
@@ -25,7 +27,7 @@ def test_welcome_message(app):
         print("В ОД имя Клиента совпадает с новым значением")
     else:
         print("ОШИБКА: В ОД имя Клиента не совпадает с новым значением!")
-    assert (app.is_element_present_main(locator) == True)
+        assert (app.is_element_present_main(locator) == True)
     app.logout_client()
 
     app.go_to_online_version()
@@ -42,7 +44,7 @@ def test_welcome_message(app):
         print("ОШИБКА: В Чате НЕ отображается корректное приветственное сообщение - ТЕСТ НЕ УСПЕШНЫЙ!!!")
         allure.dynamic.description(
             'ОШИБКА: В Чате НЕ отображается корректное приветственное сообщение - ТЕСТ НЕ УСПЕШНЫЙ!!!')
-    assert (app.is_element_present_main(locator1) == True and app.is_element_present_main(locator2) == True)
+        assert (app.is_element_present_main(locator1) == True and app.is_element_present_main(locator2) == True)
 
     app.logout_client()
     print("test_1_welcome_message.py is done successfully")

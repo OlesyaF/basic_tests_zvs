@@ -23,10 +23,11 @@ def test_messaging(app):
 
     app.go_to_arm_ric()
     app.login_agent()
-    time.sleep(7)
+    time.sleep(10)
     mess_agent = "BasicATAgent_" + str(num)
     client_name = "866712#main_autotest"
     app.agent_search_chat(client_name)
+    time.sleep(7)
     app.is_client_message_in_arm_ric_chat(mess_client)
     app.agent_send_message(mess_agent)
     app.is_agent_message_in_arm_ric_chat(mess_agent)

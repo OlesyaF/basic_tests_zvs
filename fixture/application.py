@@ -416,6 +416,27 @@ class Application:
         button_msg_input.click()
         print("Агент отправил в Чат сообщение")
 
+    @allure.step('АРМ РИЦ: Завершение Агентом всех активных Чатов')
+    def agent_completion_chat(self):
+        driver = self.driver
+        i = 0
+        while len(driver.find_elements_by_xpath("//button[contains(@name,'CloseSession') and @class='HelperButton']")) > 0:
+            button_close_chat = driver.find_element_by_xpath(
+                "//button[contains(@name,'CloseSession') and @class='HelperButton']")
+            button_close_chat.click()
+            try:
+                driver.switch_to.alert.accept()
+            except:
+                NoAlertPresentException
+            button_remove_chat = driver.find_element_by_xpath("//button[@class='RemoveSessionRow']")
+            button_remove_chat.click()
+            try:
+                driver.switch_to.alert.accept()
+            except:
+                NoAlertPresentException
+            i = i + 1
+        print("Агент завершил Чатов:", i)
+
     # BASIC METHODS
 
     @allure.step('Расчет контрольной суммы на основе даты и времени')
@@ -454,7 +475,7 @@ class Application:
         print("phone_mask: ", phone_mask)
         return phone, phone_mask
 
-    #Проверка существования элемента (для использования в методах application.py)
+    #Проверка существования элемента(для использования в методах application.py)
     def is_element_present(self, driver, locator):
         try:
             driver.find_element_by_xpath(locator)
@@ -462,7 +483,7 @@ class Application:
         except NoSuchElementException:
             return False
 
-    #Проверка существования элемента (для использования во внешних методах)
+    #Проверка существования элемента(для использования во внешних методах)
     def is_element_present_main(self, locator):
         driver = self.driver
         try:
@@ -471,14 +492,20 @@ class Application:
         except:
             return False
 
-    #Проверка видимости элемента (для использования во внешних методах)
+    #Проверка видимости элемента для использования во внешних методах)
     def is_element_visible_main(self, locator):
         driver = self.driver
         try:
-            WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH, locator)))
+            WebDriverWait(driver, 1).until(EC.visibility_of_element_located((By.XPATH, locator)))
             return True
         except:
             return False
+
+    #Подсчет количества эементов(для использования во внешних методах)
+    def count_of_elements_main(self, elements):
+        driver = self.driver
+        count = len(driver.find_elements_by_xpath(elements))
+        return count
 
     def destroy(self):
         self.driver.quit()
