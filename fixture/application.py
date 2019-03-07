@@ -39,7 +39,25 @@ class Application:
         driver = self.driver
         ov_url = self.ov_url
         driver.get(ov_url)
-        if (self.is_element_present(driver, "//input[@id='loginform-login']") != True):
+        if (self.is_element_present(driver, "//*[@id='logout']/div[1]") == True):
+            print("ОВ доступна. Клиент авторизован. Видимо, предыдущий тест упал.")
+            # Нажатие на кнопку "Выйти"
+            button_logout = driver.find_element_by_xpath("//*[@id='logout']/div[1]")
+            button_logout.click()
+            # Переход во фрейм "Вы действительно хотите выйти из системы?"
+            logout_frame = driver.find_element_by_css_selector("#dialogFrame1 iframe")
+            driver.switch_to.frame(logout_frame)
+            logout_confirm = driver.find_element_by_css_selector(
+                "#confirm > table > tbody > tr:nth-child(2) > td:nth-child(1) > button > span")
+            logout_confirm.click()
+            if (self.is_element_present(driver, "//input[@id='loginform-password']") == True):
+                print("Клиент вышел из ОВ")
+            else:
+                print("ОШИБКА!!! Поле для ввода пароля не найдено. Клиент не разлогинился!")
+                assert (self.is_element_present(driver, "//input[@id='loginform-password']") == True)
+        if (self.is_element_present(driver, "//input[@id='loginform-password']") == True):
+            print("ОВ доступна.")
+        else:
             print("ОШИБКА!!! Онлайн Версия не доступна! - Не найдено поле 'Логин' для авторизации")
             assert (self.is_element_present(driver, "//input[@id='loginform-login']") == True)
 
