@@ -2,15 +2,19 @@
 
 import time
 import allure
-import pytest
 
 
 # Проверка отображения в Чате служебного приветственного сообщения
 
 @allure.title("Проверка отображения приветственного сообщения")
-#@pytest.mark.skip(reason='This test is skipped as there is not a kit which has not written a long time!')
 def test_welcome_message(app):
     print("test_1_welcome_message.py is running")
+
+    app.go_to_arm_ric()
+    app.login_agent()
+    time.sleep(10)
+    app.agent_completion_chat()
+    app.logout_agent()
 
     app.go_to_online_version()
     app.login_client()
