@@ -502,10 +502,10 @@ class Application:
             return False
 
     #Проверка существования элемента(для использования во внешних методах)
-    def is_element_present_main(self, locator):
+    def is_element_present_main(self, locator, wait=10):
         driver = self.driver
         try:
-            WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, locator)))
+            WebDriverWait(driver, wait).until(EC.presence_of_element_located((By.XPATH, locator)))
             return True
         except:
             return False

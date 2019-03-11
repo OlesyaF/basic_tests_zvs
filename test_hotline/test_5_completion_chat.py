@@ -7,8 +7,8 @@ import allure
 # Проверка завершения сеанса
 
 @allure.title("Проверка завершения Чата")
-def test_8_completion_sessions(app):
-    print("test_8_completion_sessions.py is running")
+def test_5_completion_sessions(app):
+    print("test_5_completion_sessions.py is running")
 
     app.go_to_arm_ric()
     app.login_agent()
@@ -29,5 +29,4 @@ def test_8_completion_sessions(app):
         allure.dynamic.description('ОШИБКА: Завершены не все активные Чаты - ТЕСТ НЕ УСПЕШНЫЙ!!!')
         assert (app.count_of_elements_main(elements) == 0)
     app.logout_agent()
-
-    print("test_8_completion_sessions.py is done successfully")
+    print("test_5_completion_sessions.py is done successfully")

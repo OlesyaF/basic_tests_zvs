@@ -39,5 +39,4 @@ def test_messaging(app):
     time.sleep(7)
     app.is_agent_message_in_ov_chat(mess_agent)
     app.logout_client()
-
     print("test_3_messaging.py is done successfully")
