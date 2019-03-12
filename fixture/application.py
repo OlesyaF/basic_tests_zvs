@@ -204,11 +204,13 @@ class Application:
     def check_expcons_availability(self):
         driver = self.driver
         print("Проверка доступности сервиса Написать эксперту:")
-        if (self.is_element_present(driver, "//span[contains(@class, 'SmallSpace tabTextTitle') and contains(text(),'Здесь Вы можете задать вопрос, который требует консультации эксперта')]") == True):
+        if (self.is_element_present(driver,
+                                    "//span[contains(@class, 'SmallSpace tabTextTitle') and contains(text(),'Здесь Вы можете задать вопрос, который требует консультации эксперта')]") == True):
             print("1. Пояснительный текст ('Здесь Вы можете задать вопрос, который требует консультации эксперта') присутствует")
         else:
             print("ОШИБКА!!! Пояснительный текст ('Здесь Вы можете задать вопрос, который требует консультации эксперта') отсутствует!")
-            assert (self.is_element_present(driver, "//span[contains(@class, 'SmallSpace tabTextTitle') and contains(text(),'Здесь Вы можете задать вопрос, который требует консультации эксперта')]") == True)
+            assert (self.is_element_present(driver,
+                                            "//span[contains(@class, 'SmallSpace tabTextTitle') and contains(text(),'Здесь Вы можете задать вопрос, который требует консультации эксперта')]") == True)
         if (self.is_element_present(driver, "//div[@id='ExpconsBody']") == True):
             print("2. Поле для ввода вопроса присутствует")
         else:
@@ -230,21 +232,25 @@ class Application:
         else:
             print("ОШИБКА!!! Блок с контактами горячей линии отсутствует!")
             assert (self.is_element_present(driver, "//div[@class='ContactInfo-Hotline']") == True)
-        if (self.is_element_present(driver, "//div[contains(@class, 'ContactInfoSubtitle') and contains(text(),'ГОРЯЧАЯ ЛИНИЯ')]") == True):
+        if (self.is_element_present(driver,
+                                    "//div[contains(@class, 'ContactInfoSubtitle') and contains(text(),'ГОРЯЧАЯ ЛИНИЯ')]") == True):
             print("2. Текст 'ГОРЯЧАЯ ЛИНИЯ' присутствует")
         else:
             print("ОШИБКА!!! Текст 'ГОРЯЧАЯ ЛИНИЯ'  отсутствует!")
-            assert (self.is_element_present(driver, "//div[contains(@class, 'ContactInfoSubtitle') and contains(text(),'ГОРЯЧАЯ ЛИНИЯ')]") == True)
+            assert (self.is_element_present(driver,
+                                            "//div[contains(@class, 'ContactInfoSubtitle') and contains(text(),'ГОРЯЧАЯ ЛИНИЯ')]") == True)
         if (self.is_element_present(driver, "//div[@class='ContactInfoCompanyBlock']") == True):
             print("3. Блок с контактной информацией РИЦ присутствует")
         else:
             print("ОШИБКА!!! Блок с контактной информацией РИЦ отсутствует!")
             assert (self.is_element_present(driver, "//div[@class='ContactInfoCompanyBlock']") == True)
-        if (self.is_element_present(driver, "//div[contains(@class, 'ContactInfoSubtitle p16t') and contains(text(),'КОНТАКТНАЯ ИНФОРМАЦИЯ')]") == True):
+        if (self.is_element_present(driver,
+                                    "//div[contains(@class, 'ContactInfoSubtitle p16t') and contains(text(),'КОНТАКТНАЯ ИНФОРМАЦИЯ')]") == True):
             print("4. Текст 'КОНТАКТНАЯ ИНФОРМАЦИЯ' присутствует")
         else:
             print("ОШИБКА!!! Текст 'КОНТАКТНАЯ ИНФОРМАЦИЯ' отсутствует!")
-            assert (self.is_element_present(driver, "//div[contains(@class, 'ContactInfoSubtitle p16t') and contains(text(),'КОНТАКТНАЯ ИНФОРМАЦИЯ')]") == True)
+            assert (self.is_element_present(driver,
+                                            "//div[contains(@class, 'ContactInfoSubtitle p16t') and contains(text(),'КОНТАКТНАЯ ИНФОРМАЦИЯ')]") == True)
         print("Вкладка 'Горячая линия/Контактная информация РИЦ' в окне 'Сервис поддержки клиентов' выглядит корректно")
 
     @allure.step('Онлайн-версия: Отправка Клиентом сообщения в Чат')
@@ -338,7 +344,8 @@ class Application:
             print("Агент перешел в настройки доступности сервиса ‎Задать вопрос для онлайн-версии")
         else:
            print("ОШИБКА!!! Агент не перешел в настройки доступности сервиса ‎Задать вопрос для онлайн-версии")
-           assert (self.is_element_present(driver, "//div[contains(text(),'Доступность сервиса «Задать вопрос»‎')]") == True)
+           assert (self.is_element_present(driver,
+                                           "//div[contains(text(),'Доступность сервиса «Задать вопрос»‎')]") == True)
 
     @allure.step('АРМ РИЦ: Поиск комплекта BUHUL_866712')
     def kit_search(self):
@@ -511,9 +518,9 @@ class Application:
     #Проверка существования элемента(для использования в методах application.py)
     def is_element_present(self, driver, locator):
         try:
-            driver.find_element_by_xpath(locator)
+            WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, locator)))
             return True
-        except NoSuchElementException:
+        except:
             return False
 
     #Проверка существования элемента(для использования во внешних методах)
