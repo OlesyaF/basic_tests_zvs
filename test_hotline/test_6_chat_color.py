@@ -209,7 +209,7 @@ def test_change_chat_color_red_to_green(app):
     print(str(datetime.datetime.now()))
     if (app.is_element_present_main(locator_green, wait=1) == True and app.is_element_present_main(locator_yellow,
                                                                                                    wait=1) == False and app.is_element_present_main(
-            locator_red, wait=1) == False):
+        locator_red, wait=1) == False):
         print("Красная карточка становится зеленой при отправке Агентом сообщения - ТЕСТ УСПЕШНЫЙ")
         print(str(datetime.datetime.now()))
     else:

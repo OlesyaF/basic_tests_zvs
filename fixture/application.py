@@ -281,9 +281,24 @@ class Application:
         driver = self.driver
         arm_ric_url = self.arm_ric_url
         driver.get(arm_ric_url)
-        # АГЕНТ Проверяем, что К+ доступен
-        if (self.is_element_present(driver, "//input[@id='User']") != True):
-            print("ОШИБКА!!! Консультант+ не доступен! - Не найдено поле 'Логин' для авторизации")
+        if (self.is_element_present(driver, "//*[@id='LogoutButton']") == True):
+            print("АРМ РИЦ доступно. Агент авторизован. Видимо, предыдущий тест упал.")
+            #Нажатие на кнопку "Выйти", обработка alert
+            button_logout = driver.find_element_by_id("LogoutButton")
+            button_logout.click()
+            try:
+                driver.switch_to.alert.accept()
+            except:
+                NoAlertPresentException
+            if (self.is_element_present(driver, "//input[@id='Password']") == True):
+                print("Агент вышел из АРМ РИЦ")
+            else:
+                print("ОШИБКА!!! Поле для ввода пароля не найдено. Агент не разлогинился!")
+                assert (self.is_element_present(driver, "//input[@id='Password']") == True)
+        if (self.is_element_present(driver, "//input[@id='User']") == True):
+            print("АРМ РИЦ доступно.")
+        else:
+            print("ОШИБКА!!! АРМ РИЦ не доступно! - Не найдено поле 'Логин' для авторизации")
             assert (self.is_element_present(driver, "//input[@id='User']") == True)
 
     @allure.step('АРМ РИЦ: Авторизация (на серверах zv5/zv6)')
@@ -298,14 +313,14 @@ class Application:
         button_login = driver.find_element_by_id("LoginButton")
         button_login.click()
         if (self.is_element_present(driver, "//li[@id='nav-Chat']") == True):
-            print("Агент залогинился в К+")
+            print("Агент залогинился в АРМ РИЦ")
         else:
             button_login = driver.find_element_by_id("LoginButton")
             button_login.click()
             if (self.is_element_present(driver, "//li[@id='nav-Chat']") == True):
-                print("Агент залогинился в К+")
+                print("Агент залогинился в АРМ РИЦ")
             else:
-                print("ОШИБКА!!! Агент не залогинился в К+! - Не найдено меню 'Онлайн-диалог'")
+                print("ОШИБКА!!! Агент не залогинился в АРМ РИЦ - Не найдено меню 'Онлайн-диалог'")
                 assert (self.is_element_present(driver, "//li[@id='nav-Chat']") == True)
 
     @allure.step('АРМ РИЦ: Переход в настройки доступности сервиса ‎Задать вопрос для онлайн-версии')
@@ -376,7 +391,7 @@ class Application:
         except:
             NoAlertPresentException
         if (self.is_element_present(driver, "//input[@id='Password']") == True):
-            print("Агент вышел из К+")
+            print("Агент вышел из АРМ РИЦ")
         else:
             print("ОШИБКА!!! Поле для ввода пароля не найдено. Агент не разлогинился!")
             assert (self.is_element_present(driver, "//input[@id='Password']") == True)
@@ -411,18 +426,18 @@ class Application:
     def is_agent_message_in_arm_ric_chat(self, mess_agent):
         driver = self.driver
         if (self.is_element_present(driver, "//span[contains(text(),'" + mess_agent + "')]") == True):
-            print("Сообщение, отправленное Агентом, отображается в теле Чата К+")
+            print("Сообщение, отправленное Агентом, отображается в теле Чата АРМ РИЦ")
         else:
-            print("ОШИБКА!!! Сообщение, отправленное Агентом, не отображается в теле Чата К+!")
+            print("ОШИБКА!!! Сообщение, отправленное Агентом, не отображается в теле Чата АРМ РИЦ!")
             assert (self.is_element_present(driver, "//span[contains(text(),'" + mess_agent + "')]") == True)
 
     @allure.step('АРМ РИЦ: Проверка отображения отправленного Клиентом сообщения в окне Чата')
     def is_client_message_in_arm_ric_chat(self, mess_client):
         driver = self.driver
         if (self.is_element_present(driver, "//span[contains(text(),'" + mess_client + "')]") == True):
-            print("Сообщение, отправленное Клиентом, отображается в теле Чата К+")
+            print("Сообщение, отправленное Клиентом, отображается в теле Чата АРМ РИЦ")
         else:
-            print("ОШИБКА!!! Сообщение, отправленное Клиентом, не отображается в теле Чата К+!")
+            print("ОШИБКА!!! Сообщение, отправленное Клиентом, не отображается в теле Чата АРМ РИЦ!")
             assert (self.is_element_present(driver, "//span[contains(text(),'" + mess_client + "')]") == True)
 
     @allure.step('АРМ РИЦ: Отправка Агентом сообщения в Чат')
