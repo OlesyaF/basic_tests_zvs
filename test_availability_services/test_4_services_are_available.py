@@ -59,7 +59,7 @@ def test_services_available(app):
     app.check_byphone_availability()
     # Возврат со вкладки с контактами Горячей линии и РИЦ (попадаем на вкладку "Написать эксперту")
     app.click_by_phone()
-    # Проверям, что папали на вкладку "Написать эксперту"
+    # Проверям, что попали на вкладку "Написать эксперту"
     app.check_expcons_availability()
 
     app.logout_client()

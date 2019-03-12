@@ -16,7 +16,7 @@ def test_messaging(app):
     app.go_to_customer_support_service()
     time.sleep(7)
     num = app.calc_check_sum_from_date()
-    mess_client = "BasicATClient_" + str(num)
+    mess_client = "BasicATClient_message_" + str(num)
     app.client_send_message(mess_client)
     app.is_client_message_in_ov_chat(mess_client)
     app.logout_client()
@@ -24,7 +24,7 @@ def test_messaging(app):
     app.go_to_arm_ric()
     app.login_agent()
     time.sleep(10)
-    mess_agent = "BasicATAgent_" + str(num)
+    mess_agent = "BasicATAgent_message_" + str(num)
     client_name = "866712#main_autotest"
     app.agent_search_chat(client_name)
     time.sleep(7)

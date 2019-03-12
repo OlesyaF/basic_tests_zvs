@@ -1,15 +1,17 @@
 # -*- encoding: utf-8 -*-
 
-import time
 import datetime
-from selenium.common.exceptions import NoSuchElementException, NoAlertPresentException
+import random
+import time
+
+import allure
+from selenium.common.exceptions import NoAlertPresentException
+from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.chrome.webdriver import WebDriver
-from selenium.webdriver.common.keys import Keys
-import random
-import allure
+
 
 # noinspection PyDeprecation
 class Application:
@@ -83,7 +85,7 @@ class Application:
         driver = self.driver
         button_zv = driver.find_element_by_xpath("//div[@class='topToolbar']/div[5]/div[2]")
         button_zv.click()
-        #Переход во фрейм серевиса Задать вопрос
+        # Переход во фрейм серевиса Задать вопрос
         chat = driver.find_element_by_css_selector("#livechat-dialog iframe")
         driver.switch_to.frame(chat)
         print("Клиент перешел в окно 'Сервис поддержки клиентов'")
@@ -129,17 +131,19 @@ class Application:
     @allure.step('Онлайн-версия: Изменение номера телефона Клиента')
     def changing_client_phone(self, phone):
         driver = self.driver
+        # input_field_name = WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, "//input[@id='FormCustomerPhone']")))
         input_field_name = driver.find_element_by_id("FormCustomerPhone")
         input_field_name.click()
         input_field_name.clear()
         input_field_name.send_keys(Keys.HOME)
+        time.sleep(2)
         input_field_name.send_keys(phone)
         print("В поле 'Телефон' введено новое значение")
 
     @allure.step('Онлайн-версия: Выход из окна сервиса Задать вопрос')
     def go_out_customer_support_service(self):
         driver = self.driver
-        #Возврат в основной фрейм
+        # Возврат в основной фрейм
         driver.switch_to.parent_frame()
         button_close_chat = driver.find_element_by_xpath("//div[@class='icon livechatclose-16']")
         button_close_chat.click()
@@ -148,12 +152,12 @@ class Application:
     @allure.step('Онлайн-версия: Выход')
     def logout_client(self):
         driver = self.driver
-        #Возврат в основной фрейм
+        # Возврат в основной фрейм
         driver.switch_to.parent_frame()
-        #Нажатие на кнопку "Выйти"
+        # Нажатие на кнопку "Выйти"
         button_logout = driver.find_element_by_xpath("//*[@id='logout']/div[1]")
         button_logout.click()
-        #Переход во фрейм "Вы действительно хотите выйти из системы?"
+        # Переход во фрейм "Вы действительно хотите выйти из системы?"
         logout_frame = driver.find_element_by_css_selector("#dialogFrame1 iframe")
         driver.switch_to.frame(logout_frame)
         logout_confirm = driver.find_element_by_css_selector(
@@ -172,7 +176,8 @@ class Application:
         button_expcons.click()
         print("Клиент перешел на вкладку 'Написать эксперту' в окне 'Сервис поддержки клиентов'")
 
-    @allure.step('Онлайн-версия: Переход на вкладку "Горячая линия/Контактная информация РИЦ" в окне "Сервис поддержки клиентов"')
+    @allure.step(
+        'Онлайн-версия: Переход на вкладку "Горячая линия/Контактная информация РИЦ" в окне "Сервис поддержки клиентов"')
     def click_by_phone(self):
         driver = self.driver
         button_byphone = driver.find_element_by_xpath("//div[@id='tabLabelPhone']")
@@ -206,9 +211,11 @@ class Application:
         print("Проверка доступности сервиса Написать эксперту:")
         if (self.is_element_present(driver,
                                     "//span[contains(@class, 'SmallSpace tabTextTitle') and contains(text(),'Здесь Вы можете задать вопрос, который требует консультации эксперта')]") == True):
-            print("1. Пояснительный текст ('Здесь Вы можете задать вопрос, который требует консультации эксперта') присутствует")
+            print(
+                "1. Пояснительный текст ('Здесь Вы можете задать вопрос, который требует консультации эксперта') присутствует")
         else:
-            print("ОШИБКА!!! Пояснительный текст ('Здесь Вы можете задать вопрос, который требует консультации эксперта') отсутствует!")
+            print(
+                "ОШИБКА!!! Пояснительный текст ('Здесь Вы можете задать вопрос, который требует консультации эксперта') отсутствует!")
             assert (self.is_element_present(driver,
                                             "//span[contains(@class, 'SmallSpace tabTextTitle') and contains(text(),'Здесь Вы можете задать вопрос, который требует консультации эксперта')]") == True)
         if (self.is_element_present(driver, "//div[@id='ExpconsBody']") == True):
@@ -223,7 +230,8 @@ class Application:
             assert (self.is_element_present(driver, "//div[@id='ExpconsSubmit']") == True)
         print("Сервис Написать эксперту доступен")
 
-    @allure.step('Онлайн-версия: Проверка вида вкладки "Горячая линия/Контактная информация РИЦ" в окне "Сервис поддержки клиентов"')
+    @allure.step(
+        'Онлайн-версия: Проверка вида вкладки "Горячая линия/Контактная информация РИЦ" в окне "Сервис поддержки клиентов"')
     def check_byphone_availability(self):
         driver = self.driver
         print("Проверка вида вкладки 'Горячая линия/Контактная информация РИЦ' в окне 'Сервис поддержки клиентов':")
@@ -255,21 +263,21 @@ class Application:
 
     @allure.step('Онлайн-версия: Отправка Клиентом сообщения в Чат')
     def client_send_message(self, mess_client):
-         driver = self.driver
-         input_window = driver.find_element_by_id("MsgInput")
-         input_window.send_keys(mess_client)
-         button_msg_input = driver.find_element_by_id("ChatMsgSubmit")
-         button_msg_input.click()
-         print("Клиент отправил в Чат сообщение")
+        driver = self.driver
+        input_window = driver.find_element_by_id("MsgInput")
+        input_window.send_keys(mess_client)
+        button_msg_input = driver.find_element_by_id("ChatMsgSubmit")
+        button_msg_input.click()
+        print("Клиент отправил в Чат сообщение")
 
     @allure.step('Онлайн-версия: Проверка отображения отправленного Клиентом сообщения в окне Чата')
     def is_client_message_in_ov_chat(self, mess_client):
-         driver = self.driver
-         if (self.is_element_present(driver, "//div[contains(text(),'" + mess_client + "')]") == True):
-             print("Сообщение, отправленное Клиентом, отображается в теле Чата ОВ")
-         else:
-             print("ОШИБКА!!! Сообщение, отправленное Клиентом, не отображается в теле Чата ОВ!")
-             assert (self.is_element_present(driver, "//div[contains(text(),'" + mess_client + "')]") == True)
+        driver = self.driver
+        if (self.is_element_present(driver, "//div[contains(text(),'" + mess_client + "')]") == True):
+            print("Сообщение, отправленное Клиентом, отображается в теле Чата ОВ")
+        else:
+            print("ОШИБКА!!! Сообщение, отправленное Клиентом, не отображается в теле Чата ОВ!")
+            assert (self.is_element_present(driver, "//div[contains(text(),'" + mess_client + "')]") == True)
 
     @allure.step('Онлайн-версия: Проверка отображения отправленного Агентом сообщения в окне Чата')
     def is_agent_message_in_ov_chat(self, mess_agent):
@@ -280,6 +288,51 @@ class Application:
             print("ОШИБКА!!! Сообщение, отправленное Агентом, не отображается в теле Чата ОВ!")
             assert (self.is_element_present(driver, "//div[contains(text(),'" + mess_agent + "')]") == True)
 
+    @allure.step('Онлайн-версия: Отправка Клиентом вопроса эксперту')
+    def client_send_question(self, question_client):
+        driver = self.driver
+        input_window = driver.find_element_by_id("ExpconsBody")
+        input_window.send_keys(question_client)
+        time.sleep(5)
+        button_msg_input = driver.find_element_by_id("ExpconsSubmit")
+        button_msg_input.click()
+        print("Клиент отправил вопрос эксперту")
+
+    @allure.step('Онлайн-версия: Проверка вида вкладки "Написать эксперту" после отправки Клиентом вопроса эксперту')
+    def check_expcons_after_question(self, question_client, client_name, email, phone_mask):
+        driver = self.driver
+
+        locator1 = "//div[contains(@class, 'ExpconsResultTitle') and contains(text(),'Спасибо за Ваш вопрос!')]"
+        locator2 = "//div[contains(@class, 'ExpconsResultInfoTop p16t p10b') and contains(text(),'Сотрудники Сервисного центра свяжутся с Вами.')]"
+        locator3 = "//div[contains(@class, 'ExpconsResultTextBold') and contains(text(),'Текст вопроса')]"
+        locator4 = "//textarea[contains(@class, 'ExpconsResultTextArea') and contains(text(),'" + question_client + "')]"
+        locator5 = "//span[contains(@class, 'ExpconsResultText') and contains(text(),'" + client_name + "')]"
+        locator6 = "//span[contains(@class, 'ExpconsResultText') and contains(text(),'" + email + "')]"
+        locator7 = "//span[contains(@class, 'ExpconsResultText') and contains(text(),'" + phone_mask + "')]"
+        locator8 = "//div[contains(@class, 'ExpconsResultInfoBottom p10t') and contains(text(),'Копия вопроса направлена на Ваш email, просим сохранить это письмо.')]"
+        locator9 = "//*[contains(text(),'Копия вопроса направлена на Ваш email, просим сохранить это письмо.')]"
+
+        if (self.is_element_present(driver, locator1) == True and self.is_element_present(driver,
+                                                                                          locator2) == True and self.is_element_present(
+            driver, locator3) == True and self.is_element_present(driver,
+                                                                  locator4) == True and self.is_element_present(
+            driver, locator5) == True and self.is_element_present(driver,
+                                                                  locator6) == True and self.is_element_present(
+            driver, locator7) == True and self.is_element_present(driver, locator8) == True and self.is_element_present(
+            driver, locator9) == True):
+            print("Вид вкладки 'Написать эксперту' после отправки вопроса эксперту корректный")
+        else:
+            print("ОШИБКА!!! Вид вкладки 'Написать эксперту' после отправки вопроса эксперту НЕ корректный!")
+            assert (self.is_element_present(driver, locator1) == True and self.is_element_present(driver,
+                                                                                                  locator2) == True and self.is_element_present(
+                driver, locator3) == True and self.is_element_present(driver,
+                                                                      locator4) == True and self.is_element_present(
+                driver, locator5) == True and self.is_element_present(driver,
+                                                                      locator6) == True and self.is_element_present(
+                driver, locator7) == True and self.is_element_present(driver,
+                                                                      locator8) == True and self.is_element_present(
+                driver, locator9) == True)
+
     # АРМ РИЦ: АГЕНТ
 
     @allure.step('АРМ РИЦ: Вход')
@@ -289,7 +342,7 @@ class Application:
         driver.get(arm_ric_url)
         if (self.is_element_present(driver, "//*[@id='LogoutButton']") == True):
             print("АРМ РИЦ доступно. Агент авторизован. Видимо, предыдущий тест упал.")
-            #Нажатие на кнопку "Выйти", обработка alert
+            # Нажатие на кнопку "Выйти", обработка alert
             button_logout = driver.find_element_by_id("LogoutButton")
             button_logout.click()
             try:
@@ -343,9 +396,9 @@ class Application:
         if (self.is_element_present(driver, "//div[contains(text(),'Доступность сервиса «Задать вопрос»')]") == True):
             print("Агент перешел в настройки доступности сервиса ‎Задать вопрос для онлайн-версии")
         else:
-           print("ОШИБКА!!! Агент не перешел в настройки доступности сервиса ‎Задать вопрос для онлайн-версии")
-           assert (self.is_element_present(driver,
-                                           "//div[contains(text(),'Доступность сервиса «Задать вопрос»‎')]") == True)
+            print("ОШИБКА!!! Агент не перешел в настройки доступности сервиса ‎Задать вопрос для онлайн-версии")
+            assert (self.is_element_present(driver,
+                                            "//div[contains(text(),'Доступность сервиса «Задать вопрос»‎')]") == True)
 
     @allure.step('АРМ РИЦ: Поиск комплекта BUHUL_866712')
     def kit_search(self):
@@ -359,8 +412,8 @@ class Application:
         if (self.is_element_present(driver, "//div[@id='3124332_Row']") == True):
             print("Комплект BUHUL_866712 найден: строка комплекта отображается в результатах поиска")
         else:
-           print("ОШИБКА!!! Комплект BUHUL_866712 НЕ найден! - Строка комплекта НЕ отображается в результатах поиска")
-           assert (self.is_element_present(driver, "//div[@id='3124332_Row']") == True)
+            print("ОШИБКА!!! Комплект BUHUL_866712 НЕ найден! - Строка комплекта НЕ отображается в результатах поиска")
+            assert (self.is_element_present(driver, "//div[@id='3124332_Row']") == True)
 
     @allure.step('АРМ РИЦ: Настройка доступности сервиса ‎Задать вопрос для онлайн-версии (заполнение чек-боксов)')
     def setting_checkbox(self, checkbox_status, checkbox_field, checkbox_click):
@@ -390,7 +443,7 @@ class Application:
     @allure.step('АРМ РИЦ: Выход')
     def logout_agent(self):
         driver = self.driver
-        #Нажатие на кнопку "Выйти", обработка alert
+        # Нажатие на кнопку "Выйти", обработка alert
         button_logout = driver.find_element_by_id("LogoutButton")
         button_logout.click()
         try:
@@ -424,7 +477,7 @@ class Application:
         if (self.is_element_present(driver, locator_chat) != True):
             print("ОШИБКА!!! Чат Клиента не обнаружен ни среди активных чатов, ни в очереди!")
         assert (self.is_element_present(driver, locator_chat) == True)
-        #Подключение Агента к Чату
+        # Подключение Агента к Чату
         chat_button = driver.find_element_by_xpath(locator_chat)
         chat_button.click()
         print("Агент подключился к Чату")
@@ -460,7 +513,8 @@ class Application:
     def agent_completion_chat(self):
         driver = self.driver
         i = 0
-        while len(driver.find_elements_by_xpath("//button[contains(@name,'CloseSession') and @class='HelperButton']")) > 0:
+        while len(driver.find_elements_by_xpath(
+                "//button[contains(@name,'CloseSession') and @class='HelperButton']")) > 0:
             button_close_chat = driver.find_element_by_xpath(
                 "//button[contains(@name,'CloseSession') and @class='HelperButton']")
             button_close_chat.click()
@@ -499,13 +553,11 @@ class Application:
     @allure.step('Получение номера телефона из случайного набора цифр')
     def get_phone_as_random_set(self):
         list1 = [num for num in range(10)]
-        print("list1: ", list1)
         i = 0
         list2 = []
         while i < 10:
             list2.append(str(random.choice(list1)))
             i = i + 1
-        print("list2: ", list2)
         phone = ""
         for i in list2: phone = phone + str(i)
         print("phone: ", phone)
@@ -515,7 +567,7 @@ class Application:
         print("phone_mask: ", phone_mask)
         return phone, phone_mask
 
-    #Проверка существования элемента(для использования в методах application.py)
+    # Проверка существования элемента(для использования в методах application.py)
     def is_element_present(self, driver, locator):
         try:
             WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, locator)))
@@ -523,7 +575,7 @@ class Application:
         except:
             return False
 
-    #Проверка существования элемента(для использования во внешних методах)
+    # Проверка существования элемента(для использования во внешних методах)
     def is_element_present_main(self, locator, wait=10):
         driver = self.driver
         try:
@@ -532,7 +584,7 @@ class Application:
         except:
             return False
 
-    #Проверка видимости элемента для использования во внешних методах)
+    # Проверка видимости элемента для использования во внешних методах)
     def is_element_visible_main(self, locator):
         driver = self.driver
         try:
@@ -541,7 +593,7 @@ class Application:
         except:
             return False
 
-    #Подсчет количества эементов(для использования во внешних методах)
+    # Подсчет количества эементов(для использования во внешних методах)
     def count_of_elements_main(self, elements):
         driver = self.driver
         count = len(driver.find_elements_by_xpath(elements))

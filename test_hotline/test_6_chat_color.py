@@ -125,7 +125,7 @@ def test_change_chat_color_yellow_to_green(app):
             "ОШИБКА: Через 30 секунд зеленая карточка сеанса НЕ становится желтой (при отсутствии сообщений со стороны Агента)!!!")
     assert (app.is_element_present_main(locator_yellow) == True)
 
-    mess_agent = "BasicATAgent_" + str(num)
+    mess_agent = "BasicATAgent_message_" + str(num)
     app.agent_send_message(mess_agent)
 
     print(str(datetime.datetime.now()))

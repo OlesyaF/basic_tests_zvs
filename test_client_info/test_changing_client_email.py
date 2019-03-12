@@ -12,7 +12,7 @@ import allure
 def test_changing_client_email(app):
     print("test_changing_client_email.py is running")
 
-    email = str(app.calc_check_sum_from_date()) + "@autotest4.ru"
+    email = str(app.calc_check_sum_from_date()) + "@autotest.ru"
     print("email: ", email)
     locator = "//span[contains(text(),'" + email + "')]"
 

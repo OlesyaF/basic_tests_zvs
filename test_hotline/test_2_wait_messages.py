@@ -2,13 +2,12 @@
 
 import time
 import allure
-import pytest
+
 
 
 # Проверка отображения служебных сообщений во время ожидания подключения к Чату Агента
 
 @allure.title("Проверка отображения сообщений во время ожидания подключения к Чату Агента")
-#@pytest.mark.skip(reason='This test is skipped as there is not a kit which has not written a long time!')
 def test_wait_messages(app):
     print("test_2_wait_messages.py is running")
 
@@ -19,6 +18,7 @@ def test_wait_messages(app):
 
     num = app.calc_check_sum_from_date()
     mess_client = "BasicATClient_" + str(num)
+    print("mess_client: ")
     app.client_send_message(mess_client)
     app.is_client_message_in_ov_chat(mess_client)
 

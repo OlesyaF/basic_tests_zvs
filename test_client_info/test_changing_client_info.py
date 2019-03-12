@@ -10,11 +10,11 @@ import allure
 def test_changing_client_info(app):
     print("test_changing_client_info.py is running")
 
-    client_name = str(app.calc_check_sum_from_date()) + "#autotest4"
+    client_name = str(app.calc_check_sum_from_date()) + "#autotest"
     print("client_name: ", client_name)
     locator1 = "//span[contains(text(),'" + client_name + "')]"
 
-    email = str(app.calc_check_sum_from_date()) + "@autotest4.ru"
+    email = str(app.calc_check_sum_from_date()) + "@autotest.ru"
     print("email: ", email)
     locator2 = "//span[contains(text(),'" + email + "')]"
 

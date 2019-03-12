@@ -11,7 +11,7 @@ import allure
 def test_changing_client_name(app):
     print("test_changing_client_name.py is running")
 
-    client_name = str(app.calc_check_sum_from_date()) + "#autotest4"
+    client_name = str(app.calc_check_sum_from_date()) + "#autotest"
     print("client_name: ", client_name)
     locator = "//span[contains(text(),'" + client_name + "')]"
 
