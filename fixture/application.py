@@ -58,7 +58,7 @@ class Application:
                 print("ОШИБКА!!! Поле для ввода пароля не найдено. Клиент не разлогинился!")
                 assert (self.is_element_present(driver, "//input[@id='loginform-password']") == True)
         if (self.is_element_present(driver, "//input[@id='loginform-password']") == True):
-            print("ОВ доступна.")
+            print("ОВ доступна")
         else:
             print("ОШИБКА!!! Онлайн Версия не доступна! - Не найдено поле 'Логин' для авторизации")
             assert (self.is_element_present(driver, "//input[@id='loginform-login']") == True)
@@ -333,6 +333,16 @@ class Application:
                                                                       locator8) == True and self.is_element_present(
                 driver, locator9) == True)
 
+    @allure.step('Онлайн-версия: Получение имени Клиента')
+    def get_client_name(self):
+        driver = self.driver
+        client_name_field = driver.find_element_by_xpath("//span[@id='ChatUsername']")
+        client_name = str(client_name_field.get_attribute("textContent"))
+        client_name = client_name.replace(" ", "")
+        print("client_name: ", client_name)
+        return client_name
+
+
     # АРМ РИЦ: АГЕНТ
 
     @allure.step('АРМ РИЦ: Вход')
@@ -355,7 +365,7 @@ class Application:
                 print("ОШИБКА!!! Поле для ввода пароля не найдено. Агент не разлогинился!")
                 assert (self.is_element_present(driver, "//input[@id='Password']") == True)
         if (self.is_element_present(driver, "//input[@id='User']") == True):
-            print("АРМ РИЦ доступно.")
+            print("АРМ РИЦ доступно")
         else:
             print("ОШИБКА!!! АРМ РИЦ не доступно! - Не найдено поле 'Логин' для авторизации")
             assert (self.is_element_present(driver, "//input[@id='User']") == True)

@@ -2,7 +2,6 @@
 
 import datetime
 import time
-
 import allure
 
 
@@ -12,26 +11,29 @@ import allure
 def test_change_chat_color_green_yellow_red(app):
     print("test_change_chat_color_green_yellow_red.py is running")
 
+    #PRECONDITION: Завершение всех активных Чатов в АРМ РИЦ
     app.go_to_arm_ric()
     app.login_agent()
     time.sleep(10)
     app.agent_completion_chat()
     app.logout_agent()
 
+    #PRECONDITION: Отправка Клиентом сообщения
     app.go_to_online_version()
     app.login_client()
     app.go_to_customer_support_service()
     time.sleep(7)
+    client_name = app.get_client_name()
     num = app.calc_check_sum_from_date()
     mess_client = "BasicATClient_" + str(num)
     app.client_send_message(mess_client)
     app.is_client_message_in_ov_chat(mess_client)
     app.logout_client()
 
+    #TEST
     app.go_to_arm_ric()
     app.login_agent()
     time.sleep(10)
-    client_name = "866712#main_autotest"
     app.agent_search_chat(client_name)
 
     print(str(datetime.datetime.now()))
@@ -82,26 +84,29 @@ def test_change_chat_color_green_yellow_red(app):
 def test_change_chat_color_yellow_to_green(app):
     print("test_change_chat_color_yellow_to_green.py is running")
 
+    #PRECONDITION: Завершение всех активных Чатов в АРМ РИЦ
     app.go_to_arm_ric()
     app.login_agent()
     time.sleep(10)
     app.agent_completion_chat()
     app.logout_agent()
 
+    #PRECONDITION: Отправка Клиентом сообщения
     app.go_to_online_version()
     app.login_client()
     app.go_to_customer_support_service()
     time.sleep(7)
+    client_name = app.get_client_name()
     num = app.calc_check_sum_from_date()
     mess_client = "BasicATClient_" + str(num)
     app.client_send_message(mess_client)
     app.is_client_message_in_ov_chat(mess_client)
     app.logout_client()
 
+    #TEST
     app.go_to_arm_ric()
     app.login_agent()
     time.sleep(10)
-    client_name = "866712#main_autotest"
     app.agent_search_chat(client_name)
 
     print(str(datetime.datetime.now()))
@@ -149,26 +154,29 @@ def test_change_chat_color_yellow_to_green(app):
 def test_change_chat_color_red_to_green(app):
     print("test_change_chat_color_red_to_green.py is running")
 
+    #PRECONDITION: Завершение всех активных Чатов в АРМ РИЦ
     app.go_to_arm_ric()
     app.login_agent()
     time.sleep(10)
     app.agent_completion_chat()
     app.logout_agent()
 
+    #PRECONDITION: Отправка Клиентом сообщения
     app.go_to_online_version()
     app.login_client()
     app.go_to_customer_support_service()
     time.sleep(7)
+    client_name = app.get_client_name()
     num = app.calc_check_sum_from_date()
     mess_client = "BasicATClient_" + str(num)
     app.client_send_message(mess_client)
     app.is_client_message_in_ov_chat(mess_client)
     app.logout_client()
 
+    #TEST
     app.go_to_arm_ric()
     app.login_agent()
     time.sleep(10)
-    client_name = "866712#main_autotest"
     app.agent_search_chat(client_name)
 
     print(str(datetime.datetime.now()))

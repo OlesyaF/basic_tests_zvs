@@ -11,10 +11,12 @@ import allure
 def test_messaging(app):
     print("test_3_messaging.py is running")
 
+    #TEST
     app.go_to_online_version()
     app.login_client()
     app.go_to_customer_support_service()
     time.sleep(7)
+    client_name = app.get_client_name()
     num = app.calc_check_sum_from_date()
     mess_client = "BasicATClient_message_" + str(num)
     app.client_send_message(mess_client)
@@ -25,7 +27,6 @@ def test_messaging(app):
     app.login_agent()
     time.sleep(10)
     mess_agent = "BasicATAgent_message_" + str(num)
-    client_name = "866712#main_autotest"
     app.agent_search_chat(client_name)
     time.sleep(7)
     app.is_client_message_in_arm_ric_chat(mess_client)
@@ -39,4 +40,5 @@ def test_messaging(app):
     time.sleep(7)
     app.is_agent_message_in_ov_chat(mess_agent)
     app.logout_client()
+
     print("test_3_messaging.py is done successfully")

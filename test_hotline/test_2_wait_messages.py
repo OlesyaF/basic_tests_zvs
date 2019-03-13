@@ -4,13 +4,20 @@ import time
 import allure
 
 
-
 # Проверка отображения служебных сообщений во время ожидания подключения к Чату Агента
 
 @allure.title("Проверка отображения сообщений во время ожидания подключения к Чату Агента")
 def test_wait_messages(app):
     print("test_2_wait_messages.py is running")
 
+    #PRECONDITION: Завершение всех активных Чатов в АРМ РИЦ
+    app.go_to_arm_ric()
+    app.login_agent()
+    time.sleep(10)
+    app.agent_completion_chat()
+    app.logout_agent()
+
+    #TEST
     app.go_to_online_version()
     app.login_client()
     app.go_to_customer_support_service()
