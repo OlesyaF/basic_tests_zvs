@@ -136,7 +136,7 @@ class Application:
         input_field_name.click()
         input_field_name.clear()
         input_field_name.send_keys(Keys.HOME)
-        time.sleep(2)
+        time.sleep(3)
         input_field_name.send_keys(phone)
         print("В поле 'Телефон' введено новое значение")
 
@@ -342,7 +342,6 @@ class Application:
         print("client_name: ", client_name)
         return client_name
 
-
     # АРМ РИЦ: АГЕНТ
 
     @allure.step('АРМ РИЦ: Вход')
@@ -403,12 +402,15 @@ class Application:
             driver.switch_to.alert.accept()
         except:
             NoAlertPresentException
-        if (self.is_element_present(driver, "//div[contains(text(),'Доступность сервиса «Задать вопрос»')]") == True):
+        if (self.is_element_present(driver,
+                                    "//div[contains(text(),'Настройка доступности сервиса')]") == True and self.is_element_present(
+                driver, "//div[@class='button blue fl-lt']") == True):
             print("Агент перешел в настройки доступности сервиса ‎Задать вопрос для онлайн-версии")
         else:
             print("ОШИБКА!!! Агент не перешел в настройки доступности сервиса ‎Задать вопрос для онлайн-версии")
             assert (self.is_element_present(driver,
-                                            "//div[contains(text(),'Доступность сервиса «Задать вопрос»‎')]") == True)
+                                    "//div[contains(text(),'Настройка доступности сервиса')]") == True and self.is_element_present(
+                driver, "//div[@class='button blue fl-lt']") == True)
 
     @allure.step('АРМ РИЦ: Поиск комплекта BUHUL_866712')
     def kit_search(self):
