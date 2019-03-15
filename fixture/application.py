@@ -469,9 +469,10 @@ class Application:
             assert (self.is_element_present(driver, "//input[@id='Password']") == True)
 
     @allure.step('АРМ РИЦ: Поиск нужного Чата и подключение к сеансу')
-    def agent_search_chat(self, client_name):
+    def agent_search_chat(self):
         driver = self.driver
-        locator_chat = "//strong[contains(text(),'" + client_name + "')]"
+        client_login = self.client_login
+        locator_chat = "//*[contains(text(),'" + client_login + "')]"
         locator_connect_to_session = "//*[@id='Sessions']/div[3]/button"
         i = 0
         if (self.is_element_present(driver, locator_chat) == True):
@@ -485,6 +486,47 @@ class Application:
                 if (self.is_element_present(driver, locator_chat) == True):
                     print("Агент нашел Чат Клиента в ", i, " очереди")
                     break
+        time.sleep(5)
+        if (self.is_element_present(driver, locator_chat) != True):
+            print("ОШИБКА!!! Чат Клиента не обнаружен ни среди активных чатов, ни в очереди!")
+        assert (self.is_element_present(driver, locator_chat) == True)
+        # Подключение Агента к Чату
+        chat_button = driver.find_element_by_xpath(locator_chat)
+        chat_button.click()
+        print("Агент подключился к Чату")
+
+    @allure.step('АРМ РИЦ: Поиск нужного Чата и подключение к сеансу (с завершением всех прочих Чатов)')
+    def agent_search_only_one_chat(self):
+        driver = self.driver
+        client_login = self.client_login
+        locator_chat = "//*[contains(text(),'" + client_login + "')]"
+        locator_connect_to_session = "//*[@id='Sessions']/div[3]/button"
+        i = 0
+        if (self.is_element_present(driver, locator_chat) == True):
+            print("Агент нашел Чат Клиента среди активных чатов")
+        else:
+            while (self.is_element_present(driver, locator_connect_to_session) == True):
+                connect_to_session_button = WebDriverWait(driver, 10).until(
+                    EC.presence_of_element_located((By.CLASS_NAME, "StartChat")))
+                connect_to_session_button.click()
+                i += 1
+                if (self.is_element_present(driver, locator_chat) == True):
+                    print("Агент нашел Чат Клиента в ", i, " очереди")
+                    break
+                else:
+                    button_close_chat = driver.find_element_by_xpath(
+                        "//button[contains(@name,'CloseSession') and @class='HelperButton']")
+                    button_close_chat.click()
+                    try:
+                        driver.switch_to.alert.accept()
+                    except:
+                        NoAlertPresentException
+                    button_remove_chat = driver.find_element_by_xpath("//button[@class='RemoveSessionRow']")
+                    button_remove_chat.click()
+                    try:
+                        driver.switch_to.alert.accept()
+                    except:
+                        NoAlertPresentException
         time.sleep(5)
         if (self.is_element_present(driver, locator_chat) != True):
             print("ОШИБКА!!! Чат Клиента не обнаружен ни среди активных чатов, ни в очереди!")

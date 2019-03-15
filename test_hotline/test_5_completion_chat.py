@@ -35,7 +35,6 @@ def test_5_completion_sessions(app):
         app.login_client()
         app.go_to_customer_support_service()
         time.sleep(7)
-        client_name = app.get_client_name()
         num = app.calc_check_sum_from_date()
         mess_client = "BasicATClient_message_" + str(num)
         app.client_send_message(mess_client)
@@ -45,7 +44,7 @@ def test_5_completion_sessions(app):
         app.go_to_arm_ric()
         app.login_agent()
         time.sleep(10)
-        app.agent_search_chat(client_name)
+        app.agent_search_only_one_chat()
         time.sleep(7)
         elements = "//button[contains(@name,'CloseSession') and @class='HelperButton']"
         count_of_chat_before = app.count_of_elements_main(elements)

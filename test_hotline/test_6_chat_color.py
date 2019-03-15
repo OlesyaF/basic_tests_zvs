@@ -23,7 +23,6 @@ def test_change_chat_color_green_yellow_red(app):
     app.login_client()
     app.go_to_customer_support_service()
     time.sleep(7)
-    client_name = app.get_client_name()
     num = app.calc_check_sum_from_date()
     mess_client = "BasicATClient_" + str(num)
     app.client_send_message(mess_client)
@@ -34,7 +33,7 @@ def test_change_chat_color_green_yellow_red(app):
     app.go_to_arm_ric()
     app.login_agent()
     time.sleep(10)
-    app.agent_search_chat(client_name)
+    app.agent_search_only_one_chat()
 
     print(str(datetime.datetime.now()))
     locator = "//div[@class='Tick SessionRowActive SessionRowGreen']"
@@ -96,7 +95,6 @@ def test_change_chat_color_yellow_to_green(app):
     app.login_client()
     app.go_to_customer_support_service()
     time.sleep(7)
-    client_name = app.get_client_name()
     num = app.calc_check_sum_from_date()
     mess_client = "BasicATClient_" + str(num)
     app.client_send_message(mess_client)
@@ -107,7 +105,7 @@ def test_change_chat_color_yellow_to_green(app):
     app.go_to_arm_ric()
     app.login_agent()
     time.sleep(10)
-    app.agent_search_chat(client_name)
+    app.agent_search_only_one_chat()
 
     print(str(datetime.datetime.now()))
     locator_green = "//div[@class='Tick SessionRowActive SessionRowGreen']"
@@ -166,7 +164,6 @@ def test_change_chat_color_red_to_green(app):
     app.login_client()
     app.go_to_customer_support_service()
     time.sleep(7)
-    client_name = app.get_client_name()
     num = app.calc_check_sum_from_date()
     mess_client = "BasicATClient_" + str(num)
     app.client_send_message(mess_client)
@@ -177,7 +174,7 @@ def test_change_chat_color_red_to_green(app):
     app.go_to_arm_ric()
     app.login_agent()
     time.sleep(10)
-    app.agent_search_chat(client_name)
+    app.agent_search_only_one_chat()
 
     print(str(datetime.datetime.now()))
     locator_green = "//div[@class='Tick SessionRowActive SessionRowGreen']"
