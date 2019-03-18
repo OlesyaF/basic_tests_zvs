@@ -473,14 +473,14 @@ class Application:
         driver = self.driver
         client_login = self.client_login
         locator_chat = "//*[contains(text(),'" + client_login + "')]"
-        locator_connect_to_session = "//*[@id='Sessions']/div[3]/button"
+        locator_connect_to_session = "//button[@name='StartChat']"
         i = 0
         if (self.is_element_present(driver, locator_chat) == True):
             print("Агент нашел Чат Клиента среди активных чатов")
         else:
             while (self.is_element_present(driver, locator_connect_to_session) == True):
                 connect_to_session_button = WebDriverWait(driver, 10).until(
-                    EC.presence_of_element_located((By.CLASS_NAME, "StartChat")))
+                    EC.visibility_of_element_located((By.CLASS_NAME, "StartChat")))
                 connect_to_session_button.click()
                 i += 1
                 if (self.is_element_present(driver, locator_chat) == True):
@@ -495,19 +495,34 @@ class Application:
         chat_button.click()
         print("Агент подключился к Чату")
 
+    @allure.step('АРМ РИЦ: Подключение ко всем сеансам из очереди')
+    def agent_connect_to_all_chat(self):
+        driver = self.driver
+        locator_connect_to_session = "//button[@name='StartChat']"
+        i = 0
+        while (self.is_element_visible(driver, locator_connect_to_session) == True):
+            connect_to_session_button = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, "StartChat")))
+            connect_to_session_button.click()
+            i += 1
+            time.sleep(5)
+        if i>0:
+            print("Агент подключился к ", i, "Чатам")
+        else:
+            print("Агент не подключился ни к одному Чату")
+
     @allure.step('АРМ РИЦ: Поиск нужного Чата и подключение к сеансу (с завершением всех прочих Чатов)')
     def agent_search_only_one_chat(self):
         driver = self.driver
         client_login = self.client_login
         locator_chat = "//*[contains(text(),'" + client_login + "')]"
-        locator_connect_to_session = "//*[@id='Sessions']/div[3]/button"
+        locator_connect_to_session = "//button[@name='StartChat']"
         i = 0
         if (self.is_element_present(driver, locator_chat) == True):
             print("Агент нашел Чат Клиента среди активных чатов")
         else:
             while (self.is_element_present(driver, locator_connect_to_session) == True):
                 connect_to_session_button = WebDriverWait(driver, 10).until(
-                    EC.presence_of_element_located((By.CLASS_NAME, "StartChat")))
+                    EC.visibility_of_element_located((By.CLASS_NAME, "StartChat")))
                 connect_to_session_button.click()
                 i += 1
                 if (self.is_element_present(driver, locator_chat) == True):
@@ -625,6 +640,14 @@ class Application:
     def is_element_present(self, driver, locator):
         try:
             WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, locator)))
+            return True
+        except:
+            return False
+
+    # Проверка видимости элемента(для использования в методах application.py)
+    def is_element_visible(self, driver, locator):
+        try:
+            WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.XPATH, locator)))
             return True
         except:
             return False
