@@ -342,6 +342,15 @@ class Application:
         print("client_name: ", client_name)
         return client_name
 
+    @allure.step('Онлайн-версия: Получение email Клиента')
+    def get_email_name(self):
+        driver = self.driver
+        client_email_field = driver.find_element_by_xpath("//span[@id='ChatUsernameEmail']")
+        client_email = str(client_email_field.get_attribute("textContent"))
+        client_email = client_email.replace(" ", "")
+        print("client_email: ", client_email)
+        return client_email
+
     # АРМ РИЦ: АГЕНТ
 
     @allure.step('АРМ РИЦ: Вход')
@@ -472,7 +481,7 @@ class Application:
     def agent_search_chat(self):
         driver = self.driver
         client_login = self.client_login
-        locator_chat = "//*[contains(text(),'" + client_login + "')]"
+        locator_chat = "//*[text()='" + client_login + "']"
         locator_connect_to_session = "//button[@name='StartChat']"
         i = 0
         if (self.is_element_present(driver, locator_chat) == True):
@@ -514,17 +523,20 @@ class Application:
     def agent_search_only_one_chat(self):
         driver = self.driver
         client_login = self.client_login
-        locator_chat = "//*[contains(text(),'" + client_login + "')]"
+        locator_chat = "//*[text()='" + client_login + "']"
+        print("locator_chat = ", locator_chat)
         locator_connect_to_session = "//button[@name='StartChat']"
         i = 0
-        if (self.is_element_present(driver, locator_chat) == True):
+        if (self.is_element_visible(driver, locator_chat) == True):
             print("Агент нашел Чат Клиента среди активных чатов")
         else:
+            print("Агент не нашел Чат Клиента среди активных чатов")
             while (self.is_element_present(driver, locator_connect_to_session) == True):
-                connect_to_session_button = WebDriverWait(driver, 10).until(
-                    EC.visibility_of_element_located((By.CLASS_NAME, "StartChat")))
+                connect_to_session_button = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, "StartChat")))
                 connect_to_session_button.click()
                 i += 1
+                print("i = ", i)
+                time.sleep(5)
                 if (self.is_element_present(driver, locator_chat) == True):
                     print("Агент нашел Чат Клиента в ", i, " очереди")
                     break

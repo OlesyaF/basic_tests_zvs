@@ -24,6 +24,7 @@ def test_client_card(app):
     app.go_to_customer_support_service()
     time.sleep(7)
     client_name = app.get_client_name()
+    client_email = app.get_email_name()
     num = app.calc_check_sum_from_date()
     mess_client = "BasicATClient_" + str(num)
     app.client_send_message(mess_client)
@@ -37,22 +38,45 @@ def test_client_card(app):
     app.agent_search_only_one_chat()
 
     locator1 = "//strong[contains(text(),'" + client_name + "')]"
-    locator2 = "//strong[contains(text(),'Универсальный')]"
-    locator3 = "//*[contains(text(),'Производится поиск свободного специалиста. Пожалуйста, подождите.')]"
-    locator4 = "//*[contains(text(),'В настоящий момент все специалисты заняты. Подождите, пожалуйста, еще немного.')]"
-    locator5 = "//*[contains(text(),'В ближайшее время специалист подключится к беседе с Вами.')]"
-    locator6 = "//*[contains(text(),'Пожалуйста, подождите. Мы ответим Вам очень скоро.')]"
+    locator2 = "//*[text()='профиль: ']"
+    locator3 = "//strong[contains(text(),'Универсальный')]"
+    locator4 = "//div[@class='distr-majorsys' and text()='КонсультантБухгалтер']"
+    locator5 = "//*[text()='№']"
+    locator6 = "//span[@class='DistrNo' and contains(text(),'109_866712')]"
+    locator7 = "//*[text()='ОИВ']"
+    locator8 = "//strong[text()='" + client_email + "']"
 
-    if (app.is_element_visible_main(locator1) == True and app.is_element_visible_main(locator2) == True):
-        print(
-            "В активном Чате не отображаются приветственные и ожидательные сообщения - ТЕСТ УСПЕШНЫЙ")
-        allure.dynamic.description(
-            'В активном Чате не отображаются  приветственные и ожидательные сообщения - ТЕСТ УСПЕШНЫЙ')
+    if (app.is_element_present_main(locator1) == True):
+        print("В карточке Клиента имя отображается корректно - ТЕСТ УСПЕШНЫЙ")
     else:
-        print("ОШИБКА: В активном Чате отображаются приветственные и/или ожидательные сообщения - ТЕСТ НЕ УСПЕШНЫЙ!!!")
-        allure.dynamic.description(
-            'ОШИБКА: В активном Чате отображаются приветственные и/или ожидательные сообщения - ТЕСТ НЕ УСПЕШНЫЙ!!!')
-        assert (app.is_element_visible_main(locator1) == True and app.is_element_visible_main(locator2) == True)
+        print("ОШИБКА: В карточке Клиента некорректно отображается имя - ТЕСТ НЕ УСПЕШНЫЙ!!!")
+        assert (app.is_element_present_main(locator1) == True)
+
+    if (app.is_element_present_main(locator2) == True and app.is_element_present_main(locator3) == True and app.is_element_present_main(locator4) == True):
+        print("В карточке Клиента профиль отображается корректно - ТЕСТ УСПЕШНЫЙ")
+    else:
+        print("ОШИБКА: В карточке Клиента некорректно отображается профиль - ТЕСТ НЕ УСПЕШНЫЙ!!!")
+        assert (app.is_element_present_main(locator2) == True and app.is_element_present_main(locator3) == True and app.is_element_present_main(locator4) == True)
+
+    if (app.is_element_present_main(locator5) == True and app.is_element_present_main(locator6) == True):
+        print("В карточке Клиента номер дистрибутива отображается корректно - ТЕСТ УСПЕШНЫЙ")
+    else:
+        print("ОШИБКА: В карточке Клиента некорректно отображается номер дистрибутива - ТЕСТ НЕ УСПЕШНЫЙ!!!")
+        assert (app.is_element_present_main(locator5) == True and app.is_element_present_main(locator6) == True)
+
+    if (app.is_element_present_main(locator7) == True):
+        print("В карточке Клиента тип версии отображается корректно - ТЕСТ УСПЕШНЫЙ")
+    else:
+        print("ОШИБКА: В карточке Клиента некорректно отображается тип версии - ТЕСТ НЕ УСПЕШНЫЙ!!!")
+        assert (app.is_element_present_main(locator7) == True)
+
+    if (app.is_element_present_main(locator8) == True):
+        print("В карточке Клиента email отображается корректно - ТЕСТ УСПЕШНЫЙ")
+    else:
+        print("ОШИБКА: В карточке Клиента некорректно отображается email - ТЕСТ НЕ УСПЕШНЫЙ!!!")
+        assert (app.is_element_present_main(locator8) == True)
+
+    allure.dynamic.description('В карточке Клиента параметры отображаются корректно - ТЕСТ УСПЕШНЫЙ')
 
     app.logout_agent()
     print("test_client_card.py is done successfully")
