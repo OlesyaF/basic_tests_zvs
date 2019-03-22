@@ -22,8 +22,11 @@ def test_welcome_message(app):
     app.login_client()
     app.go_to_customer_support_service()
     time.sleep(7)
-
+    app.go_to_client_info()
+    time.sleep(2)
     client_name = app.get_client_name()
+    app.go_out_client_info()
+    time.sleep(2)
 
     locator1 = "//div[contains(text(),'Здравствуйте, " + client_name + "!')]"
     locator2 = "//*[contains(text(),'Введите свой вопрос. Мы подключимся к диалогу в ближайшее время.')]"

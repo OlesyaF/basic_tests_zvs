@@ -131,7 +131,6 @@ class Application:
     @allure.step('Онлайн-версия: Изменение номера телефона Клиента')
     def changing_client_phone(self, phone):
         driver = self.driver
-        # input_field_name = WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, "//input[@id='FormCustomerPhone']")))
         input_field_name = driver.find_element_by_id("FormCustomerPhone")
         input_field_name.click()
         input_field_name.clear()
@@ -148,6 +147,17 @@ class Application:
         button_close_chat = driver.find_element_by_xpath("//div[@class='icon livechatclose-16']")
         button_close_chat.click()
         driver.refresh()
+
+    @allure.step('Онлайн-версия: Выход из окна "Изменить контактные данные"')
+    def go_out_client_info(self):
+        driver = self.driver
+        button_close_client_info = driver.find_element_by_xpath("//div[@id='CustomerInfoCancel']")
+        button_close_client_info.click()
+        if (self.is_element_present(driver, "//textarea[@id='MsgInput']") == True):
+            print("Клиент перешел в окно 'Сервис поддержки клиентов'")
+        else:
+            print("ОШИБКА!!! Клиент НЕ перешел в окно 'Сервис поддержки клиентов' - Не найдено поле для ввода сообщения")
+            assert (self.is_element_present(driver, "//textarea[@id='MsgInput']") == True)
 
     @allure.step('Онлайн-версия: Выход')
     def logout_client(self):
@@ -336,20 +346,27 @@ class Application:
     @allure.step('Онлайн-версия: Получение имени Клиента')
     def get_client_name(self):
         driver = self.driver
-        client_name_field = driver.find_element_by_xpath("//span[@id='ChatUsername']")
-        client_name = str(client_name_field.get_attribute("textContent"))
-        client_name = client_name.replace(" ", "")
+        client_name_field = driver.find_element_by_xpath("//input[@id='FormCustomerFullname']")
+        client_name = str(client_name_field.get_attribute("value"))
         print("client_name: ", client_name)
         return client_name
 
     @allure.step('Онлайн-версия: Получение email Клиента')
     def get_email_name(self):
         driver = self.driver
-        client_email_field = driver.find_element_by_xpath("//span[@id='ChatUsernameEmail']")
-        client_email = str(client_email_field.get_attribute("textContent"))
-        client_email = client_email.replace(" ", "")
-        print("client_email: ", client_email)
+        client_email_field = driver.find_element_by_xpath("//input[@id='FormCustomerEmail']")
+        client_email = str(client_email_field.get_attribute("value"))
         return client_email
+
+    @allure.step('Онлайн-версия: Получение профиля Клиента')
+    def get_profile(self):
+        driver = self.driver
+        client_profile = driver.find_element_by_xpath("//span[@class='text']")
+        client_profile = str(client_profile.get_attribute("textContent"))
+        client_profile = client_profile.replace(" ", "")
+        print("client_profile: ", client_profile)
+        return client_profile
+
 
     # АРМ РИЦ: АГЕНТ
 

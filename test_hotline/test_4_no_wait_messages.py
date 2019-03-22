@@ -1,23 +1,25 @@
 # -*- encoding: utf-8 -*-
 
 import time
+
 import allure
 
 
 # Проверка отсутствия в активном Чате ОВ служебных сообщений: приветствия и уведомлений при ожидании подключения Агента
 
-@allure.title("Проверка отсутствия в активном Чате ОВ служебных сообщений: приветствия и уведомлений при ожидании подключения Агента")
+@allure.title(
+    "Проверка отсутствия в активном Чате ОВ служебных сообщений: приветствия и уведомлений при ожидании подключения Агента")
 def test_no_wait_messages(app):
     print("test_4_no_wait_messages.py is running")
 
-    #PRECONDITION: Завершение всех активных Чатов в АРМ РИЦ
+    # PRECONDITION: Завершение всех активных Чатов в АРМ РИЦ
     app.go_to_arm_ric()
     app.login_agent()
     time.sleep(10)
     app.agent_completion_chat()
     app.logout_agent()
 
-    #PRECONDITION: Создание активного Чата (Онлайн-Версия)
+    # PRECONDITION: Создание активного Чата (Онлайн-Версия)
     app.go_to_online_version()
     app.login_client()
     app.go_to_customer_support_service()
@@ -28,7 +30,7 @@ def test_no_wait_messages(app):
     app.is_client_message_in_ov_chat(mess_client)
     app.logout_client()
 
-    #PRECONDITION: Создание активного Чата (АРМ РИЦ)
+    # PRECONDITION: Создание активного Чата (АРМ РИЦ)
     app.go_to_arm_ric()
     app.login_agent()
     time.sleep(10)
@@ -40,12 +42,16 @@ def test_no_wait_messages(app):
     app.is_agent_message_in_arm_ric_chat(mess_agent)
     app.logout_agent()
 
-    #TEST
+    # TEST
     app.go_to_online_version()
     app.login_client()
     app.go_to_customer_support_service()
     time.sleep(7)
+    app.go_to_client_info()
+    time.sleep(2)
     client_name = app.get_client_name()
+    app.go_out_client_info()
+    time.sleep(2)
 
     locator1 = "//div[contains(text(),'Здравствуйте, " + client_name + "!')]"
     locator2 = "//*[contains(text(),'Введите свой вопрос. Мы подключимся к диалогу в ближайшее время.')]"
