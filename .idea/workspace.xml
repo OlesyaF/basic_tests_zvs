@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="58688b4d-c806-4016-bde0-be95a17afdca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/fixture/application.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixture/application.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_client_info/test_changing_client_email.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_client_info/test_changing_client_email.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_client_info/test_changing_client_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_client_info/test_changing_client_info.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_client_info/test_changing_client_name.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_client_info/test_changing_client_name.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_client_info/test_changing_client_phone.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_client_info/test_changing_client_phone.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_hotline/test_7_client_card.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_hotline/test_7_client_card.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_hotline/test_8_send_quick_reply.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_hotline/test_8_send_quick_reply.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +28,7 @@
           <entry key="gitignore" value="2" />
           <entry key="json" value="6" />
           <entry key="md" value="1" />
-          <entry key="py" value="129" />
+          <entry key="py" value="154" />
           <entry key="txt" value="1" />
         </counts>
       </usages-collector>
@@ -42,7 +38,7 @@
           <entry key="JSP" value="1" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="4" />
-          <entry key="Python" value="129" />
+          <entry key="Python" value="154" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -50,14 +46,14 @@
           <entry key="" value="6" />
           <entry key="dummy" value="53" />
           <entry key="json" value="82" />
-          <entry key="py" value="23546" />
+          <entry key="py" value="24265" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="82" />
           <entry key="PLAIN_TEXT" value="53" />
-          <entry key="Python" value="23552" />
+          <entry key="Python" value="24271" />
         </counts>
       </usages-collector>
     </session>
@@ -67,26 +63,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fixture/application.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="611" column="8" selection-start-line="611" selection-start-column="8" selection-end-line="611" selection-end-column="8" />
+            <state relative-caret-position="30">
+              <caret line="483" column="8" selection-start-line="483" selection-start-column="8" selection-end-line="483" selection-end-column="8" />
               <folding>
                 <element signature="e#27#42#0" expanded="true" />
-                <marker date="1553504276560" expanded="true" signature="949:1098" ph="..." />
-                <marker date="1553504276560" expanded="true" signature="9518:14628" ph="..." />
-                <marker date="1553504276560" expanded="true" signature="14744:14749" ph="..." />
-                <marker date="1553504276560" expanded="true" signature="15189:15194" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_client_info/test_changing_client_email.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="101" column="8" selection-start-line="101" selection-start-column="8" selection-end-line="101" selection-end-column="8" />
-              <folding>
-                <element signature="e#27#40#0" expanded="true" />
+                <marker date="1553531379763" expanded="true" signature="1014:1163" ph="..." />
+                <marker date="1553531379763" expanded="true" signature="9583:14693" ph="..." />
+                <marker date="1553531379763" expanded="true" signature="14809:14814" ph="..." />
+                <marker date="1553531379763" expanded="true" signature="15254:15259" ph="..." />
               </folding>
             </state>
           </provider>
@@ -95,89 +79,80 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test_hotline/test_8_send_quick_reply.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="29" column="21" lean-forward="true" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
+            <state relative-caret-position="261">
+              <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_hotline/test_4_no_wait_messages.py">
+        <entry file="file://$PROJECT_DIR$/env/Lib/site-packages/selenium/webdriver/remote/remote_connection.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" column="17" lean-forward="true" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
-              <folding>
-                <element signature="e#27#38#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="234">
+              <caret line="396" selection-start-line="396" selection-end-line="396" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_hotline/test_1_welcome_message.py">
+        <entry file="file://$PROJECT_DIR$/env/Lib/site-packages/urllib3/request.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="22" selection-start-line="22" selection-end-line="28" selection-end-column="17" />
-              <folding>
-                <element signature="e#27#38#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="278">
+              <caret line="149" selection-start-line="149" selection-end-line="149" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_hotline/test_2_wait_messages.py">
+        <entry file="file://$PROJECT_DIR$/env/Lib/site-packages/urllib3/poolmanager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-85">
-              <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
-              <folding>
-                <element signature="e#27#38#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="234">
+              <caret line="101" selection-start-line="101" selection-end-line="101" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_client_info/test_changing_client_phone.py">
+        <entry file="file://$PROJECT_DIR$/env/Lib/site-packages/urllib3/util/url.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-388">
-              <caret line="34" column="8" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
-              <folding>
-                <element signature="e#27#38#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="142">
+              <caret line="221" selection-start-line="221" selection-end-line="221" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_client_info/test_changing_client_name.py">
+        <entry file="file://C:/Python37/Lib/platform.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="99" column="8" selection-start-line="99" selection-start-column="8" selection-end-line="99" selection-end-column="8" />
-              <folding>
-                <element signature="e#27#38#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="132">
+              <caret line="1034" selection-start-line="1034" selection-end-line="1034" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_client_info/test_changing_client_info.py">
+        <entry file="file://C:/Python37/Lib/urllib/parse.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="66" column="8" selection-start-line="66" selection-start-column="8" selection-end-line="66" selection-end-column="8" />
+            <state relative-caret-position="132">
+              <caret line="147" selection-start-line="147" selection-end-line="147" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_hotline/test_7_client_card.py">
+        <entry file="file://C:/Python37/Lib/logging/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="30" column="129" selection-start-line="30" selection-start-column="129" selection-end-line="30" selection-end-column="129" />
-              <folding>
-                <element signature="e#27#38#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="132">
+              <caret line="1318" selection-start-line="1318" selection-end-line="1318" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/env/Lib/site-packages/selenium/webdriver/remote/utils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
             </state>
           </provider>
         </entry>
@@ -248,20 +223,20 @@
         <option value="$PROJECT_DIR$/test_hotline/test_1_welcome_message.py" />
         <option value="$PROJECT_DIR$/test_hotline/test_4_no_wait_messages.py" />
         <option value="$PROJECT_DIR$/test_hotline/test_7_client_card.py" />
-        <option value="$PROJECT_DIR$/fixture/application.py" />
-        <option value="$PROJECT_DIR$/test_hotline/test_8_send_quick_reply.py" />
         <option value="$PROJECT_DIR$/test_client_info/test_changing_client_name.py" />
         <option value="$PROJECT_DIR$/test_client_info/test_changing_client_phone.py" />
         <option value="$PROJECT_DIR$/test_client_info/test_changing_client_info.py" />
         <option value="$PROJECT_DIR$/test_client_info/test_changing_client_email.py" />
+        <option value="$PROJECT_DIR$/test_hotline/test_8_send_quick_reply.py" />
+        <option value="$PROJECT_DIR$/fixture/application.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="278" />
-    <option name="y" value="49" />
+    <option name="x" value="385" />
+    <option name="y" value="94" />
     <option name="width" value="1366" />
-    <option name="height" value="937" />
+    <option name="height" value="877" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -347,6 +322,57 @@
     </option>
   </component>
   <component name="RunManager" selected="Python tests.pytest in test_8_send_quick_reply.py">
+    <configuration name="application" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="basic_tests_zvs" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/fixture" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/fixture/application.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest in test_3_messaging.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="basic_tests_zvs" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/test_hotline/test_3_messaging.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest in test_5_completion_chat.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="basic_tests_zvs" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/test_hotline/test_5_completion_chat.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration name="pytest in test_8_send_quick_reply.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="basic_tests_zvs" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -359,51 +385,6 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;$PROJECT_DIR$/test_hotline/test_8_send_quick_reply.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="pytest in test_changing_client_email.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
-      <module name="basic_tests_zvs" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/test_client_info/test_changing_client_email.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="pytest in test_changing_client_info.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
-      <module name="basic_tests_zvs" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/test_client_info/test_changing_client_info.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="pytest in test_changing_client_phone.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
-      <module name="basic_tests_zvs" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/test_client_info/test_changing_client_phone.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
@@ -423,19 +404,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python tests.pytest in test_changing_client_info.py" />
-      <item itemvalue="Python tests.pytest in test_changing_client_email.py" />
-      <item itemvalue="Python tests.pytest in test_changing_client_phone.py" />
+      <item itemvalue="Python.application" />
       <item itemvalue="Python tests.pytest in test_send_question.py" />
       <item itemvalue="Python tests.pytest in test_8_send_quick_reply.py" />
+      <item itemvalue="Python tests.pytest in test_3_messaging.py" />
+      <item itemvalue="Python tests.pytest in test_5_completion_chat.py" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python tests.pytest in test_8_send_quick_reply.py" />
+        <item itemvalue="Python tests.pytest in test_3_messaging.py" />
+        <item itemvalue="Python tests.pytest in test_5_completion_chat.py" />
+        <item itemvalue="Python.application" />
         <item itemvalue="Python tests.pytest in test_send_question.py" />
-        <item itemvalue="Python tests.pytest in test_changing_client_info.py" />
-        <item itemvalue="Python tests.pytest in test_changing_client_phone.py" />
-        <item itemvalue="Python tests.pytest in test_changing_client_email.py" />
       </list>
     </recent_temporary>
   </component>
@@ -453,39 +434,39 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="pytest_in_test_7_client_card_py - 2019.03.25 at 12h 00m 29s.xml">
-      <configuration name="pytest in test_7_client_card.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_test_changing_client_email_py - 2019.03.25 at 12h 00m 57s.xml">
-      <configuration name="pytest in test_changing_client_email.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_test_changing_client_email_py - 2019.03.25 at 12h 02m 19s.xml">
-      <configuration name="pytest in test_changing_client_email.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_test_changing_client_phone_py - 2019.03.25 at 12h 02m 44s.xml">
-      <configuration name="pytest in test_changing_client_phone.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_test_changing_client_phone_py - 2019.03.25 at 12h 04m 12s.xml">
-      <configuration name="pytest in test_changing_client_phone.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_test_changing_client_info_py - 2019.03.25 at 12h 04m 54s.xml">
-      <configuration name="pytest in test_changing_client_info.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_test_send_question_py - 2019.03.25 at 12h 11m 38s.xml">
-      <configuration name="pytest in test_send_question.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_test_send_question_py - 2019.03.25 at 12h 26m 21s.xml">
-      <configuration name="pytest in test_send_question.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_test_8_send_quick_reply_py - 2019.03.25 at 12h 39m 30s.xml">
+    <history-entry file="pytest_in_test_8_send_quick_reply_py - 2019.03.25 at 18h 51m 09s.xml">
       <configuration name="pytest in test_8_send_quick_reply.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_test_8_send_quick_reply_py - 2019.03.25 at 12h 40m 34s.xml">
+    <history-entry file="pytest_in_test_8_send_quick_reply_py - 2019.03.25 at 19h 01m 05s.xml">
+      <configuration name="pytest in test_8_send_quick_reply.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_8_send_quick_reply_py - 2019.03.25 at 19h 03m 53s.xml">
+      <configuration name="pytest in test_8_send_quick_reply.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_8_send_quick_reply_py - 2019.03.25 at 19h 08m 11s.xml">
+      <configuration name="pytest in test_8_send_quick_reply.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_3_messaging_py - 2019.03.25 at 19h 13m 35s.xml">
+      <configuration name="pytest in test_3_messaging.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_8_send_quick_reply_py - 2019.03.25 at 19h 18m 11s.xml">
+      <configuration name="pytest in test_8_send_quick_reply.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_8_send_quick_reply_py - 2019.03.25 at 19h 26m 29s.xml">
+      <configuration name="pytest in test_8_send_quick_reply.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_8_send_quick_reply_py - 2019.03.25 at 19h 33m 57s.xml">
+      <configuration name="pytest in test_8_send_quick_reply.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_8_send_quick_reply_py - 2019.03.25 at 19h 35m 09s.xml">
+      <configuration name="pytest in test_8_send_quick_reply.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_8_send_quick_reply_py - 2019.03.25 at 19h 42m 17s.xml">
       <configuration name="pytest in test_8_send_quick_reply.py" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="278" y="49" width="1366" height="937" extended-state="0" />
+    <frame x="385" y="94" width="1366" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24171686" />
@@ -493,8 +474,8 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3283582" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.38308457" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39800996" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.4139785" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.39784947" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -511,23 +492,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/Python37/Lib/logging/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="103" selection-start-line="103" selection-end-line="103" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python37/Lib/configparser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="957" selection-start-line="957" selection-end-line="957" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/log.conf" />
-    <entry file="file://$PROJECT_DIR$/tests/changing_client_email.py" />
-    <entry file="file://$PROJECT_DIR$/tests/application.py" />
     <entry file="file://$PROJECT_DIR$/tests_other/changing_client_email_nt2.py" />
     <entry file="file://$PROJECT_DIR$/tests_other/changing_client_name_nt1.py" />
     <entry file="file://$PROJECT_DIR$/tests_other/changing_client_name_nt2.py" />
@@ -595,13 +559,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/env/Lib/site-packages/selenium/webdriver/support/wait.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="79" selection-start-line="79" selection-end-line="79" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_availability_services/test_1_services_are_not_available.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -619,61 +576,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_hotline/test_3_messaging.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-          <folding>
-            <element signature="e#27#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_hotline/test_6_chat_color.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2317">
-          <caret line="166" selection-start-line="166" selection-end-line="166" />
-          <folding>
-            <element signature="e#27#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_expcons/test_send_question.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="17" column="51" lean-forward="true" selection-start-line="17" selection-start-column="51" selection-end-line="17" selection-end-column="51" />
-          <folding>
-            <element signature="e#27#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/env/Lib/site-packages/selenium/webdriver/remote/errorhandler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="241" selection-start-line="241" selection-end-line="241" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/env/Lib/site-packages/selenium/webdriver/remote/webelement.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="79" selection-start-line="79" selection-end-line="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/env/Lib/site-packages/selenium/webdriver/remote/webdriver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="393" selection-start-line="393" selection-end-line="393" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_hotline/test_5_completion_chat.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1168">
-          <caret line="70" selection-start-line="70" selection-end-line="70" />
           <folding>
             <element signature="e#27#38#0" expanded="true" />
           </folding>
@@ -704,16 +610,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-85">
           <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
-          <folding>
-            <element signature="e#27#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_hotline/test_7_client_card.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="30" column="129" selection-start-line="30" selection-start-column="129" selection-end-line="30" selection-end-column="129" />
           <folding>
             <element signature="e#27#38#0" expanded="true" />
           </folding>
@@ -757,24 +653,183 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fixture/application.py">
+    <entry file="file://$PROJECT_DIR$/env/Lib/site-packages/selenium/webdriver/remote/webelement.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="611" column="8" selection-start-line="611" selection-start-column="8" selection-end-line="611" selection-end-column="8" />
+        <state relative-caret-position="148">
+          <caret line="632" selection-start-line="632" selection-end-line="632" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/env/Lib/site-packages/selenium/webdriver/remote/errorhandler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="241" selection-start-line="241" selection-end-line="241" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_hotline/test_6_chat_color.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-442">
+          <caret line="166" selection-start-line="166" selection-end-line="166" />
           <folding>
             <element signature="e#27#42#0" expanded="true" />
-            <marker date="1553504276560" expanded="true" signature="949:1098" ph="..." />
-            <marker date="1553504276560" expanded="true" signature="9518:14628" ph="..." />
-            <marker date="1553504276560" expanded="true" signature="14744:14749" ph="..." />
-            <marker date="1553504276560" expanded="true" signature="15189:15194" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_hotline/test_5_completion_chat.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="70" selection-start-line="70" selection-end-line="70" />
+          <folding>
+            <element signature="e#27#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/env/Lib/site-packages/_pytest/capture.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="414" selection-start-line="414" selection-end-line="414" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_hotline/test_3_messaging.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
+          <folding>
+            <element signature="e#27#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_hotline/test_7_client_card.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="87" selection-start-line="87" selection-end-line="90" selection-end-column="53" />
+          <folding>
+            <element signature="e#27#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/env/Lib/site-packages/selenium/webdriver/support/wait.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="70" selection-start-line="70" selection-end-line="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/env/Lib/site-packages/selenium/webdriver/support/expected_conditions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="410" selection-start-line="410" selection-end-line="410" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/env/Lib/site-packages/selenium/webdriver/remote/webdriver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="318" selection-start-line="318" selection-end-line="318" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python37/Lib/string.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="131" selection-start-line="131" selection-end-line="131" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python37/Lib/json/encoder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="201" selection-start-line="201" selection-end-line="201" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python37/Lib/json/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="230" selection-start-line="230" selection-end-line="230" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/env/Lib/site-packages/selenium/webdriver/remote/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python37/Lib/logging/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="1318" selection-start-line="1318" selection-end-line="1318" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python37/Lib/platform.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="1034" selection-start-line="1034" selection-end-line="1034" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python37/Lib/urllib/parse.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="147" selection-start-line="147" selection-end-line="147" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/env/Lib/site-packages/selenium/webdriver/remote/remote_connection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="396" selection-start-line="396" selection-end-line="396" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/env/Lib/site-packages/urllib3/request.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="149" selection-start-line="149" selection-end-line="149" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/env/Lib/site-packages/urllib3/util/url.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="221" selection-start-line="221" selection-end-line="221" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/env/Lib/site-packages/urllib3/poolmanager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="101" selection-start-line="101" selection-end-line="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fixture/application.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="483" column="8" selection-start-line="483" selection-start-column="8" selection-end-line="483" selection-end-column="8" />
+          <folding>
+            <element signature="e#27#42#0" expanded="true" />
+            <marker date="1553531379763" expanded="true" signature="1014:1163" ph="..." />
+            <marker date="1553531379763" expanded="true" signature="9583:14693" ph="..." />
+            <marker date="1553531379763" expanded="true" signature="14809:14814" ph="..." />
+            <marker date="1553531379763" expanded="true" signature="15254:15259" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test_hotline/test_8_send_quick_reply.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="29" column="21" lean-forward="true" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
+        <state relative-caret-position="261">
+          <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
         </state>
       </provider>
     </entry>

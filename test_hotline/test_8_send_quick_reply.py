@@ -28,5 +28,6 @@ def test_send_quick_reply(app):
     time.sleep(10)
     app.agent_search_only_one_chat()
     app.agent_quick_send_message()
+    time.sleep(2)
     app.logout_agent()
     print("test_send_quick_reply.py is done successfully")

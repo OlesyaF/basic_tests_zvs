@@ -11,6 +11,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.action_chains import ActionChains
 
 
 # noinspection PyDeprecation
@@ -611,11 +612,24 @@ class Application:
     @allure.step('АРМ РИЦ: Быстрая отправка Агентом сообщения в Чат')
     def agent_quick_send_message(self):
         driver = self.driver
-        quick_mess_agent = driver.find_element_by_xpath("//a[text()='Добрый день! Как я могу к Вам обращаться?']")
-        quick_mess_agent.click()
-        input_window = driver.find_element_by_class_name("MsgInput")
-        input_window.send_keys(Keys.ENTER,Keys.SHIFT)
-        print("Агент отправил в Чат сообщение")
+        elements = driver.find_elements_by_xpath("//div[@class='AnswersList']//li")
+        quick_message_count = len(elements)
+        print("Всего найдено быстрых ответов: ", quick_message_count)
+        if quick_message_count > 0:
+            list = [num for num in range(quick_message_count)]
+            print("list: ", list)
+            quick_mess_agent = driver.find_element_by_xpath("//div[@class='AnswersList']//li['" + str(random.choice(list) + 1) + "']")
+            quick_message = quick_mess_agent.get_attribute("textContent")
+            print("quick_message:", quick_message)
+            quick_mess_agent.click()
+            ActionChains(driver).send_keys(Keys.SHIFT + Keys.ENTER).perform()
+            print("Агент отправил в Чат сообщение")
+            if (self.is_element_present(driver, "//span[contains(text(),'" + quick_message + "')]") == True):
+                print("Сообщение, отправленное Агентом, отображается в теле Чата АРМ РИЦ")
+            else:
+                print("ОШИБКА!!! Сообщение, отправленное Агентом, не отображается в теле Чата АРМ РИЦ!")
+                assert (self.is_element_present(driver, "//span[contains(text(),'" + quick_message + "')]") == True)
+
 
     @allure.step('АРМ РИЦ: Завершение Агентом всех активных Чатов')
     def agent_completion_chat(self):
