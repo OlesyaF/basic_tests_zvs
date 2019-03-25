@@ -32,7 +32,7 @@ def test_changing_client_email(app):
         print("ОШИБКА: В ОД email Клиента не совпадает с новым значением - ТЕСТ НЕ УСПЕШНЫЙ!!!")
         allure.dynamic.description(
             'ОШИБКА: В ОД email Клиента не совпадает с новым значением - ТЕСТ НЕ УСПЕШНЫЙ!!!')
-    assert (app.is_element_present_main(locator) == True)
+        assert (app.is_element_present_main(locator) == True)
 
     app.logout_client()
     print("test_changing_client_email.py is done successfully")
@@ -66,7 +66,7 @@ def test_changing_client_email_nt1(app):
               "- ТЕСТ НЕ УСПЕШНЫЙ!!!")
         allure.dynamic.description(
             'ОШИБКА: Не найдено: в поле "Email" - "Введите Ваш email", под полем "Email" - "Заполните это поле" - ТЕСТ НЕ УСПЕШНЫЙ!!!')
-    assert (app.is_element_present_main(locator1) == True and app.is_element_present_main(locator2) == True)
+        assert (app.is_element_present_main(locator1) == True and app.is_element_present_main(locator2) == True)
 
     app.logout_client()
     print("changing_client_email_nt1.py is done successfully")
@@ -99,7 +99,7 @@ def test_changing_client_email_nt2(app):
         print("ОШИБКА: Не найдено: под полем 'Email' - 'Введите корректный email' - ТЕСТ НЕ УСПЕШНЫЙ!!!")
         allure.dynamic.description(
             'ОШИБКА: Не найдено: под полем "Email" - "Введите корректный email" - ТЕСТ НЕ УСПЕШНЫЙ!!!')
-    assert (app.is_element_present_main(locator1) == True)
+        assert (app.is_element_present_main(locator1) == True)
 
     app.logout_client()
     print("changing_client_email_nt2.py is done successfully")

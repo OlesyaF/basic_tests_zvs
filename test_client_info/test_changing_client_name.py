@@ -31,7 +31,7 @@ def test_changing_client_name(app):
         print("ОШИБКА: В ОД имя Клиента не совпадает с новым значением - ТЕСТ НЕ УСПЕШНЫЙ!!!")
         allure.dynamic.description(
             'ОШИБКА: В ОД имя Клиента не совпадает с новым значением - ТЕСТ НЕ УСПЕШНЫЙ!!!')
-    assert (app.is_element_present_main(locator) == True)
+        assert (app.is_element_present_main(locator) == True)
 
     app.logout_client()
     print("test_changing_client_name.py is done successfully")
@@ -64,7 +64,7 @@ def test_changing_client_name_nt1(app):
         print("ОШИБКА: Не найдено: в поле 'Имя' - 'Введите Ваше имя', под полем 'Имя' - 'Заполните это поле' "
                  "- ТЕСТ НЕ УСПЕШНЫЙ!!!")
         allure.dynamic.description('ОШИБКА: Не найдено требование заполнить поле с именем - ТЕСТ НЕ УСПЕШНЫЙ!!!')
-    assert (app.is_element_present_main(locator1) == True and app.is_element_present_main(locator2) == True)
+        assert (app.is_element_present_main(locator1) == True and app.is_element_present_main(locator2) == True)
 
     app.logout_client()
     print("changing_client_name_nt1.py is done successfully")
@@ -97,7 +97,7 @@ def test_changing_client_name_nt2(app):
     else:
         print("ОШИБКА: Не найдено: под полем 'Имя' - 'Введите корретное имя' - ТЕСТ НЕ УСПЕШНЫЙ!!!")
         allure.dynamic.description('ОШИБКА: Не найдено требование корректно заполнить поле с именем - ТЕСТ НЕ УСПЕШНЫЙ!!!')
-    assert (app.is_element_present_main(locator) == True)
+        assert (app.is_element_present_main(locator) == True)
 
     app.logout_client()
     print("changing_client_name_nt2.py is done successfully")

@@ -24,11 +24,11 @@ def test_client_card(app):
     app.save_client_info()
     time.sleep(2)
     app.go_to_client_info()
-    if (app.is_element_present_main("//input[@id='FormCustomerFullname'][@value='" + client_name + "']") == True):
+    if (app.is_element_present_main("//input[@id='FormCustomerFullname' and contains(text(),'" + client_name + "')]") == True):
         print("В ОД имя Клиента совпадает с новым значением")
     else:
         print("ОШИБКА: В ОД имя Клиента не совпадает с новым значением!!!")
-    assert (app.is_element_present_main("//input[@id='FormCustomerFullname'][@value='" + client_name + "']") == True)
+    assert (app.is_element_present_main("//input[@id='FormCustomerFullname' and contains(text(),'" + client_name + "')]") == True)
     time.sleep(3)
     client_email = app.get_email_name()
     app.go_out_client_info()

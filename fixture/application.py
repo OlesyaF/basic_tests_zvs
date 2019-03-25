@@ -109,6 +109,7 @@ class Application:
         button_submit = driver.find_element_by_id("CustomerDataSubmit")
         button_submit.click()
         print("Нажата кнопка 'Сохранить'")
+        #driver.refresh()
 
     @allure.step('Онлайн-версия: Изменение имени Клиента')
     def changing_client_name(self, client_name):
@@ -605,6 +606,15 @@ class Application:
         input_window.send_keys(mess_agent)
         button_msg_input = driver.find_element_by_css_selector("button.MsgSubmit[name=MsgSubmit]")
         button_msg_input.click()
+        print("Агент отправил в Чат сообщение")
+
+    @allure.step('АРМ РИЦ: Быстрая отправка Агентом сообщения в Чат')
+    def agent_quick_send_message(self):
+        driver = self.driver
+        quick_mess_agent = driver.find_element_by_xpath("//a[text()='Добрый день! Как я могу к Вам обращаться?']")
+        quick_mess_agent.click()
+        input_window = driver.find_element_by_class_name("MsgInput")
+        input_window.send_keys(Keys.ENTER,Keys.SHIFT)
         print("Агент отправил в Чат сообщение")
 
     @allure.step('АРМ РИЦ: Завершение Агентом всех активных Чатов')

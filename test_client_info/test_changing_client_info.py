@@ -41,7 +41,7 @@ def test_changing_client_info(app):
         print("ОШИБКА: В ОД имя Клиента не совпадает с новым значением - ТЕСТ НЕ УСПЕШНЫЙ!!!")
         allure.dynamic.description(
             'ОШИБКА: В ОД имя Клиента не совпадает с новым значением - ТЕСТ НЕ УСПЕШНЫЙ!!!')
-    assert (app.is_element_present_main(locator1) == True)
+        assert (app.is_element_present_main(locator1) == True)
 
     if (app.is_element_present_main(locator2) == True):
         print("В ОД email Клиента совпадает с новым значением - ТЕСТ УСПЕШНЫЙ")
@@ -51,7 +51,7 @@ def test_changing_client_info(app):
         print("ОШИБКА: В ОД email Клиента не совпадает с новым значением - ТЕСТ НЕ УСПЕШНЫЙ!!!")
         allure.dynamic.description(
             'ОШИБКА: В ОД email Клиента не совпадает с новым значением - ТЕСТ НЕ УСПЕШНЫЙ!!!')
-    assert (app.is_element_present_main(locator2) == True)
+        assert (app.is_element_present_main(locator2) == True)
 
     app.go_to_client_info()
 
@@ -64,7 +64,7 @@ def test_changing_client_info(app):
             "ОШИБКА: В окне 'Изменить контактные данные' после перевхода номер телефона не совпадает с новым значением "
             "- ТЕСТ НЕ УСПЕШНЫЙ!!!")
         allure.dynamic.description('ОШИБКА: номер телефона не совпадает с новым значением - ТЕСТ НЕ УСПЕШНЫЙ!!!')
-    assert (app.is_element_present_main(locator3) == True)
+        assert (app.is_element_present_main(locator3) == True)
     allure.dynamic.description('Имя, email и телефон Клиента изменены - ТЕСТ УСПЕШНЫЙ')
 
     app.logout_client()

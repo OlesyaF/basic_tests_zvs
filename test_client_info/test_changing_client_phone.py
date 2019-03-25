@@ -32,7 +32,7 @@ def test_changing_client_phone(app):
             "ОШИБКА: В окне 'Изменить контактные данные' после перевхода номер телефона не совпадает с новым значением "
             "- ТЕСТ НЕ УСПЕШНЫЙ!!!")
         allure.dynamic.description('ОШИБКА: номер телефона не совпадает с новым значением - ТЕСТ НЕ УСПЕШНЫЙ!!!')
-    assert (app.is_element_present_main(locator) == True)
+        assert (app.is_element_present_main(locator) == True)
 
     app.logout_client()
     print("test_changing_client_phone.py is done successfully")
@@ -71,7 +71,7 @@ def test_changing_client_phone_null(app):
         print("ОШИБКА: В окне 'Изменить контактные данные' после перевхода в поле 'Телефон' не отображается "
               "пустая маска +7 (___) ___-__-__ - ТЕСТ НЕ УСПЕШНЫЙ!!!")
         allure.dynamic.description('В поле с телефоном не отображается пустая маска - ТЕСТ НЕ УСПЕШНЫЙ')
-    assert (app.is_element_present_main(locator) == True)
+        assert (app.is_element_present_main(locator) == True)
 
     app.logout_client()
     print("changing_client_phone_null.py is done successfully")
