@@ -617,13 +617,12 @@ class Application:
         print("Всего найдено быстрых ответов: ", quick_message_count)
         if quick_message_count > 0:
             list = [num for num in range(quick_message_count)]
-            print("list: ", list)
             quick_mess_agent = driver.find_element_by_xpath("//div[@class='AnswersList']//li['" + str(random.choice(list) + 1) + "']")
             quick_message = quick_mess_agent.get_attribute("textContent")
-            print("quick_message:", quick_message)
+            print("Выбран БО: ", quick_message)
             quick_mess_agent.click()
             ActionChains(driver).send_keys(Keys.SHIFT + Keys.ENTER).perform()
-            print("Агент отправил в Чат сообщение")
+            print("Агент отправил в Чат сообщение - быстрый ответ")
             if (self.is_element_present(driver, "//span[contains(text(),'" + quick_message + "')]") == True):
                 print("Сообщение, отправленное Агентом, отображается в теле Чата АРМ РИЦ")
             else:

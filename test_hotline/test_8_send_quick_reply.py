@@ -5,13 +5,13 @@ import time
 import allure
 
 
-# Проверка отправки сообщения, используя быстрые ответы
+# Проверка отправки быстрого ответа
 
-@allure.title("Проверка отправки сообщения, используя быстрые ответы")
+@allure.title("Проверка отправки быстрого ответа")
 def test_send_quick_reply(app):
     print("test_send_quick_reply.py is running")
 
-    #PRECONDITION: Отправка Клиентом сообщения
+    # PRECONDITION: Отправка Клиентом сообщения
     app.go_to_online_version()
     app.login_client()
     app.go_to_customer_support_service()
@@ -29,5 +29,6 @@ def test_send_quick_reply(app):
     app.agent_search_only_one_chat()
     app.agent_quick_send_message()
     time.sleep(2)
+    app.agent_send_message("Контрольное сообщение от Агента-Автотеста!")
     app.logout_agent()
     print("test_send_quick_reply.py is done successfully")

@@ -28,7 +28,7 @@
           <entry key="gitignore" value="2" />
           <entry key="json" value="6" />
           <entry key="md" value="1" />
-          <entry key="py" value="154" />
+          <entry key="py" value="155" />
           <entry key="txt" value="1" />
         </counts>
       </usages-collector>
@@ -38,7 +38,7 @@
           <entry key="JSP" value="1" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="4" />
-          <entry key="Python" value="154" />
+          <entry key="Python" value="155" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -46,14 +46,14 @@
           <entry key="" value="6" />
           <entry key="dummy" value="53" />
           <entry key="json" value="82" />
-          <entry key="py" value="24265" />
+          <entry key="py" value="24452" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="82" />
           <entry key="PLAIN_TEXT" value="53" />
-          <entry key="Python" value="24271" />
+          <entry key="Python" value="24458" />
         </counts>
       </usages-collector>
     </session>
@@ -63,14 +63,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fixture/application.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="483" column="8" selection-start-line="483" selection-start-column="8" selection-end-line="483" selection-end-column="8" />
+            <state relative-caret-position="230">
+              <caret line="624" column="65" selection-start-line="624" selection-start-column="65" selection-end-line="624" selection-end-column="65" />
               <folding>
                 <element signature="e#27#42#0" expanded="true" />
-                <marker date="1553531379763" expanded="true" signature="1014:1163" ph="..." />
-                <marker date="1553531379763" expanded="true" signature="9583:14693" ph="..." />
-                <marker date="1553531379763" expanded="true" signature="14809:14814" ph="..." />
-                <marker date="1553531379763" expanded="true" signature="15254:15259" ph="..." />
+                <marker date="1553589372777" expanded="true" signature="1014:1163" ph="..." />
+                <marker date="1553589372777" expanded="true" signature="9583:14693" ph="..." />
+                <marker date="1553589372777" expanded="true" signature="14809:14814" ph="..." />
+                <marker date="1553589372777" expanded="true" signature="15254:15259" ph="..." />
               </folding>
             </state>
           </provider>
@@ -79,8 +79,23 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test_hotline/test_8_send_quick_reply.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
+            <state relative-caret-position="289">
+              <caret line="29" column="15" selection-start-line="29" selection-start-column="15" selection-end-line="29" selection-end-column="15" />
+              <folding>
+                <element signature="e#27#38#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test_expcons/test_send_question.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="17" column="51" lean-forward="true" selection-start-line="17" selection-start-column="51" selection-end-line="17" selection-end-column="51" />
+              <folding>
+                <element signature="e#27#38#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -144,15 +159,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="132">
               <caret line="1318" selection-start-line="1318" selection-end-line="1318" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/env/Lib/site-packages/selenium/webdriver/remote/utils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="32" selection-start-line="32" selection-end-line="32" />
             </state>
           </provider>
         </entry>
@@ -434,12 +440,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="pytest_in_test_8_send_quick_reply_py - 2019.03.25 at 18h 51m 09s.xml">
-      <configuration name="pytest in test_8_send_quick_reply.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_test_8_send_quick_reply_py - 2019.03.25 at 19h 01m 05s.xml">
-      <configuration name="pytest in test_8_send_quick_reply.py" configurationId="tests" />
-    </history-entry>
     <history-entry file="pytest_in_test_8_send_quick_reply_py - 2019.03.25 at 19h 03m 53s.xml">
       <configuration name="pytest in test_8_send_quick_reply.py" configurationId="tests" />
     </history-entry>
@@ -464,6 +464,12 @@
     <history-entry file="pytest_in_test_8_send_quick_reply_py - 2019.03.25 at 19h 42m 17s.xml">
       <configuration name="pytest in test_8_send_quick_reply.py" configurationId="tests" />
     </history-entry>
+    <history-entry file="pytest_in_test_8_send_quick_reply_py - 2019.03.26 at 11h 07m 44s.xml">
+      <configuration name="pytest in test_8_send_quick_reply.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_8_send_quick_reply_py - 2019.03.26 at 11h 30m 48s.xml">
+      <configuration name="pytest in test_8_send_quick_reply.py" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="385" y="94" width="1366" height="877" extended-state="0" />
@@ -474,8 +480,8 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3283582" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.4139785" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.39784947" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.4139785" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39784947" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -573,16 +579,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="55" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_expcons/test_send_question.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="17" column="51" lean-forward="true" selection-start-line="17" selection-start-column="51" selection-end-line="17" selection-end-column="51" />
-          <folding>
-            <element signature="e#27#38#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -812,24 +808,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test_expcons/test_send_question.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="17" column="51" lean-forward="true" selection-start-line="17" selection-start-column="51" selection-end-line="17" selection-end-column="51" />
+          <folding>
+            <element signature="e#27#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/fixture/application.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="483" column="8" selection-start-line="483" selection-start-column="8" selection-end-line="483" selection-end-column="8" />
+        <state relative-caret-position="230">
+          <caret line="624" column="65" selection-start-line="624" selection-start-column="65" selection-end-line="624" selection-end-column="65" />
           <folding>
             <element signature="e#27#42#0" expanded="true" />
-            <marker date="1553531379763" expanded="true" signature="1014:1163" ph="..." />
-            <marker date="1553531379763" expanded="true" signature="9583:14693" ph="..." />
-            <marker date="1553531379763" expanded="true" signature="14809:14814" ph="..." />
-            <marker date="1553531379763" expanded="true" signature="15254:15259" ph="..." />
+            <marker date="1553589372777" expanded="true" signature="1014:1163" ph="..." />
+            <marker date="1553589372777" expanded="true" signature="9583:14693" ph="..." />
+            <marker date="1553589372777" expanded="true" signature="14809:14814" ph="..." />
+            <marker date="1553589372777" expanded="true" signature="15254:15259" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test_hotline/test_8_send_quick_reply.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
+        <state relative-caret-position="289">
+          <caret line="29" column="15" selection-start-line="29" selection-start-column="15" selection-end-line="29" selection-end-column="15" />
+          <folding>
+            <element signature="e#27#38#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
