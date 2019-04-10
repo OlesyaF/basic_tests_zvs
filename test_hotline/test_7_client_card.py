@@ -30,7 +30,7 @@ def test_client_card(app):
         print("ОШИБКА: В ОД имя Клиента не совпадает с новым значением!!!")
     assert (app.is_element_present_main("//input[@id='FormCustomerFullname' and contains(text(),'" + client_name + "')]") == True)
     time.sleep(3)
-    client_email = app.get_email_name()
+    client_email = app.get_client_email()
     app.go_out_client_info()
     time.sleep(3)
     num = app.calc_check_sum_from_date()

@@ -312,7 +312,7 @@ class Application:
         print("Клиент отправил вопрос эксперту")
 
     @allure.step('Онлайн-версия: Проверка вида вкладки "Написать эксперту" после отправки Клиентом вопроса эксперту')
-    def check_expcons_after_question(self, question_client, client_name, email, phone_mask):
+    def check_expcons_after_question(self, question_client, client_name, client_email, client_phone):
         driver = self.driver
 
         locator1 = "//div[contains(@class, 'ExpconsResultTitle') and contains(text(),'Спасибо за Ваш вопрос!')]"
@@ -320,8 +320,8 @@ class Application:
         locator3 = "//div[contains(@class, 'ExpconsResultTextBold') and contains(text(),'Текст вопроса')]"
         locator4 = "//textarea[contains(@class, 'ExpconsResultTextArea') and contains(text(),'" + question_client + "')]"
         locator5 = "//span[contains(@class, 'ExpconsResultText') and contains(text(),'" + client_name + "')]"
-        locator6 = "//span[contains(@class, 'ExpconsResultText') and contains(text(),'" + email + "')]"
-        locator7 = "//span[contains(@class, 'ExpconsResultText') and contains(text(),'" + phone_mask + "')]"
+        locator6 = "//span[contains(@class, 'ExpconsResultText') and contains(text(),'" + client_email + "')]"
+        locator7 = "//span[contains(@class, 'ExpconsResultText') and contains(text(),'" + client_phone + "')]"
         locator8 = "//div[contains(@class, 'ExpconsResultInfoBottom p10t') and contains(text(),'Копия вопроса направлена на Ваш email, просим сохранить это письмо.')]"
         locator9 = "//*[contains(text(),'Копия вопроса направлена на Ваш email, просим сохранить это письмо.')]"
 
@@ -355,11 +355,20 @@ class Application:
         return client_name
 
     @allure.step('Онлайн-версия: Получение email Клиента')
-    def get_email_name(self):
+    def get_client_email(self):
         driver = self.driver
         client_email_field = driver.find_element_by_xpath("//input[@id='FormCustomerEmail']")
         client_email = str(client_email_field.get_attribute("value"))
+        print("client_email: ", client_email)
         return client_email
+
+    @allure.step('Онлайн-версия: Получение телефона Клиента')
+    def get_client_phone(self):
+        driver = self.driver
+        client_phone_field = driver.find_element_by_xpath("//input[@id='FormCustomerPhone']")
+        client_phone = str(client_phone_field.get_attribute("value"))
+        print("client_phone: ", client_phone)
+        return client_phone
 
     @allure.step('Онлайн-версия: Получение профиля Клиента')
     def get_profile(self):
