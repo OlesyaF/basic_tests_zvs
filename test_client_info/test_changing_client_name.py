@@ -1,7 +1,8 @@
 # -*- encoding: utf-8 -*-
 
-import time
 import random
+import time
+
 import allure
 
 
@@ -11,7 +12,7 @@ import allure
 def test_changing_client_name(app):
     print("test_changing_client_name.py is running")
 
-    client_name = str(app.calc_check_sum_from_date()) + "#autotest"
+    client_name = "Autotest#" + str(app.calc_check_sum_from_date())
     print("client_name: ", client_name)
     locator = "//span[contains(text(),'" + client_name + "')]"
 
@@ -62,7 +63,7 @@ def test_changing_client_name_nt1(app):
         allure.dynamic.description('Нельзя сохранить пустое имя Клиента - ТЕСТ УСПЕШНЫЙ')
     else:
         print("ОШИБКА: Не найдено: в поле 'Имя' - 'Введите Ваше имя', под полем 'Имя' - 'Заполните это поле' "
-                 "- ТЕСТ НЕ УСПЕШНЫЙ!!!")
+              "- ТЕСТ НЕ УСПЕШНЫЙ!!!")
         allure.dynamic.description('ОШИБКА: Не найдено требование заполнить поле с именем - ТЕСТ НЕ УСПЕШНЫЙ!!!')
         assert (app.is_element_present_main(locator1) == True and app.is_element_present_main(locator2) == True)
 
@@ -96,7 +97,8 @@ def test_changing_client_name_nt2(app):
         allure.dynamic.description('Нельзя сохранить имя Клиента, состоящее из одного символа - ТЕСТ УСПЕШНЫЙ')
     else:
         print("ОШИБКА: Не найдено: под полем 'Имя' - 'Введите корретное имя' - ТЕСТ НЕ УСПЕШНЫЙ!!!")
-        allure.dynamic.description('ОШИБКА: Не найдено требование корректно заполнить поле с именем - ТЕСТ НЕ УСПЕШНЫЙ!!!')
+        allure.dynamic.description(
+            'ОШИБКА: Не найдено требование корректно заполнить поле с именем - ТЕСТ НЕ УСПЕШНЫЙ!!!')
         assert (app.is_element_present_main(locator) == True)
 
     app.logout_client()

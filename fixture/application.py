@@ -7,11 +7,11 @@ import time
 import allure
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.webdriver.chrome.webdriver import WebDriver
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.action_chains import ActionChains
 
 
 # noinspection PyDeprecation
@@ -110,7 +110,7 @@ class Application:
         button_submit = driver.find_element_by_id("CustomerDataSubmit")
         button_submit.click()
         print("Нажата кнопка 'Сохранить'")
-        #driver.refresh()
+        # driver.refresh()
 
     @allure.step('Онлайн-версия: Изменение имени Клиента')
     def changing_client_name(self, client_name):
@@ -158,7 +158,8 @@ class Application:
         if (self.is_element_present(driver, "//textarea[@id='MsgInput']") == True):
             print("Клиент перешел в окно 'Сервис поддержки клиентов'")
         else:
-            print("ОШИБКА!!! Клиент НЕ перешел в окно 'Сервис поддержки клиентов' - Не найдено поле для ввода сообщения")
+            print(
+                "ОШИБКА!!! Клиент НЕ перешел в окно 'Сервис поддержки клиентов' - Не найдено поле для ввода сообщения")
             assert (self.is_element_present(driver, "//textarea[@id='MsgInput']") == True)
 
     @allure.step('Онлайн-версия: Выход')
@@ -369,7 +370,6 @@ class Application:
         print("client_profile: ", client_profile)
         return client_profile
 
-
     # АРМ РИЦ: АГЕНТ
 
     @allure.step('АРМ РИЦ: Вход')
@@ -432,12 +432,12 @@ class Application:
             NoAlertPresentException
         if (self.is_element_present(driver,
                                     "//div[contains(text(),'Настройка доступности сервиса')]") == True and self.is_element_present(
-                driver, "//div[@class='button blue fl-lt']") == True):
+            driver, "//div[@class='button blue fl-lt']") == True):
             print("Агент перешел в настройки доступности сервиса ‎Задать вопрос для онлайн-версии")
         else:
             print("ОШИБКА!!! Агент не перешел в настройки доступности сервиса ‎Задать вопрос для онлайн-версии")
             assert (self.is_element_present(driver,
-                                    "//div[contains(text(),'Настройка доступности сервиса')]") == True and self.is_element_present(
+                                            "//div[contains(text(),'Настройка доступности сервиса')]") == True and self.is_element_present(
                 driver, "//div[@class='button blue fl-lt']") == True)
 
     @allure.step('АРМ РИЦ: Поиск комплекта BUHUL_866712')
@@ -529,11 +529,12 @@ class Application:
         locator_connect_to_session = "//button[@name='StartChat']"
         i = 0
         while (self.is_element_visible(driver, locator_connect_to_session) == True):
-            connect_to_session_button = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, "StartChat")))
+            connect_to_session_button = WebDriverWait(driver, 10).until(
+                EC.visibility_of_element_located((By.CLASS_NAME, "StartChat")))
             connect_to_session_button.click()
             i += 1
             time.sleep(5)
-        if i>0:
+        if i > 0:
             print("Агент подключился к ", i, "Чатам")
         else:
             print("Агент не подключился ни к одному Чату")
@@ -551,7 +552,8 @@ class Application:
         else:
             print("Агент не нашел Чат Клиента среди активных чатов")
             while (self.is_element_present(driver, locator_connect_to_session) == True):
-                connect_to_session_button = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, "StartChat")))
+                connect_to_session_button = WebDriverWait(driver, 10).until(
+                    EC.visibility_of_element_located((By.CLASS_NAME, "StartChat")))
                 connect_to_session_button.click()
                 i += 1
                 print("i = ", i)
@@ -609,18 +611,19 @@ class Application:
         button_msg_input.click()
         print("Агент отправил в Чат сообщение")
 
-    @allure.step('АРМ РИЦ: Быстрая отправка Агентом сообщения в Чат')
-    def agent_quick_send_message(self):
+    @allure.step('АРМ РИЦ: Отправка Агентом быстрого ответа в Чат')
+    def agent_send_fast_answer(self):
         driver = self.driver
         elements = driver.find_elements_by_xpath("//div[@class='AnswersList']//li")
-        quick_message_count = len(elements)
-        print("Всего найдено быстрых ответов: ", quick_message_count)
-        if quick_message_count > 0:
-            list = [num for num in range(quick_message_count)]
-            quick_mess_agent = driver.find_element_by_xpath("//div[@class='AnswersList']//li['" + str(random.choice(list) + 1) + "']")
-            quick_message = quick_mess_agent.get_attribute("textContent")
+        fast_answers_count = len(elements)
+        print("Всего найдено быстрых ответов: ", fast_answers_count)
+        if fast_answers_count > 0:
+            list = [num for num in range(fast_answers_count)]
+            fast_answer = driver.find_element_by_xpath(
+                "//div[@class='AnswersList']//li['" + str(random.choice(list) + 1) + "']")
+            quick_message = fast_answer.get_attribute("textContent")
             print("Выбран БО: ", quick_message)
-            quick_mess_agent.click()
+            fast_answer.click()
             ActionChains(driver).send_keys(Keys.SHIFT + Keys.ENTER).perform()
             print("Агент отправил в Чат сообщение - быстрый ответ")
             if (self.is_element_present(driver, "//span[contains(text(),'" + quick_message + "')]") == True):
@@ -628,7 +631,6 @@ class Application:
             else:
                 print("ОШИБКА!!! Сообщение, отправленное Агентом, не отображается в теле Чата АРМ РИЦ!")
                 assert (self.is_element_present(driver, "//span[contains(text(),'" + quick_message + "')]") == True)
-
 
     @allure.step('АРМ РИЦ: Завершение Агентом всех активных Чатов')
     def agent_completion_chat(self):
@@ -652,9 +654,114 @@ class Application:
             i = i + 1
         print("Агент завершил Чатов:", i)
 
+    @allure.step('АРМ РИЦ: Переход в Быстрые ответы')
+    def go_to_fast_answers(self):
+        driver = self.driver
+        menu_online_dialog = driver.find_element_by_xpath("//a[@href='/zv/index.pl?']")
+        menu_online_dialog.click()
+        menu_fast_answers = driver.find_element_by_xpath("//a[@href='/zv/index.pl?Action=AdminChatAnswers']")
+        menu_fast_answers.click()
+        try:
+            driver.switch_to.alert.accept()
+        except:
+            NoAlertPresentException
+        if (self.is_element_present(driver, "//h1[.='Быстрые ответы']") == True and self.is_element_present(driver,
+                                                                                                            "//a[@class='CallForAction Plus']") == True):
+            print("Агент перешел на вкладку Быстрые ответы")
+        else:
+            print("ОШИБКА!!! Агент не перешел на вкладку Быстрые ответы!")
+            assert (self.is_element_present(driver, "//h1[.='Быстрые ответы']") == True and self.is_element_present(
+                driver, "//a[@class='CallForAction Plus']") == True)
+
+    @allure.step('АРМ РИЦ: Добавление быстрого ответа')
+    def add_fast_answer(self, fast_answer):
+        driver = self.driver
+
+        fast_answers_count_before = len(driver.find_elements_by_xpath("//table[@id='User']/tbody/tr"))
+        print("Количество БО до добавления: ", fast_answers_count_before)
+
+        print("Текст добавляемого БО: ", fast_answer)
+
+        button_add_fast_answer = driver.find_element_by_xpath("//a[@class='CallForAction Plus']")
+        button_add_fast_answer.click()
+        field_fast_answer = driver.find_element_by_xpath("//input[@id='AnswerValue']")
+        field_fast_answer.click()
+        field_fast_answer.clear()
+        field_fast_answer.send_keys(fast_answer)
+        button_submit = driver.find_element_by_xpath("//button[@id='Submit']")
+        button_submit.click()
+
+        fast_answers_count_after = len(driver.find_elements_by_xpath("//table[@id='User']/tbody/tr"))
+        print("Количество БО после добавления: ", fast_answers_count_after)
+
+        if (fast_answers_count_after == (fast_answers_count_before + 1)):
+            print("Быстрый ответ добавлен - количество БО после добавления на 1 больше, чем до добавления")
+        else:
+            print(
+                "ОШИБКА!!! Быстрый ответ не добавлен - количество БО после добавления отличается от количества БО до добавления не на +1!")
+            assert (fast_answers_count_after == (fast_answers_count_before + 1))
+
+        if (self.is_element_present(driver, "//a[contains(text(),'" + fast_answer + "')]") == True):
+            print("Текст добавленного БО отображается корректно")
+        else:
+            print("ОШИБКА!!! Текст добавленного БО отображается не корректно или не найден!")
+            assert (self.is_element_present(driver, "//a[contains(text(),'" + fast_answer + "')]") == True)
+
+        i = 1
+        result_of_param = False
+
+        while i <= fast_answers_count_after:
+            fast_answer_text = driver.find_element_by_xpath(
+                "//table[@id='User']/tbody/tr[" + str(i) + "]/td[1]/a").get_attribute("textContent")
+            if fast_answer_text == fast_answer:
+                fast_answer_priority = driver.find_element_by_xpath(
+                    "//table[@id='User']/tbody/tr[" + str(i) + "]/td[2]").get_attribute("textContent")
+                fast_answer_visibility = driver.find_element_by_xpath(
+                    "//table[@id='User']/tbody/tr[" + str(i) + "]/td[3]").get_attribute("textContent")
+                if fast_answer_priority == "0" and fast_answer_visibility == "показывать":
+                    result_of_param = True
+                    print(
+                        "Приоритет и видимость добавленного быстрого ответа корректны - соответствуют значениям, заданным по-умолчанию")
+                    break
+            i = i + 1
+
+        if result_of_param == False and i == fast_answers_count_after:
+            print(
+                "ОШИБКА!!! Приоритет и видимость добавленного быстрого ответа не соответствуют значениям, заданным по-умолчанию!")
+
+    @allure.step('АРМ РИЦ: Удаление быстрого ответа')
+    def delete_fast_answer(self):
+        driver = self.driver
+
+        fast_answers_before = driver.find_elements_by_xpath("//a[@class='AsBlock' and contains(text(),'Удалить')]")
+        fast_answers_count_before = len(fast_answers_before)
+        print("Количество БО до добавления: ", fast_answers_count_before)
+
+        if fast_answers_count_before > 0:
+            list = [num for num in range(fast_answers_count_before)]
+            deleted_fast_answer = fast_answers_before[random.choice(list)]
+            deleted_fast_answer.click()
+            try:
+                driver.switch_to.alert.accept()
+            except:
+                NoAlertPresentException
+
+            fast_answers_count_after = len(
+                driver.find_elements_by_xpath("//a[@class='AsBlock' and contains(text(),'Удалить')]"))
+            print("Количество БО после добавления: ", fast_answers_count_after)
+
+            if (fast_answers_count_before == (fast_answers_count_after + 1)):
+                print("Удален 1 быстрый ответ")
+            else:
+                print(
+                    "ОШИБКА!!! Быстрый ответ не удален - количество БО после добавления отличается от количества БО до добавления не на -1!")
+                assert (fast_answers_count_before == (fast_answers_count_after + 1))
+        else:
+            print("Не найдено ни одно быстрого ответа - удалять нечего!")
+
     # BASIC METHODS
 
-    @allure.step('Расчет контрольной суммы на основе даты и времени')
+    @allure.step('Определение контрольного числа на основе даты и времени')
     def calc_check_sum_from_date(self):
         now = str(datetime.datetime.now())
         print("Дата и время: now = " + now)
@@ -663,13 +770,9 @@ class Application:
         now = now.replace(":", "")
         now = now.replace(".", "")
         print("Дата и время после удаления {- :,} : now = " + now)
-        check_list = list(now)
-        print("Список символов даты и времени check_list: ", check_list)
-        i = 0
-        for chr in check_list:
-            i = i + ord(chr)
-        print("Контрольная сумма даты и времени = ", i)
-        return i
+        control_num = now[:12]
+        print("Контрольное число на основе даты и времени = ", control_num)
+        return control_num
 
     @allure.step('Получение номера телефона из случайного набора цифр')
     def get_phone_as_random_set(self):

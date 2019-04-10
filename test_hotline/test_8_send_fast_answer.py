@@ -8,8 +8,8 @@ import allure
 # Проверка отправки быстрого ответа
 
 @allure.title("Проверка отправки быстрого ответа")
-def test_send_quick_reply(app):
-    print("test_send_quick_reply.py is running")
+def test_send_fast_answer(app):
+    print("test_send_fast_answer.py is running")
 
     # PRECONDITION: Отправка Клиентом сообщения
     app.go_to_online_version()
@@ -27,8 +27,8 @@ def test_send_quick_reply(app):
     app.login_agent()
     time.sleep(10)
     app.agent_search_only_one_chat()
-    app.agent_quick_send_message()
+    app.agent_send_fast_answer()
     time.sleep(2)
     app.agent_send_message("Контрольное сообщение от Агента-Автотеста!")
     app.logout_agent()
-    print("test_send_quick_reply.py is done successfully")
+    print("test_send_fast_answer.py is done successfully")

@@ -1,6 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 import time
+
 import allure
 
 
@@ -10,7 +11,7 @@ import allure
 def test_changing_client_info(app):
     print("test_changing_client_info.py is running")
 
-    client_name = str(app.calc_check_sum_from_date()) + "#autotest"
+    client_name = "Autotest#" + str(app.calc_check_sum_from_date())
     print("client_name: ", client_name)
     locator1 = "//span[contains(text(),'" + client_name + "')]"
 
