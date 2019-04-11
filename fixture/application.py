@@ -717,7 +717,6 @@ class Application:
             assert (self.is_element_present(driver, "//a[contains(text(),'" + fast_answer + "')]") == True)
 
         i = 1
-        result_of_param = False
 
         while i <= fast_answers_count_after:
             fast_answer_text = driver.find_element_by_xpath(
@@ -728,15 +727,13 @@ class Application:
                 fast_answer_visibility = driver.find_element_by_xpath(
                     "//table[@id='User']/tbody/tr[" + str(i) + "]/td[3]").get_attribute("textContent")
                 if fast_answer_priority == "0" and fast_answer_visibility == "показывать":
-                    result_of_param = True
                     print(
                         "Приоритет и видимость добавленного быстрого ответа корректны - соответствуют значениям, заданным по-умолчанию")
                     break
+                else:
+                    print("ОШИБКА!!! Приоритет и видимость добавленного быстрого ответа не соответствуют значениям, заданным по-умолчанию!")
+                    assert (fast_answer_priority == "0" and fast_answer_visibility == "показывать")
             i = i + 1
-
-        if result_of_param == False and i == fast_answers_count_after:
-            print(
-                "ОШИБКА!!! Приоритет и видимость добавленного быстрого ответа не соответствуют значениям, заданным по-умолчанию!")
 
     @allure.step('АРМ РИЦ: Удаление быстрого ответа')
     def delete_fast_answer(self):
@@ -767,6 +764,64 @@ class Application:
                 assert (fast_answers_count_before == (fast_answers_count_after + 1))
         else:
             print("Не найдено ни одно быстрого ответа - удалять нечего!")
+
+    @allure.step('АРМ РИЦ: Изменение быстрого ответа')
+    def change_fast_answer(self, fast_answer):
+        driver = self.driver
+
+        fast_answer_text_new = fast_answer + " changed"
+        fast_answers_count_before = len(driver.find_elements_by_xpath("//table[@id='User']/tbody/tr"))
+        print("Количество БО до изменения: ", fast_answers_count_before)
+
+        driver.find_element_by_xpath("//a[contains(text(),'" + fast_answer + "')]").click()
+        field_text_fast_answer = driver.find_element_by_xpath("//input[@id='AnswerValue']")
+        field_text_fast_answer.click()
+        field_text_fast_answer.clear()
+        field_text_fast_answer.send_keys(fast_answer_text_new)
+        field_priority_fast_answer = driver.find_element_by_xpath("//input[@id='Weight']")
+        field_priority_fast_answer.click()
+        field_priority_fast_answer.clear()
+        field_priority_fast_answer.send_keys("10")
+        field_visibility_fast_answer = driver.find_element_by_xpath("//select[@id='ValidID']")
+        field_visibility_fast_answer.click()
+        driver.find_element_by_xpath("//option[@value='2']").click()
+        button_submit = driver.find_element_by_xpath("//button[@id='Submit']")
+        button_submit.click()
+
+        fast_answers_count_after = len(driver.find_elements_by_xpath("//table[@id='User']/tbody/tr"))
+        print("Количество БО после изменения: ", fast_answers_count_after)
+
+        if (fast_answers_count_after == fast_answers_count_before):
+            print("Количество быстрых ответов до и после изменения параметров одного из них совпадает")
+        else:
+            print(
+                "ОШИБКА!!! Количество быстрых ответов до и после изменения параметров одного из них не совпадает!")
+            assert (fast_answers_count_after == fast_answers_count_before)
+
+        if (self.is_element_present(driver, "//a[contains(text(),'" + fast_answer_text_new + "')]") == True):
+            print("Измененный текст БО отображается корректно")
+        else:
+            print("ОШИБКА!!! Текст измененного БО отображается не корректно или не найден!")
+            assert (self.is_element_present(driver, "//a[contains(text(),'" + fast_answer_text_new + "')]") == True)
+
+        i = 1
+
+        while i <= fast_answers_count_after:
+            fast_answer_text = driver.find_element_by_xpath(
+                "//table[@id='User']/tbody/tr[" + str(i) + "]/td[1]/a").get_attribute("textContent")
+            if fast_answer_text == fast_answer_text_new:
+                fast_answer_priority = driver.find_element_by_xpath(
+                    "//table[@id='User']/tbody/tr[" + str(i) + "]/td[2]").get_attribute("textContent")
+                fast_answer_visibility = driver.find_element_by_xpath(
+                    "//table[@id='User']/tbody/tr[" + str(i) + "]/td[3]").get_attribute("textContent")
+                if fast_answer_priority == "10" and fast_answer_visibility == "не показывать":
+                    print("Измененные приоритет и видимость быстрого ответа отображаются корректно")
+                    break
+                else:
+                    print("ОШИБКА!!! Приоритет и видимость измененного БО не соответствуют новым значениям!")
+                    assert (fast_answer_priority == "10" and fast_answer_visibility == "не показывать")
+            i = i + 1
+
 
     # BASIC METHODS
 
