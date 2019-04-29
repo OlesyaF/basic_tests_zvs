@@ -196,6 +196,9 @@ class Application:
         button_byphone = driver.find_element_by_xpath("//div[@id='tabLabelPhone']")
         button_byphone.click()
         print("Клиент перешел на вкладку 'Горячая линия/Контактная информация РИЦ' в окне 'Сервис поддержки клиентов'")
+        am = driver.find_element_by_xpath("//*[@id='ContactInfo']/div/div[1]/div[2]").get_attribute("textContent")
+        print("am: ", am)
+        print("len(am): ", len(am))
 
     @allure.step('Онлайн-версия: Проверка доступности сервиса Онлайн-диалог в окне "Сервис поддержки клиентов"')
     def check_hotline_availability(self):
@@ -663,7 +666,7 @@ class Application:
             i = i + 1
         print("Агент завершил Чатов:", i)
 
-    @allure.step('АРМ РИЦ: Переход в Быстрые ответы')
+    @allure.step('АРМ РИЦ: Переход на вкладку Быстрые ответы')
     def go_to_fast_answers(self):
         driver = self.driver
         menu_online_dialog = driver.find_element_by_xpath("//a[@href='/zv/index.pl?']")
@@ -821,6 +824,49 @@ class Application:
                     print("ОШИБКА!!! Приоритет и видимость измененного БО не соответствуют новым значениям!")
                     assert (fast_answer_priority == "10" and fast_answer_visibility == "не показывать")
             i = i + 1
+
+    @allure.step('АРМ РИЦ: Переход на вкладку По телефону')
+    def go_to_by_phone(self):
+        driver = self.driver
+        menu_by_phone = driver.find_element_by_xpath("//a[@href='/zv/index.pl?Action=ZV']")
+        menu_by_phone.click()
+        try:
+            driver.switch_to.alert.accept()
+        except:
+            NoAlertPresentException
+        if (self.is_element_present(driver, "//h1[contains(text(),'Настройка содержания вкладки')]") == True and self.is_element_present(driver,
+                                                                                                            "//form[@id='ByPhoneMessageForm']") == True):
+            print("Агент перешел на вкладку По телефону")
+        else:
+            print("ОШИБКА!!! Агент не перешел на вкладку По телефону!")
+            assert (self.is_element_present(driver, "//h1[contains(text(),'Настройка содержания вкладки')]") == True and self.is_element_present(driver,
+                                                                                                            "//form[@id='ByPhoneMessageForm']") == True)
+
+    @allure.step('АРМ РИЦ: Изменение контактной информации о РИЦ на вкладке По телефону')
+    def change_ric_info(self, contact_info1, contact_info2):
+        driver = self.driver
+        field_contact_info = driver.find_element_by_xpath("//html//body[1]")
+        field_contact_info.click()
+        ActionChains(driver).send_keys(Keys.END).perform()
+        ActionChains(driver).send_keys(Keys.SHIFT + Keys.HOME).perform()
+        ActionChains(driver).send_keys(Keys.DELETE).perform()
+        ActionChains(driver).send_keys(Keys.SHIFT + contact_info2).perform()
+        ActionChains(driver).send_keys(Keys.UP).perform()
+        ActionChains(driver).send_keys(Keys.UP).perform()
+        ActionChains(driver).send_keys(Keys.END).perform()
+        ActionChains(driver).send_keys(Keys.SHIFT + Keys.HOME).perform()
+        ActionChains(driver).send_keys(Keys.DELETE).perform()
+        ActionChains(driver).send_keys(Keys.SHIFT + contact_info1).perform()
+        driver.find_element_by_xpath("//button[@class='MsgSubmit']").click()
+        try:
+            driver.switch_to.alert.accept()
+        except:
+            NoAlertPresentException
+        if (self.is_element_present(driver, "//*[contains(text(),'" + contact_info1 + "')]") == True and self.is_element_present(driver, "//*[contains(text(),'" + contact_info2 + "')]") == True):
+            print("Информация о РИЦ успешно изменена")
+        else:
+            print("ОШИБКА!!! Измененная информации о РИЦ не корректно отображается на вкладке По телефону!")
+            assert (self.is_element_present(driver, "//*[contains(text(),'" + contact_info1 + "')]") == True and self.is_element_present(driver, "//*[contains(text(),'" + contact_info2 + "')]") == True)
 
 
     # BASIC METHODS
