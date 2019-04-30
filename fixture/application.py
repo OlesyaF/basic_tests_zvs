@@ -2,11 +2,10 @@
 
 import datetime
 import random
-import time
 import re
+import time
+
 import allure
-
-
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
@@ -112,7 +111,6 @@ class Application:
         button_submit = driver.find_element_by_id("CustomerDataSubmit")
         button_submit.click()
         print("Нажата кнопка 'Сохранить'")
-        # driver.refresh()
 
     @allure.step('Онлайн-версия: Изменение имени Клиента')
     def changing_client_name(self, client_name):
@@ -381,15 +379,17 @@ class Application:
         print("client_profile: ", client_profile)
         return client_profile
 
-    @allure.step('Онлайн-версия: Получение информации о Горячей линии РИЦ со вкладки "Горячая линия/Контактная информация РИЦ" в окне "Сервис поддержки клиентов"')
+    @allure.step(
+        'Онлайн-версия: Получение информации о Горячей линии РИЦ со вкладки "Горячая линия/Контактная информация РИЦ" в окне "Сервис поддержки клиентов"')
     def get_hotline_info_ov(self):
         driver = self.driver
         hotline_info = str(driver.find_element_by_xpath("//div[@class='p16t']/div[1]").get_attribute("textContent"))
         hotline_info = hotline_info.strip()
         hotline_info = re.sub("^\s+|\n|\r|\s+$", "", hotline_info)
-        print("Информация о Горячей линии РИЦ со вкладки Горячая линия/Контактная информация РИЦ в окне Сервис поддержки клиентов: ", hotline_info)
+        print(
+            "Информация о Горячей линии РИЦ со вкладки Горячая линия/Контактная информация РИЦ в окне Сервис поддержки клиентов: ",
+            hotline_info)
         return hotline_info
-
 
     # АРМ РИЦ: АГЕНТ
 
@@ -440,13 +440,13 @@ class Application:
                 print("ОШИБКА!!! Агент не залогинился в АРМ РИЦ - Не найдено меню 'Онлайн-диалог'")
                 assert (self.is_element_present(driver, "//li[@id='nav-Chat']") == True)
 
-    @allure.step('АРМ РИЦ: Переход в настройки доступности сервиса ‎Задать вопрос для онлайн-версии')
+    @allure.step('АРМ РИЦ: Переход на вкладку Настройка доступности сервиса ‎Задать вопрос')
     def go_to_service_settings(self):
         driver = self.driver
-        menu_ric_menu = driver.find_element_by_xpath("//li[@id='nav-RICMenu']")
-        menu_ric_menu.click()
-        menu_agent_distr_tabs = driver.find_element_by_xpath("//li[@id='nav-RICMenu-AgentDistrTabs']")
-        menu_agent_distr_tabs.click()
+        menu_for_ov = driver.find_element_by_xpath("//li[@id='nav-RICMenu']")
+        menu_for_ov.click()
+        menu_service_settings = driver.find_element_by_xpath("//li[@id='nav-RICMenu-AgentDistrTabs']")
+        menu_service_settings.click()
         try:
             driver.switch_to.alert.accept()
         except:
@@ -454,11 +454,32 @@ class Application:
         if (self.is_element_present(driver,
                                     "//div[contains(text(),'Настройка доступности сервиса')]") == True and self.is_element_present(
             driver, "//div[@class='button blue fl-lt']") == True):
-            print("Агент перешел в настройки доступности сервиса ‎Задать вопрос для онлайн-версии")
+            print("Агент перешел на вкладку Настройка доступности сервиса ‎Задать вопрос")
         else:
-            print("ОШИБКА!!! Агент не перешел в настройки доступности сервиса ‎Задать вопрос для онлайн-версии")
+            print("ОШИБКА!!! Агент не перешел на вкладку Настройка доступности сервиса ‎Задать вопрос")
             assert (self.is_element_present(driver,
                                             "//div[contains(text(),'Настройка доступности сервиса')]") == True and self.is_element_present(
+                driver, "//div[@class='button blue fl-lt']") == True)
+
+    @allure.step('АРМ РИЦ: Переход на вкладку Информация для кнопки Сервисный центр')
+    def go_to_info_service_center(self):
+        driver = self.driver
+        menu_for_ov = driver.find_element_by_xpath("//li[@id='nav-RICMenu']")
+        menu_for_ov.click()
+        menu_info_service_center = driver.find_element_by_xpath("//li[@id='nav-RICMenu-AgentDistrContacts']")
+        menu_info_service_center.click()
+        try:
+            driver.switch_to.alert.accept()
+        except:
+            NoAlertPresentException
+        if (self.is_element_present(driver,
+                                    "//div[@class='title']/div[contains(text(),'Контактная информация о РИЦ')]") == True and self.is_element_present(
+            driver, "//div[@class='button blue fl-lt']") == True):
+            print("Агент перешел на вкладку Информация для кнопки Сервисный центр")
+        else:
+            print("ОШИБКА!!! Агент не перешел на вкладку Информация для кнопки Сервисный центрс")
+            assert (self.is_element_present(driver,
+                                            "//div[@class='title']/div[contains(text(),'Контактная информация о РИЦ')]") == True and self.is_element_present(
                 driver, "//div[@class='button blue fl-lt']") == True)
 
     @allure.step('АРМ РИЦ: Поиск комплекта BUHUL_866712 на вкладке Настройка доступности сервиса ‎Задать вопрос')
@@ -470,16 +491,20 @@ class Application:
         field_kit_list.click()
         field_kit_list.send_keys("BUHUL_866712")
         field_kit_list.send_keys(Keys.ENTER)
-        if (self.is_element_present(driver, "//div[@class='tab-cell fl-lt tCell Supported' and contains(text(),'BUHUL_866712')]") == True):
+        if (self.is_element_present(driver,
+                                    "//div[@class='tab-cell fl-lt tCell Supported' and contains(text(),'BUHUL_866712')]") == True):
             print("Комплект BUHUL_866712 найден: строка комплекта отображается в результатах поиска")
         else:
             print("ОШИБКА!!! Комплект BUHUL_866712 НЕ найден! - Строка комплекта НЕ отображается в результатах поиска")
-            assert (self.is_element_present(driver, "//div[@class='tab-cell fl-lt tCell Supported' and contains(text(),'BUHUL_866712')]") == True)
+            assert (self.is_element_present(driver,
+                                            "//div[@class='tab-cell fl-lt tCell Supported' and contains(text(),'BUHUL_866712')]") == True)
 
     @allure.step('АРМ РИЦ: Получение id комплекта BUHUL_866712 на вкладке Настройка доступности сервиса ‎Задать вопрос')
     def get_kit_id(self):
         driver = self.driver
-        kit_id = driver.find_element_by_xpath("//div[@class='tab-cell fl-lt tCell Supported' and contains(text(),'BUHUL_866712')]//input[1]").get_attribute("value")
+        kit_id = driver.find_element_by_xpath(
+            "//div[@class='tab-cell fl-lt tCell Supported' and contains(text(),'BUHUL_866712')]//input[1]").get_attribute(
+            "value")
         print("kit_id = ", kit_id)
         return kit_id
 
@@ -750,7 +775,8 @@ class Application:
                         "Приоритет и видимость добавленного быстрого ответа корректны - соответствуют значениям, заданным по-умолчанию")
                     break
                 else:
-                    print("ОШИБКА!!! Приоритет и видимость добавленного быстрого ответа не соответствуют значениям, заданным по-умолчанию!")
+                    print(
+                        "ОШИБКА!!! Приоритет и видимость добавленного быстрого ответа не соответствуют значениям, заданным по-умолчанию!")
                     assert (fast_answer_priority == "0" and fast_answer_visibility == "показывать")
             i = i + 1
 
@@ -850,13 +876,120 @@ class Application:
             driver.switch_to.alert.accept()
         except:
             NoAlertPresentException
-        if (self.is_element_present(driver, "//h1[contains(text(),'Настройка содержания вкладки')]") == True and self.is_element_present(driver,
-                                                                                                            "//form[@id='ByPhoneMessageForm']") == True):
+        if (self.is_element_present(driver,
+                                    "//h1[contains(text(),'Настройка содержания вкладки')]") == True and self.is_element_present(
+            driver,
+            "//form[@id='ByPhoneMessageForm']") == True):
             print("Агент перешел на вкладку По телефону")
         else:
             print("ОШИБКА!!! Агент не перешел на вкладку По телефону!")
-            assert (self.is_element_present(driver, "//h1[contains(text(),'Настройка содержания вкладки')]") == True and self.is_element_present(driver,
-                                                                                                            "//form[@id='ByPhoneMessageForm']") == True)
+            assert (self.is_element_present(driver,
+                                            "//h1[contains(text(),'Настройка содержания вкладки')]") == True and self.is_element_present(
+                driver,
+                "//form[@id='ByPhoneMessageForm']") == True)
+
+    @allure.step('АРМ РИЦ: Переход на вкладку Онлайн-диалог')
+    def go_to_online_dialog(self):
+        driver = self.driver
+        menu1_online_dialog = driver.find_element_by_xpath("//a[@href='/zv/index.pl?' and @title='Онлайн-диалог']")
+        menu1_online_dialog.click()
+        menu2_online_dialog = driver.find_element_by_xpath("//a[@href='/zv/index.pl?Action=AgentChat']")
+        menu2_online_dialog.click()
+        try:
+            driver.switch_to.alert.accept()
+        except:
+            NoAlertPresentException
+        if (self.is_element_present(driver,
+                                    "//div[@class='Title' and contains(text(),'РИЦ №997')]") == True and self.is_element_present(
+            driver,
+            "//div[@class='HelperQueue' and contains(text(),'В очереди клиентов на консультацию:')]") == True):
+            print("Агент перешел на вкладку Онлайн-диалог")
+        else:
+            print("ОШИБКА!!! Агент не перешел на вкладку Онлайн-диалог!")
+            assert (self.is_element_present(driver,
+                                            "//div[@class='Title' and contains(text(),'РИЦ №997')]") == True and self.is_element_present(
+                driver,
+                "//div[@class='HelperQueue' and contains(text(),'В очереди клиентов на консультацию:')]") == True)
+
+    @allure.step('АРМ РИЦ: Переход на вкладку История сеансов общения')
+    def go_to_history(self):
+        driver = self.driver
+        menu_online_dialog = driver.find_element_by_xpath("//a[@href='/zv/index.pl?' and @title='Онлайн-диалог']")
+        menu_online_dialog.click()
+        menu_history = driver.find_element_by_xpath("//a[@href='/zv/index.pl?Action=AgentChatHistory2']")
+        menu_history.click()
+        try:
+            driver.switch_to.alert.accept()
+        except:
+            NoAlertPresentException
+        if (self.is_element_present(driver,
+                                    "//h1[@class='Header' and contains(text(),'История сеансов общения')]") == True and self.is_element_present(
+            driver, "//h2[contains(text(),'Список')]") == True):
+            print("Агент перешел на вкладку История сеансов общения")
+        else:
+            print("ОШИБКА!!! Агент не перешел на вкладку История сеансов общения!")
+            assert (self.is_element_present(driver,
+                                            "//h1[@class='Header' and contains(text(),'История сеансов общения')]") == True and self.is_element_present(
+                driver, "//h2[contains(text(),'Список')]") == True)
+
+    @allure.step('АРМ РИЦ: Переход на вкладку Настройки рабочего времени РИЦ')
+    def go_to_work_time_settings(self):
+        driver = self.driver
+        menu_online_dialog = driver.find_element_by_xpath("//a[@href='/zv/index.pl?' and @title='Онлайн-диалог']")
+        menu_online_dialog.click()
+        menu_work_time_settings = driver.find_element_by_xpath("//a[@href='/zv/index.pl?Action=AgentRICChatAdmin']")
+        menu_work_time_settings.click()
+        try:
+            driver.switch_to.alert.accept()
+        except:
+            NoAlertPresentException
+        if (self.is_element_present(driver,
+                                    "//div/h1[contains(text(),'Настройки рабочего времени РИЦ')]") == True and self.is_element_present(
+            driver, "//div[@class='Header']/h2[contains(text(),'Форма')]") == True):
+            print("Агент перешел на вкладку Настройки рабочего времени РИЦ")
+        else:
+            print("ОШИБКА!!! Агент не перешел на вкладку Настройки рабочего времени РИЦ!")
+            assert (self.is_element_present(driver,
+                                            "//div/h1[contains(text(),'Настройки рабочего времени РИЦ')]") == True and self.is_element_present(
+                driver, "//div[@class='Header']/h2[contains(text(),'Форма')]") == True)
+
+    @allure.step('АРМ РИЦ: Переход на вкладку Техническая документация')
+    def go_to_tech_doc(self):
+        driver = self.driver
+        menu_online_dialog = driver.find_element_by_xpath("//a[@href='/zv/index.pl?' and @title='Онлайн-диалог']")
+        menu_online_dialog.click()
+        menu_tech_doc = driver.find_element_by_xpath("//a[@href='/zv/index.pl?Action=AgentHowTo']")
+        menu_tech_doc.click()
+        try:
+            driver.switch_to.alert.accept()
+        except:
+            NoAlertPresentException
+        if (self.is_element_present(driver,
+                                    "//div[@class='download-name']/a[contains(text(),'ТЕХНИЧЕСКАЯ ИНСТРУКЦИЯ ДЛЯ РИЦ')]") == True):
+            print("Агент перешел на вкладку Техническая документация")
+        else:
+            print("ОШИБКА!!! Агент не перешел на вкладку Техническая документация!")
+            assert (self.is_element_present(driver,
+                                            "//div[@class='download-name']/a[contains(text(),'ТЕХНИЧЕСКАЯ ИНСТРУКЦИЯ ДЛЯ РИЦ')]") == True)
+
+    @allure.step('АРМ РИЦ: Переход на вкладку Отчеты для Лидера РИЦ')
+    def go_to_reports(self):
+        driver = self.driver
+        menu_reports = driver.find_element_by_xpath("//a[@href='/zv/index.pl?Action=RICLeaderReports']")
+        menu_reports.click()
+        try:
+            driver.switch_to.alert.accept()
+        except:
+            NoAlertPresentException
+        if (self.is_element_present(driver,
+                                    "//div/h1[contains(text(),'Статистика')]") == True and self.is_element_present(
+            driver, "//div[@class='Header']/h2[contains(text(),'Список')]") == True):
+            print("Агент перешел на вкладку Отчеты для Лидера РИЦ")
+        else:
+            print("ОШИБКА!!! Агент не перешел на вкладку Отчеты для Лидера РИЦ!")
+            assert (self.is_element_present(driver,
+                                            "//div/h1[contains(text(),'Статистика')]") == True and self.is_element_present(
+                driver, "//div[@class='Header']/h2[contains(text(),'Список')]") == True)
 
     @allure.step('АРМ РИЦ: Изменение контактной информации о РИЦ на вкладке По телефону')
     def change_ric_info(self, contact_info1, contact_info2):
@@ -892,7 +1025,6 @@ class Application:
         # Выход из фрейма, предназначенного для редактирования информации о РИЦ
         driver.switch_to.default_content()
         return hotline_info
-
 
     # BASIC METHODS
 
