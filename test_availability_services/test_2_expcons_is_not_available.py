@@ -15,10 +15,11 @@ def test_expcons_is_not_available(app):
     app.login_agent()
     app.go_to_service_settings()
     app.kit_search()
+    kit_id = app.get_kit_id()
     time.sleep(2)
 
-    app.setting_checkbox("on", "//input[@id='3124332_HotlineValue']", "//label[@for='3124332_HotlineValue']")
-    app.setting_checkbox("off", "//input[@id='3124332_ExpconsValue']", "//label[@for='3124332_ExpconsValue']")
+    app.setting_checkbox("on", "//input[@id='" + kit_id + "_HotlineValue']", "//label[@for='" + kit_id + "_HotlineValue']")
+    app.setting_checkbox("off", "//input[@id='" + kit_id + "_ExpconsValue']", "//label[@for='" + kit_id + "_ExpconsValue']")
     app.save_setting_checkbox()
     time.sleep(2)
 

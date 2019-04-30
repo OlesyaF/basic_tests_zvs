@@ -461,7 +461,7 @@ class Application:
                                             "//div[contains(text(),'Настройка доступности сервиса')]") == True and self.is_element_present(
                 driver, "//div[@class='button blue fl-lt']") == True)
 
-    @allure.step('АРМ РИЦ: Поиск комплекта BUHUL_866712')
+    @allure.step('АРМ РИЦ: Поиск комплекта BUHUL_866712 на вкладке Настройка доступности сервиса ‎Задать вопрос')
     def kit_search(self):
         driver = self.driver
         button_configure = driver.find_element_by_xpath("//div[@class='button blue fl-lt']")
@@ -470,11 +470,18 @@ class Application:
         field_kit_list.click()
         field_kit_list.send_keys("BUHUL_866712")
         field_kit_list.send_keys(Keys.ENTER)
-        if (self.is_element_present(driver, "//div[@id='3124332_Row']") == True):
+        if (self.is_element_present(driver, "//div[@class='tab-cell fl-lt tCell Supported' and contains(text(),'BUHUL_866712')]") == True):
             print("Комплект BUHUL_866712 найден: строка комплекта отображается в результатах поиска")
         else:
             print("ОШИБКА!!! Комплект BUHUL_866712 НЕ найден! - Строка комплекта НЕ отображается в результатах поиска")
-            assert (self.is_element_present(driver, "//div[@id='3124332_Row']") == True)
+            assert (self.is_element_present(driver, "//div[@class='tab-cell fl-lt tCell Supported' and contains(text(),'BUHUL_866712')]") == True)
+
+    @allure.step('АРМ РИЦ: Получение id комплекта BUHUL_866712 на вкладке Настройка доступности сервиса ‎Задать вопрос')
+    def get_kit_id(self):
+        driver = self.driver
+        kit_id = driver.find_element_by_xpath("//div[@class='tab-cell fl-lt tCell Supported' and contains(text(),'BUHUL_866712')]//input[1]").get_attribute("value")
+        print("kit_id = ", kit_id)
+        return kit_id
 
     @allure.step('АРМ РИЦ: Настройка доступности сервиса ‎Задать вопрос для онлайн-версии (заполнение чек-боксов)')
     def setting_checkbox(self, checkbox_status, checkbox_field, checkbox_click):
