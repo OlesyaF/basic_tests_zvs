@@ -10,7 +10,7 @@ import allure
 
 @allure.title("Изменение email клиента (позитивный тест)")
 def test_changing_client_email(app):
-    print("test_changing_client_email.py is running")
+    print("test_hotline_info.py is running")
 
     email = str(app.calc_check_sum_from_date()) + "@autotest.ru"
     print("email: ", email)
@@ -35,7 +35,7 @@ def test_changing_client_email(app):
         assert (app.is_element_present_main(locator) == True)
 
     app.logout_client()
-    print("test_changing_client_email.py is done successfully")
+    print("test_hotline_info.py is done successfully")
 
 
 # Изменение email клиента (негативный тест): нельзя сохранить поле 'Email' незаполненным

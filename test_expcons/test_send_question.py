@@ -8,7 +8,7 @@ import allure
 
 @allure.title("Проверка отправка Клиентом вопроса эксперту")
 def test_send_question(app):
-    print("test_send_question.py is running")
+    print("test_view_hotline_info.py is running")
 
     app.go_to_online_version()
     app.login_client()
@@ -26,4 +26,4 @@ def test_send_question(app):
     app.client_send_question(question_client)
     app.check_expcons_after_question(question_client, client_name, client_email, client_phone)
     app.logout_client()
-    print("test_send_question.py is done successfully")
+    print("test_view_hotline_info.py is done successfully")

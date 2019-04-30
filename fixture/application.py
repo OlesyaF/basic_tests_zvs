@@ -3,8 +3,10 @@
 import datetime
 import random
 import time
-
+import re
 import allure
+
+
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
@@ -196,9 +198,6 @@ class Application:
         button_byphone = driver.find_element_by_xpath("//div[@id='tabLabelPhone']")
         button_byphone.click()
         print("Клиент перешел на вкладку 'Горячая линия/Контактная информация РИЦ' в окне 'Сервис поддержки клиентов'")
-        am = driver.find_element_by_xpath("//*[@id='ContactInfo']/div/div[1]/div[2]").get_attribute("textContent")
-        print("am: ", am)
-        print("len(am): ", len(am))
 
     @allure.step('Онлайн-версия: Проверка доступности сервиса Онлайн-диалог в окне "Сервис поддержки клиентов"')
     def check_hotline_availability(self):
@@ -381,6 +380,16 @@ class Application:
         client_profile = client_profile.replace(" ", "")
         print("client_profile: ", client_profile)
         return client_profile
+
+    @allure.step('Онлайн-версия: Получение информации о Горячей линии РИЦ со вкладки "Горячая линия/Контактная информация РИЦ" в окне "Сервис поддержки клиентов"')
+    def get_hotline_info_ov(self):
+        driver = self.driver
+        hotline_info = str(driver.find_element_by_xpath("//div[@class='p16t']/div[1]").get_attribute("textContent"))
+        hotline_info = hotline_info.strip()
+        hotline_info = re.sub("^\s+|\n|\r|\s+$", "", hotline_info)
+        print("Информация о Горячей линии РИЦ со вкладки Горячая линия/Контактная информация РИЦ в окне Сервис поддержки клиентов: ", hotline_info)
+        return hotline_info
+
 
     # АРМ РИЦ: АГЕНТ
 
@@ -845,7 +854,7 @@ class Application:
     @allure.step('АРМ РИЦ: Изменение контактной информации о РИЦ на вкладке По телефону')
     def change_ric_info(self, contact_info1, contact_info2):
         driver = self.driver
-        field_contact_info = driver.find_element_by_xpath("//html//body[1]")
+        field_contact_info = driver.find_element_by_xpath("//html/body[1]")
         field_contact_info.click()
         ActionChains(driver).send_keys(Keys.END).perform()
         ActionChains(driver).send_keys(Keys.SHIFT + Keys.HOME).perform()
@@ -858,15 +867,24 @@ class Application:
         ActionChains(driver).send_keys(Keys.DELETE).perform()
         ActionChains(driver).send_keys(Keys.SHIFT + contact_info1).perform()
         driver.find_element_by_xpath("//button[@class='MsgSubmit']").click()
+        time.sleep(3)
         try:
             driver.switch_to.alert.accept()
         except:
             NoAlertPresentException
-        if (self.is_element_present(driver, "//*[contains(text(),'" + contact_info1 + "')]") == True and self.is_element_present(driver, "//*[contains(text(),'" + contact_info2 + "')]") == True):
-            print("Информация о РИЦ успешно изменена")
-        else:
-            print("ОШИБКА!!! Измененная информации о РИЦ не корректно отображается на вкладке По телефону!")
-            assert (self.is_element_present(driver, "//*[contains(text(),'" + contact_info1 + "')]") == True and self.is_element_present(driver, "//*[contains(text(),'" + contact_info2 + "')]") == True)
+        print("Информация о РИЦ изменена")
+
+    @allure.step('АРМ РИЦ: Получение информации о Горячей линии РИЦ на вкладке По телефону')
+    def get_hotline_info_arm_ric(self):
+        driver = self.driver
+        # Переход во фрейм, предназначенный для редактирования информации о РИЦ
+        logout_frame = driver.find_element_by_xpath("//*[@id='cke_1_contents']/iframe")
+        driver.switch_to.frame(logout_frame)
+        hotline_info = driver.find_element_by_xpath("//html/body").get_attribute("textContent")
+        print("Информация о Горячей линии РИЦ, отображающаяся на вкладке По телефону: ", hotline_info)
+        # Выход из фрейма, предназначенного для редактирования информации о РИЦ
+        driver.switch_to.default_content()
+        return hotline_info
 
 
     # BASIC METHODS
