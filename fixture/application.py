@@ -1026,6 +1026,31 @@ class Application:
         driver.switch_to.default_content()
         return hotline_info
 
+    @allure.step('АРМ РИЦ: Изменение настроек рабочего времени РИЦ')
+    def set_up_work_time(self, weekday, hour, weekday_num):
+        driver = self.driver
+        if weekday_num == 0:
+            i = 1
+            while i <= 7:
+                driver.find_element_by_xpath(
+                    "//div[@class='Setting']/div[" + str(i) + "]/div[25]/label/input[@name='wholeDay']").click()
+                i = i + 1
+            driver.find_element_by_xpath("//button[@name='Submit']").click()
+            print("Настройки рабочего времени изменены: периоды нерабочего времени не заданы")
+        else:
+            driver.find_element_by_xpath("//div[@class='Setting']/div[" + str(weekday_num) + "]/div[25]/label/input[@name='wholeDay']").click()
+            driver.find_element_by_xpath("//input[@name='" + weekday + "' and @value='" + hour + "']").click()
+            driver.find_element_by_xpath("//button[@name='Submit']").click()
+            print("Настройки рабочего времени изменены. Установлено нерабочее время: " + weekday + " c " + hour + ":00 до " + str(int(hour) + 1) + ":00")
+
+    @allure.step('АРМ РИЦ: Получение текста о недоступности РИЦ, задаваемого в АРМ РИЦ на вкладке Настройки рабочего времени РИЦ')
+    def get_agent_unavailable_text(self):
+        driver = self.driver
+        unavailable_text = driver.find_element_by_xpath("//textarea[@id='TextUnavailable']").get_attribute("textContent")
+        print("Текст о недоступности РИЦ, задаваемый в АРМ РИЦ на вкладке Настройки рабочего времени РИЦ: ", unavailable_text)
+        return unavailable_text
+
+
     # BASIC METHODS
 
     @allure.step('Определение контрольного числа на основе даты и времени')
