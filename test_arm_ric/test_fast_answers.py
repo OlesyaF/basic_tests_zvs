@@ -2,7 +2,6 @@
 
 import time
 import allure
-import pytest
 
 
 # Проверка быстрых ответов
@@ -24,7 +23,6 @@ def test_add_fast_answer(app):
 
 
 @allure.title("Проверка удаления быстрого ответа")
-@pytest.mark.skip(reason='This test is skipped')
 def test_delete_fast_answer(app):
     print("test_delete_fast_answer.py is running")
 
