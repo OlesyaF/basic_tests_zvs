@@ -22,6 +22,9 @@ def test_change_hotline_info(app):
     app.change_ric_info(hotline_info1, hotline_info2)
     app.go_to_by_phone()
 
+    print("app.get_hotline_info_arm_ric()=", app.get_hotline_info_arm_ric())
+    print("hotline_info=", hotline_info)
+
     if (app.get_hotline_info_arm_ric() == hotline_info):
         print("Измененная информация о Горячей линии РИЦ корректно отображается на вкладке По телефону")
     else:

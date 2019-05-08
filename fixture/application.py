@@ -1007,7 +1007,6 @@ class Application:
         ActionChains(driver).send_keys(Keys.DELETE).perform()
         ActionChains(driver).send_keys(Keys.SHIFT + contact_info1).perform()
         driver.find_element_by_xpath("//button[@class='MsgSubmit']").click()
-        time.sleep(3)
         try:
             driver.switch_to.alert.accept()
         except:
