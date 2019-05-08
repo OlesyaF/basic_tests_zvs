@@ -41,6 +41,7 @@ def test_chat_off_hours(app):
     unavailable_text = app.get_agent_unavailable_text()
     app.set_up_work_time(weekday, hour, weekday_num)
     app.go_to_online_dialog()
+    time.sleep(2)
     mess_agent_2 = "BasicATAgent_message_2_" + str(num)
     app.agent_send_message(mess_agent_2)
     app.is_agent_message_in_arm_ric_chat(mess_agent_2)
