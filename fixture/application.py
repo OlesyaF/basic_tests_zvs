@@ -710,9 +710,9 @@ class Application:
     @allure.step('АРМ РИЦ: Переход на вкладку Быстрые ответы')
     def go_to_fast_answers(self):
         driver = self.driver
-        menu_online_dialog = driver.find_element_by_xpath("//a[@href='/zv/index.pl?']")
+        menu_online_dialog = driver.find_element_by_xpath("//a[@title='Онлайн-диалог']")
         menu_online_dialog.click()
-        menu_fast_answers = driver.find_element_by_xpath("//a[@href='/zv/index.pl?Action=AdminChatAnswers']")
+        menu_fast_answers = driver.find_element_by_xpath("//a[@title='Быстрые ответы (n)']")
         menu_fast_answers.click()
         try:
             driver.switch_to.alert.accept()
@@ -870,7 +870,7 @@ class Application:
     @allure.step('АРМ РИЦ: Переход на вкладку По телефону')
     def go_to_by_phone(self):
         driver = self.driver
-        menu_by_phone = driver.find_element_by_xpath("//a[@href='/zv/index.pl?Action=ZV']")
+        menu_by_phone = driver.find_element_by_xpath("//a[@title='По телефону']")
         menu_by_phone.click()
         try:
             driver.switch_to.alert.accept()
@@ -891,9 +891,9 @@ class Application:
     @allure.step('АРМ РИЦ: Переход на вкладку Онлайн-диалог')
     def go_to_online_dialog(self):
         driver = self.driver
-        menu1_online_dialog = driver.find_element_by_xpath("//a[@href='/zv/index.pl?' and @title='Онлайн-диалог']")
+        menu1_online_dialog = driver.find_element_by_xpath("//a[@title='Онлайн-диалог']")
         menu1_online_dialog.click()
-        menu2_online_dialog = driver.find_element_by_xpath("//a[@href='/zv/index.pl?Action=AgentChat']")
+        menu2_online_dialog = driver.find_element_by_xpath("//a[@title='Helper chat (n)']")
         menu2_online_dialog.click()
         try:
             driver.switch_to.alert.accept()
@@ -914,9 +914,9 @@ class Application:
     @allure.step('АРМ РИЦ: Переход на вкладку История сеансов общения')
     def go_to_history(self):
         driver = self.driver
-        menu_online_dialog = driver.find_element_by_xpath("//a[@href='/zv/index.pl?' and @title='Онлайн-диалог']")
+        menu_online_dialog = driver.find_element_by_xpath("//a[@title='Онлайн-диалог']")
         menu_online_dialog.click()
-        menu_history = driver.find_element_by_xpath("//a[@href='/zv/index.pl?Action=AgentChatHistory2']")
+        menu_history = driver.find_element_by_xpath("//a[@title='История сеансов общения']")
         menu_history.click()
         try:
             driver.switch_to.alert.accept()
@@ -935,9 +935,9 @@ class Application:
     @allure.step('АРМ РИЦ: Переход на вкладку Настройки рабочего времени РИЦ')
     def go_to_work_time_settings(self):
         driver = self.driver
-        menu_online_dialog = driver.find_element_by_xpath("//a[@href='/zv/index.pl?' and @title='Онлайн-диалог']")
+        menu_online_dialog = driver.find_element_by_xpath("//a[@title='Онлайн-диалог']")
         menu_online_dialog.click()
-        menu_work_time_settings = driver.find_element_by_xpath("//a[@href='/zv/index.pl?Action=AgentRICChatAdmin']")
+        menu_work_time_settings = driver.find_element_by_xpath("//a[@title='Настройки рабочего времени РИЦ']")
         menu_work_time_settings.click()
         try:
             driver.switch_to.alert.accept()
@@ -956,9 +956,9 @@ class Application:
     @allure.step('АРМ РИЦ: Переход на вкладку Техническая документация')
     def go_to_tech_doc(self):
         driver = self.driver
-        menu_online_dialog = driver.find_element_by_xpath("//a[@href='/zv/index.pl?' and @title='Онлайн-диалог']")
+        menu_online_dialog = driver.find_element_by_xpath("//a[@title='Онлайн-диалог']")
         menu_online_dialog.click()
-        menu_tech_doc = driver.find_element_by_xpath("//a[@href='/zv/index.pl?Action=AgentHowTo']")
+        menu_tech_doc = driver.find_element_by_xpath("//a[@title='Техническая документация']")
         menu_tech_doc.click()
         try:
             driver.switch_to.alert.accept()
@@ -975,7 +975,7 @@ class Application:
     @allure.step('АРМ РИЦ: Переход на вкладку Отчеты для Лидера РИЦ')
     def go_to_reports(self):
         driver = self.driver
-        menu_reports = driver.find_element_by_xpath("//a[@href='/zv/index.pl?Action=RICLeaderReports']")
+        menu_reports = driver.find_element_by_xpath("//a[@title='Отчёты для Лидера РИЦ']")
         menu_reports.click()
         try:
             driver.switch_to.alert.accept()
@@ -1020,7 +1020,6 @@ class Application:
         logout_frame = driver.find_element_by_xpath("//*[@id='cke_1_contents']/iframe")
         driver.switch_to.frame(logout_frame)
         hotline_info = driver.find_element_by_xpath("//html/body").get_attribute("textContent")
-        print("Информация о Горячей линии РИЦ, отображающаяся на вкладке По телефону: ", hotline_info)
         # Выход из фрейма, предназначенного для редактирования информации о РИЦ
         driver.switch_to.default_content()
         return hotline_info
