@@ -11,10 +11,11 @@ import allure
 def test_change_chat_color_green_yellow_red(app):
     print("test_change_chat_color_green_yellow_red.py is running")
 
-    #PRECONDITION: Завершение всех активных Чатов в АРМ РИЦ
+    #PRECONDITION: Очищение очереди и завершение всех активных Чатов в АРМ РИЦ
     app.go_to_arm_ric()
     app.login_agent()
     time.sleep(10)
+    app.agent_connect_to_all_chat()
     app.agent_completion_chat()
     app.logout_agent()
 

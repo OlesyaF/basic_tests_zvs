@@ -10,10 +10,11 @@ import allure
 def test_welcome_message(app):
     print("test_1_welcome_message.py is running")
 
-    #PRECONDITION: Завершение всех активных Чатов в АРМ РИЦ
+    #PRECONDITION: Очищение очереди и завершение всех активных Чатов в АРМ РИЦ
     app.go_to_arm_ric()
     app.login_agent()
     time.sleep(10)
+    app.agent_connect_to_all_chat()
     app.agent_completion_chat()
     app.logout_agent()
 
