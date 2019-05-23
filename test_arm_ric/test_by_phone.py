@@ -12,16 +12,14 @@ def test_change_hotline_info(app):
 
     num = str(app.calc_check_sum_from_date())
 
-    hotline_info1 = "RIC autotest contact info (part 1) " + num
-    hotline_info2 = "RIC autotest contact info (part 2) " + num
-    hotline_info = str(hotline_info1 + hotline_info2)
+    hotline_info = "RIC autotest contact info (part 1) " + num
 
     app.go_to_arm_ric()
     app.login_agent()
     time.sleep(7)
     app.go_to_by_phone()
     time.sleep(2)
-    app.change_ric_info(hotline_info1, hotline_info2)
+    app.change_ric_info(hotline_info)
     app.go_to_by_phone()
     hotline_info_form = app.get_hotline_info_arm_ric()
 

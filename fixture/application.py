@@ -383,7 +383,9 @@ class Application:
         'Онлайн-версия: Получение информации о Горячей линии РИЦ со вкладки "Горячая линия/Контактная информация РИЦ" в окне "Сервис поддержки клиентов"')
     def get_hotline_info_ov(self):
         driver = self.driver
-        hotline_info = str(driver.find_element_by_xpath("//div[@class='p16t']/div[1]").get_attribute("textContent"))
+        #hotline_info = str(driver.find_element_by_xpath("//div[@class='p16t']/div[1]").get_attribute("textContent"))
+        hotline_info = str(driver.find_element_by_xpath("//*[@id='ContactInfo']/div/div[1]/div[2]").get_attribute("textContent"))
+        #//*[@id="ContactInfo"]/div/div[1]/div[2]/text()
         hotline_info = hotline_info.strip()
         hotline_info = re.sub("^\s+|\n|\r|\s+$", "", hotline_info)
         print(
@@ -899,6 +901,7 @@ class Application:
             driver.switch_to.alert.accept()
         except:
             NoAlertPresentException
+        time.sleep(3)
         if (self.is_element_present(driver,
                                     "//div[@class='Title' and contains(text(),'РИЦ №997')]") == True and self.is_element_present(
             driver,
@@ -992,20 +995,20 @@ class Application:
                 driver, "//div[@class='Header']/h2[contains(text(),'Список')]") == True)
 
     @allure.step('АРМ РИЦ: Изменение контактной информации о РИЦ на вкладке По телефону')
-    def change_ric_info(self, contact_info1, contact_info2):
+    def change_ric_info(self, contact_info):
         driver = self.driver
-        field_contact_info = driver.find_element_by_xpath("//html/body[1]")
+        # Переход во фрейм визуального тестового редактора
+        logout_frame = driver.find_element_by_xpath("//*[@id='cke_1_contents']/iframe")
+        driver.switch_to.frame(logout_frame)
+        field_contact_info = driver.find_element_by_xpath("//html/body")
         field_contact_info.click()
-        ActionChains(driver).send_keys(Keys.END).perform()
-        ActionChains(driver).send_keys(Keys.SHIFT + Keys.HOME).perform()
+        ActionChains(driver).send_keys(Keys.CONTROL + 'a').perform()
         ActionChains(driver).send_keys(Keys.DELETE).perform()
-        ActionChains(driver).send_keys(Keys.SHIFT + contact_info2).perform()
-        ActionChains(driver).send_keys(Keys.UP).perform()
-        ActionChains(driver).send_keys(Keys.UP).perform()
-        ActionChains(driver).send_keys(Keys.END).perform()
-        ActionChains(driver).send_keys(Keys.SHIFT + Keys.HOME).perform()
-        ActionChains(driver).send_keys(Keys.DELETE).perform()
-        ActionChains(driver).send_keys(Keys.SHIFT + contact_info1).perform()
+        field_contact_info.click()
+        field_contact_info.send_keys("123") #не знаю почему, но без этой строчки последующий ввод символов не происходит
+        field_contact_info.send_keys(contact_info)
+        # Возврат в основной фрейм
+        driver.switch_to.parent_frame()
         driver.find_element_by_xpath("//button[@class='MsgSubmit']").click()
         try:
             driver.switch_to.alert.accept()
