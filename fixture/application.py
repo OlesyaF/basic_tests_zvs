@@ -92,6 +92,20 @@ class Application:
         driver.switch_to.frame(chat)
         print("Клиент перешел в окно 'Сервис поддержки клиентов'")
 
+    @allure.step('Онлайн-версия: Переход в окно сервиса Задать вопрос (нажатие на меню "Задать вопрос")')
+    def go_to_customer_support_service_press_button(self):
+        driver = self.driver
+        button_zv = driver.find_element_by_xpath("//div[@class='topToolbar']/div[5]/div[2]")
+        button_zv.click()
+        print("Открыто окно 'Сервис поддержки клиентов'")
+
+    @allure.step('Онлайн-версия: Переход в окно сервиса Задать вопрос (переход во фрейм серевиса Задать вопрос)')
+    def go_to_customer_support_service_go_frame(self):
+        driver = self.driver
+        chat = driver.find_element_by_css_selector("#livechat-dialog iframe")
+        driver.switch_to.frame(chat)
+        print("Клиент перешел в окно 'Сервис поддержки клиентов'")
+
     @allure.step('Онлайн-версия: Переход в окно "Изменить контактные данные"')
     def go_to_client_info(self):
         driver = self.driver
@@ -148,7 +162,7 @@ class Application:
         driver.switch_to.parent_frame()
         button_close_chat = driver.find_element_by_xpath("//div[@class='icon livechatclose-16']")
         button_close_chat.click()
-        driver.refresh()
+        print("Клиент закрыл окно 'Сервис поддержки клиентов'")
 
     @allure.step('Онлайн-версия: Выход из окна "Изменить контактные данные"')
     def go_out_client_info(self):
@@ -1054,6 +1068,11 @@ class Application:
 
     # BASIC METHODS
 
+    @allure.step('Обновление страницы')
+    def refresh(self):
+        driver = self.driver
+        driver.refresh()
+
     @allure.step('Определение контрольного числа на основе даты и времени')
     def calc_check_sum_from_date(self):
         now = str(datetime.datetime.now())
@@ -1105,6 +1124,15 @@ class Application:
         driver = self.driver
         try:
             WebDriverWait(driver, wait).until(EC.presence_of_element_located((By.XPATH, locator)))
+            return True
+        except:
+            return False
+
+    # Проверка существования элемента(для использования во внешних методах)
+    def is_element_present_main_css(self, locator, wait=10):
+        driver = self.driver
+        try:
+            WebDriverWait(driver, wait).until(EC.presence_of_element_located((By.CSS_SELECTOR, locator)))
             return True
         except:
             return False

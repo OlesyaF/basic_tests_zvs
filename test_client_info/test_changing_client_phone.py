@@ -56,6 +56,7 @@ def test_changing_client_phone_null(app):
     app.save_client_info()
     time.sleep(3)
     app.go_out_customer_support_service()
+    app.refresh()
     time.sleep(3)
     app.go_to_customer_support_service()
     time.sleep(7)

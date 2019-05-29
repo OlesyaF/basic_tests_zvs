@@ -1,8 +1,8 @@
 # -*- encoding: utf-8 -*-
 
 import time
+
 import allure
-import pytest
 
 
 # Проверка работы Чата при переходе на нерабочее время и обратно
@@ -77,7 +77,8 @@ def test_chat_off_hours(app):
 
     allure.dynamic.description(
         'Чат, начатый в рабочее время, при переходе на нерабочее время остается активным: в ОД ОВ Клиент отправляет в Чат сообщения, в ОД ОВ не отображается сообщение о недоступности онлайн-диалога - ТЕСТ УСПЕШНЫЙ!')
-    print("Чат, начатый в рабочее время, при переходе на нерабочее время остается активным: в ОД ОВ Клиент отправляет в Чат сообщения, в ОД ОВ не отображается сообщение о недоступности онлайн-диалога - ТЕСТ УСПЕШНЫЙ!")
+    print(
+        "Чат, начатый в рабочее время, при переходе на нерабочее время остается активным: в ОД ОВ Клиент отправляет в Чат сообщения, в ОД ОВ не отображается сообщение о недоступности онлайн-диалога - ТЕСТ УСПЕШНЫЙ!")
 
     print("test_chat_off_hours.py is done successfully")
 
@@ -86,7 +87,7 @@ def test_chat_off_hours(app):
 def test_queue_off_hours(app):
     print("test_queue_off_hours.py is running")
 
-    #PRECONDITION: Завершение всех активных Чатов в АРМ РИЦ
+    # PRECONDITION: Завершение всех активных Чатов в АРМ РИЦ
     app.go_to_arm_ric()
     app.login_agent()
     time.sleep(10)
@@ -162,7 +163,6 @@ def test_queue_off_hours(app):
 
 
 @allure.title("Проверка завершения Чата в нерабочее время")
-@pytest.mark.skip(reason='This test is skipped')
 def test_completion_off_hours(app):
     print("test_completion_off_hours.py is running")
 
@@ -177,8 +177,10 @@ def test_completion_off_hours(app):
     app.logout_client()
 
     weekday = time.strftime("%a", time.localtime(time.time()))
+    weekday_num = 1 + int(time.strftime("%w", time.localtime(time.time())))
     hour = time.strftime("%H", time.localtime(time.time()))
     print("weekday = ", weekday)
+    print("weekday_num = ", weekday_num)
     print("hour = ", hour)
 
     app.go_to_arm_ric()
@@ -186,7 +188,7 @@ def test_completion_off_hours(app):
     time.sleep(10)
     app.go_to_work_time_settings()
     unavailable_text = app.get_agent_unavailable_text()
-    app.set_up_work_time(weekday, hour)
+    app.set_up_work_time(weekday, hour, weekday_num)
     app.go_to_online_dialog()
     app.agent_search_only_one_chat()
     time.sleep(7)
@@ -202,18 +204,38 @@ def test_completion_off_hours(app):
     app.go_to_customer_support_service()
     time.sleep(7)
     app.is_agent_message_in_ov_chat(mess_agent)
+
     if (app.is_element_present_main("//div[contains(text(),'" + unavailable_text + "')]") == True):
-        print("В ОД ОВ отображается сообщение о недоступности онлайн-диалога, заданное в АРМ РИЦ на вкладке Настройки рабочего времени РИЦ")
+        print(
+            "В ОД ОВ отображается сообщение о недоступности онлайн-диалога, заданное в АРМ РИЦ на вкладке Настройки рабочего времени РИЦ.")
     else:
-        print("ОШИБКА!!! В ОД ОВ не отображается сообщение о недоступности онлайн-диалога, указанное в АРМ РИЦ на вкладке Настройки рабочего времени РИЦ")
+        print(
+            "ОШИБКА!!! В ОД ОВ не отображается сообщение о недоступности онлайн-диалога, указанное в АРМ РИЦ на вкладке Настройки рабочего времени РИЦ")
         assert (app.is_element_present_main("//div[contains(text(),'" + unavailable_text + "')]") == True)
+
+    if (app.is_element_present_main("//textarea[@id='MsgInput' and @disabled]") == True):
+        print(
+            "Поле для ввода сообщения не активно.")
+    else:
+        print(
+            "ОШИБКА!!! Поле для ввода сообщения активно.")
+        assert (app.is_element_present_main("//textarea[@id='MsgInput' and @disabled]") == True)
+
+    if (app.is_element_present_main("//div[@id='ChatMsgSubmit' and @class='send_button MsgSubmit disabled']") == True):
+        print(
+            "Кнопка отправки сообщения заблокирована.")
+    else:
+        print(
+            "ОШИБКА!!! Кнопка отправки сообщения активна.")
+        assert (app.is_element_present_main("//div[@id='ChatMsgSubmit' and @class='send_button MsgSubmit disabled']") == True)
+
     app.logout_client()
 
     app.go_to_arm_ric()
     app.login_agent()
     time.sleep(10)
     app.go_to_work_time_settings()
-    app.set_up_work_time(weekday, hour)
+    app.set_up_work_time(weekday, hour, weekday_num=0)
     app.logout_agent()
 
     allure.dynamic.description(
