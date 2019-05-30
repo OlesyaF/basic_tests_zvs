@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="58688b4d-c806-4016-bde0-be95a17afdca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fixture/application.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixture/application.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target.json" beforeDir="false" afterPath="$PROJECT_DIR$/target.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_client_info/test_changing_client_phone.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_client_info/test_changing_client_phone.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_online_dialog/test_9_off_hours.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_online_dialog/test_9_off_hours.py" afterDir="false" />
-    </list>
+    <list default="true" id="58688b4d-c806-4016-bde0-be95a17afdca" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,11 +97,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/target.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
-              <caret line="4" column="55" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="55" />
+              <caret line="4" column="34" lean-forward="true" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -148,11 +142,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_online_dialog/test_9_off_hours.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="86" column="24" lean-forward="true" selection-start-line="86" selection-start-column="4" selection-end-line="86" selection-end-column="24" />
+            <state relative-caret-position="153">
+              <caret line="165" column="29" selection-start-line="165" selection-start-column="4" selection-end-line="165" selection-end-column="29" />
               <folding>
                 <element signature="e#27#38#0" expanded="true" />
               </folding>
@@ -163,8 +157,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_online_dialog/test_10_blinking_chat.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="54" column="27" selection-start-line="54" selection-start-column="27" selection-end-line="54" selection-end-column="27" />
+            <state relative-caret-position="-710">
+              <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -358,7 +352,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.pytest in test_10_blinking_chat.py">
+  <component name="RunManager" selected="Python tests.pytest in test_send_question.py">
     <configuration name="pytest in test_10_blinking_chat.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="basic_tests_zvs" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -371,21 +365,6 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;$PROJECT_DIR$/test_online_dialog/test_10_blinking_chat.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="pytest in test_5_completion_chat.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
-      <module name="basic_tests_zvs" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/test_online_dialog/test_5_completion_chat.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
@@ -416,6 +395,21 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;$PROJECT_DIR$/test_arm_ric/test_by_phone.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest in test_changing_client_phone.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="basic_tests_zvs" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/test_client_info/test_changing_client_phone.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
@@ -451,19 +445,19 @@
     </configuration>
     <list>
       <item itemvalue="Python tests.pytest in test_send_question.py" />
-      <item itemvalue="Python tests.pytest in test_5_completion_chat.py" />
       <item itemvalue="Python tests.pytest in test_by_phone.py" />
       <item itemvalue="Python tests.pytest in test_view_hotline_info.py" />
       <item itemvalue="Python tests.pytest in test_9_off_hours.py" />
       <item itemvalue="Python tests.pytest in test_10_blinking_chat.py" />
+      <item itemvalue="Python tests.pytest in test_changing_client_phone.py" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.pytest in test_changing_client_phone.py" />
         <item itemvalue="Python tests.pytest in test_10_blinking_chat.py" />
         <item itemvalue="Python tests.pytest in test_9_off_hours.py" />
         <item itemvalue="Python tests.pytest in test_view_hotline_info.py" />
         <item itemvalue="Python tests.pytest in test_by_phone.py" />
-        <item itemvalue="Python tests.pytest in test_5_completion_chat.py" />
       </list>
     </recent_temporary>
   </component>
@@ -481,21 +475,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="pytest_in_test_10_blinking_chat_py - 2019.05.29 at 16h 46m 49s.xml">
-      <configuration name="pytest in test_10_blinking_chat.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_test_10_blinking_chat_py - 2019.05.29 at 16h 55m 09s.xml">
-      <configuration name="pytest in test_10_blinking_chat.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_test_10_blinking_chat_py - 2019.05.29 at 16h 57m 49s.xml">
-      <configuration name="pytest in test_10_blinking_chat.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_test_10_blinking_chat_py - 2019.05.29 at 17h 01m 57s.xml">
-      <configuration name="pytest in test_10_blinking_chat.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_test_10_blinking_chat_py - 2019.05.29 at 17h 21m 00s.xml">
-      <configuration name="pytest in test_10_blinking_chat.py" configurationId="tests" />
-    </history-entry>
     <history-entry file="pytest_in_test_10_blinking_chat_py - 2019.05.29 at 17h 23m 06s.xml">
       <configuration name="pytest in test_10_blinking_chat.py" configurationId="tests" />
     </history-entry>
@@ -510,6 +489,21 @@
     </history-entry>
     <history-entry file="pytest_in_test_10_blinking_chat_py - 2019.05.29 at 17h 45m 00s.xml">
       <configuration name="pytest in test_10_blinking_chat.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_changing_client_phone_py - 2019.05.30 at 11h 45m 12s.xml">
+      <configuration name="pytest in test_changing_client_phone.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_changing_client_phone_py - 2019.05.30 at 11h 46m 35s.xml">
+      <configuration name="pytest in test_changing_client_phone.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_changing_client_phone_py - 2019.05.30 at 11h 48m 22s.xml">
+      <configuration name="pytest in test_changing_client_phone.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_changing_client_phone_py - 2019.05.30 at 11h 49m 41s.xml">
+      <configuration name="pytest in test_changing_client_phone.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_send_question_py - 2019.05.30 at 11h 52m 18s.xml">
+      <configuration name="pytest in test_send_question.py" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -857,13 +851,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/target.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="55" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/fixture/application.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1870">
@@ -879,20 +866,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_online_dialog/test_10_blinking_chat.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="54" column="27" selection-start-line="54" selection-start-column="27" selection-end-line="54" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_online_dialog/test_9_off_hours.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="86" column="24" lean-forward="true" selection-start-line="86" selection-start-column="4" selection-end-line="86" selection-end-column="24" />
+        <state relative-caret-position="153">
+          <caret line="165" column="29" selection-start-line="165" selection-start-column="4" selection-end-line="165" selection-end-column="29" />
           <folding>
             <element signature="e#27#38#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_online_dialog/test_10_blinking_chat.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-710">
+          <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="34" lean-forward="true" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
         </state>
       </provider>
     </entry>
