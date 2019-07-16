@@ -2,11 +2,13 @@
 
 import random
 import time
-
+import pytest
 import allure
 
 
 # Изменение имени клиента
+
+# Изменение имени клиента (позитивный тест)
 
 @allure.title("Изменение имени клиента (позитивный тест)")
 def test_changing_client_name(app):
@@ -103,3 +105,38 @@ def test_changing_client_name_nt2(app):
 
     app.logout_client()
     print("changing_client_name_nt2.py is done successfully")
+
+
+# Изменение имени клиента: при вставке имени из буфера обмена табуляция и пробелы автоматически удаляются
+
+@allure.title("Изменение имени клиента: при вставке имени из буфера обмена табуляция и пробелы автоматически удаляются")
+@pytest.mark.skip(reason='This test is skipped')
+def test_changing_client_name_cut_tab(app):
+    print("test_changing_client_name_cut_tab.py is running")
+
+    client_name = "Autotest#" + str(app.calc_check_sum_from_date())
+    client_name_tab = "   " + "Autotest#" + str(app.calc_check_sum_from_date()) + "  "
+    print("client_name: ", client_name)
+    print("client_name_tab: ", client_name_tab)
+    locator = "//span[contains(text(),'" + client_name + "')]"
+
+    app.go_to_online_version()
+    app.login_client()
+    app.go_to_customer_support_service()
+    time.sleep(7)
+    app.go_to_client_info()
+    time.sleep(2)
+    app.changing_client_name_clipboard(client_name_tab)
+    app.save_client_info()
+    if (app.is_element_present_main(locator) == True):
+        print("В ОД имя Клиента совпадает с новым значением - ТЕСТ УСПЕШНЫЙ")
+        allure.dynamic.description(
+            'В ОД имя Клиента совпадает с новым значением - ТЕСТ УСПЕШНЫЙ')
+    else:
+        print("ОШИБКА: В ОД имя Клиента не совпадает с новым значением - ТЕСТ НЕ УСПЕШНЫЙ!!!")
+        allure.dynamic.description(
+            'ОШИБКА: В ОД имя Клиента не совпадает с новым значением - ТЕСТ НЕ УСПЕШНЫЙ!!!')
+        assert (app.is_element_present_main(locator) == True)
+
+    app.logout_client()
+    print("test_changing_client_name_cut_tab.py is done successfully")

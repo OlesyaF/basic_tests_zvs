@@ -2,15 +2,17 @@
 
 import random
 import time
-
+import pytest
 import allure
 
 
 # Изменение email клиента
 
+# Изменение email клиента (позитивный тест)
+
 @allure.title("Изменение email клиента (позитивный тест)")
 def test_changing_client_email(app):
-    print("test_hotline_info.py is running")
+    print("test_changing_client_email.py is running")
 
     email = str(app.calc_check_sum_from_date()) + "@autotest.ru"
     print("email: ", email)
@@ -35,7 +37,7 @@ def test_changing_client_email(app):
         assert (app.is_element_present_main(locator) == True)
 
     app.logout_client()
-    print("test_hotline_info.py is done successfully")
+    print("test_changing_client_email.py is done successfully")
 
 
 # Изменение email клиента (негативный тест): нельзя сохранить поле 'Email' незаполненным
@@ -103,3 +105,38 @@ def test_changing_client_email_nt2(app):
 
     app.logout_client()
     print("changing_client_email_nt2.py is done successfully")
+
+
+# Изменение email клиента: при вставке email из буфера обмена табуляция и пробелы автоматически удаляются
+
+@allure.title("Изменение email клиента: при вставке email из буфера обмена табуляция и пробелы автоматически удаляются")
+@pytest.mark.skip(reason='This test is skipped')
+def test_changing_client_email_cut_tab(app):
+    print("test_changing_client_email_cut_tab.py is running")
+
+    email = str(app.calc_check_sum_from_date()) + "@autotest.ru"
+    email_tab = "   " + str(app.calc_check_sum_from_date()) + "@autotest.ru" + "  "
+    print("email: ", email)
+    print("email_tab: ", email_tab)
+    locator = "//span[contains(text(),'" + email + "')]"
+
+    app.go_to_online_version()
+    app.login_client()
+    app.go_to_customer_support_service()
+    time.sleep(7)
+    app.go_to_client_info()
+    time.sleep(2)
+    app.changing_client_email(email)
+    app.save_client_info()
+    if (app.is_element_present_main(locator) == True):
+        print("В ОД email Клиента совпадает с новым значением - ТЕСТ УСПЕШНЫЙ")
+        allure.dynamic.description(
+            'В ОД email Клиента совпадает с новым значением - ТЕСТ УСПЕШНЫЙ')
+    else:
+        print("ОШИБКА: В ОД email Клиента не совпадает с новым значением - ТЕСТ НЕ УСПЕШНЫЙ!!!")
+        allure.dynamic.description(
+            'ОШИБКА: В ОД email Клиента не совпадает с новым значением - ТЕСТ НЕ УСПЕШНЫЙ!!!')
+        assert (app.is_element_present_main(locator) == True)
+
+    app.logout_client()
+    print("test_changing_client_email_cut_tab.py is done successfully")
