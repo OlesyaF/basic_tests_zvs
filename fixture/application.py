@@ -252,14 +252,14 @@ class Application:
         driver = self.driver
         print("Проверка доступности сервиса Написать эксперту:")
         if (self.is_element_present(driver,
-                                    "//span[contains(@class, 'SmallSpace tabTextTitle') and contains(text(),'Здесь Вы можете задать вопрос, который требует консультации эксперта')]") == True):
+                                    "//span[contains(@class, 'SmallSpace tabTextTitle') and contains(text(),'Здесь Вы можете написать и отправить свой вопрос')]") == True):
             print(
-                "1. Пояснительный текст ('Здесь Вы можете задать вопрос, который требует консультации эксперта') присутствует")
+                "1. Пояснительный текст ('Здесь Вы можете написать и отправить свой вопрос') присутствует")
         else:
             print(
-                "ОШИБКА!!! Пояснительный текст ('Здесь Вы можете задать вопрос, который требует консультации эксперта') отсутствует!")
+                "ОШИБКА!!! Пояснительный текст ('Здесь Вы можете написать и отправить свой вопрос') отсутствует!")
             assert (self.is_element_present(driver,
-                                            "//span[contains(@class, 'SmallSpace tabTextTitle') and contains(text(),'Здесь Вы можете задать вопрос, который требует консультации эксперта')]") == True)
+                                            "//span[contains(@class, 'SmallSpace tabTextTitle') and contains(text(),'Здесь Вы можете написать и отправить свой вопрос')]") == True)
         if (self.is_element_present(driver, "//div[@id='ExpconsBody']") == True):
             print("2. Поле для ввода вопроса присутствует")
         else:
