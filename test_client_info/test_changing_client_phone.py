@@ -6,6 +6,8 @@ import allure
 
 # Изменение телефона клиента
 
+# Изменение телефона клиента (позитивный тест)
+
 @allure.title("Изменение телефона клиента (позитивный тест)")
 def test_changing_client_phone(app):
     print("test_changing_client_phone.py is running")

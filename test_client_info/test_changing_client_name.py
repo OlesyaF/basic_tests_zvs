@@ -2,7 +2,7 @@
 
 import random
 import time
-import pytest
+
 import allure
 
 
@@ -107,10 +107,9 @@ def test_changing_client_name_nt2(app):
     print("changing_client_name_nt2.py is done successfully")
 
 
-# Изменение имени клиента: при вставке имени из буфера обмена табуляция и пробелы автоматически удаляются
+# Изменение имени клиента: табуляция и пробелы в начале и конце имени автоматически удаляются
 
-@allure.title("Изменение имени клиента: при вставке имени из буфера обмена табуляция и пробелы автоматически удаляются")
-@pytest.mark.skip(reason='This test is skipped')
+@allure.title("Изменение имени клиента: табуляция и пробелы в начале и конце имени автоматически удаляются")
 def test_changing_client_name_cut_tab(app):
     print("test_changing_client_name_cut_tab.py is running")
 
@@ -118,7 +117,8 @@ def test_changing_client_name_cut_tab(app):
     client_name_tab = "   " + "Autotest#" + str(app.calc_check_sum_from_date()) + "  "
     print("client_name: ", client_name)
     print("client_name_tab: ", client_name_tab)
-    locator = "//span[contains(text(),'" + client_name + "')]"
+    locator1 = "//span[@id='ChatUsername' and contains(text(),'" + client_name + "')]"
+    locator2 = "//input[@id='FormCustomerFullname' and @value='" + client_name + "']"
 
     app.go_to_online_version()
     app.login_client()
@@ -126,9 +126,11 @@ def test_changing_client_name_cut_tab(app):
     time.sleep(7)
     app.go_to_client_info()
     time.sleep(2)
-    app.changing_client_name_clipboard(client_name_tab)
+    app.changing_client_name(client_name_tab)
     app.save_client_info()
-    if (app.is_element_present_main(locator) == True):
+    time.sleep(2)
+
+    if (app.is_element_present_main(locator1) == True):
         print("В ОД имя Клиента совпадает с новым значением - ТЕСТ УСПЕШНЫЙ")
         allure.dynamic.description(
             'В ОД имя Клиента совпадает с новым значением - ТЕСТ УСПЕШНЫЙ')
@@ -136,7 +138,26 @@ def test_changing_client_name_cut_tab(app):
         print("ОШИБКА: В ОД имя Клиента не совпадает с новым значением - ТЕСТ НЕ УСПЕШНЫЙ!!!")
         allure.dynamic.description(
             'ОШИБКА: В ОД имя Клиента не совпадает с новым значением - ТЕСТ НЕ УСПЕШНЫЙ!!!')
-        assert (app.is_element_present_main(locator) == True)
+        assert (app.is_element_present_main(locator1) == True)
+
+    app.go_out_customer_support_service()
+    # Страницу приходится обновлять, т.к. до обновления новое значение записывается в text(), а не присваивается value, а, следовательно, пробелы и табуляция не распознаются
+    app.refresh()
+    time.sleep(3)
+    app.go_to_customer_support_service()
+    time.sleep(7)
+    app.go_to_client_info()
+
+    if (app.is_element_present_main(locator2) == True):
+        print("В окне 'Изменить контактные данные' имя Клиента отображается без пробелов и табуляции - ТЕСТ УСПЕШНЫЙ")
+        allure.dynamic.description(
+            'В окне "Изменить контактные данные" имя Клиента отображается без пробелов и табуляции - ТЕСТ УСПЕШНЫЙ')
+    else:
+        print(
+            "ОШИБКА: В окне 'Изменить контактные данные' имя Клиента отображается с пробелами и табуляцией - ТЕСТ НЕ УСПЕШНЫЙ!!!")
+        allure.dynamic.description(
+            'ОШИБКА: В окне "Изменить контактные данные" имя Клиента отображается с пробелами и табуляцией - ТЕСТ НЕ УСПЕШНЫЙ!!!')
+        assert (app.is_element_present_main(locator2) == True)
 
     app.logout_client()
     print("test_changing_client_name_cut_tab.py is done successfully")

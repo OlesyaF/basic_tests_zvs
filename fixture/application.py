@@ -5,7 +5,6 @@ import random
 import re
 import time
 import allure
-import tkinter
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
@@ -13,7 +12,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-from tkinter import Tk
 
 
 # noinspection PyDeprecation
@@ -134,20 +132,6 @@ class Application:
         input_field_name.click()
         input_field_name.clear()
         input_field_name.send_keys(client_name)
-        print("В поле 'Имя' введено новое значение")
-
-    @allure.step('Онлайн-версия: Изменение имени Клиента (через буфер обмена)')
-    def changing_client_name_clipboard(self, client_name_tab):
-        c = Tk()
-        c.withdraw()
-        c.clipboard_clear()
-        c.clipboard_append(client_name_tab)
-        driver = self.driver
-        input_field_name = driver.find_element_by_id("FormCustomerFullname")
-        input_field_name.click()
-        input_field_name.clear()
-        ActionChains(driver).send_keys(Keys.CONTROL + 'v').perform()
-        c.destroy()
         print("В поле 'Имя' введено новое значение")
 
     @allure.step('Онлайн-версия: Изменение email Клиента')
