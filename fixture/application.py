@@ -5,8 +5,9 @@ import random
 import re
 import time
 import allure
+from winreg import *
 from selenium.common.exceptions import NoAlertPresentException
-from selenium.webdriver.chrome.webdriver import WebDriver
+from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -17,8 +18,44 @@ from selenium.webdriver.support.ui import WebDriverWait
 # noinspection PyDeprecation
 class Application:
 
-    def __init__(self, ov_url, client_login, client_password, arm_ric_url, agent_login, agent_password):
-        self.driver = WebDriver()
+    def __init__(self, ov_url, client_login, client_password, arm_ric_url, agent_login, agent_password, browser,
+                 resource, kit):
+        if browser == "chrome":
+            self.driver = webdriver.Chrome()
+
+        elif browser == "firefox":
+            self.driver = webdriver.Firefox()
+
+        elif browser == "opera":
+            self.driver = webdriver.Opera()
+
+        elif browser == "ie":
+
+            # Отключение проверки защищенности зон Интернета через Capabilities не работает
+            # (from selenium.webdriver.common.desired_capabilities import DesiredCapabilities)
+            # cap = DesiredCapabilities().INTERNETEXPLORER.copy()
+            # cap['ignoreProtectedModeSettings'] = True
+            # cap['IntroduceInstabilityByIgnoringProtectedModeSettings'] = True
+            # cap['INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS'] = True
+            # self.driver = webdriver.Ie(capabilities=cap)
+
+            # Включаем защищенный режим для всех зон Интернета (тоже странно работает):
+            try:
+                keyVal = r'Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1'
+                key = OpenKey(HKEY_CURRENT_USER, keyVal, 0, KEY_ALL_ACCESS)
+                SetValueEx(key, "2500", 0, REG_DWORD, 0)
+                print("Включен защищенный режим для всех зон Интернета")
+            except Exception:
+                print("Ошибка включения защищенного режима для всех зон Интернета!!!")
+
+            self.driver = webdriver.Ie()
+
+        elif browser == "edge":
+            self.driver = webdriver.Edge()
+
+        else:
+            raise ValueError("Неизвестный браузер %s" % browser)
+
         self.driver.maximize_window()
         self.driver.implicitly_wait(5)
         self.ov_url = ov_url
@@ -27,6 +64,8 @@ class Application:
         self.arm_ric_url = arm_ric_url
         self.agent_login = agent_login
         self.agent_password = agent_password
+        self.resource = resource
+        self.kit = kit
 
     def is_valid(self):
         try:
@@ -41,45 +80,87 @@ class Application:
     def go_to_online_version(self):
         driver = self.driver
         ov_url = self.ov_url
-        driver.get(ov_url)
-        if (self.is_element_present(driver, "//*[@id='logout']/div[1]") == True):
-            print("ОВ доступна. Клиент авторизован. Видимо, предыдущий тест упал.")
-            # Нажатие на кнопку "Выйти"
-            button_logout = driver.find_element_by_xpath("//*[@id='logout']/div[1]")
-            button_logout.click()
-            # Переход во фрейм "Вы действительно хотите выйти из системы?"
-            logout_frame = driver.find_element_by_css_selector("#dialogFrame1 iframe")
-            driver.switch_to.frame(logout_frame)
-            logout_confirm = driver.find_element_by_css_selector(
-                "#confirm > table > tbody > tr:nth-child(2) > td:nth-child(1) > button > span")
-            logout_confirm.click()
+        resource = self.resource
+        if resource == "zv":
+            driver.get(ov_url)
+            if (self.is_element_present(driver, "//*[@id='logout']/div[1]") == True):
+                print("ОВ доступна. Клиент авторизован. Видимо, предыдущий тест упал.")
+                # Нажатие на кнопку "Выйти"
+                button_logout = driver.find_element_by_xpath("//*[@id='logout']/div[1]")
+                button_logout.click()
+                # Переход во фрейм "Вы действительно хотите выйти из системы?"
+                logout_frame = driver.find_element_by_css_selector("#dialogFrame1 iframe")
+                driver.switch_to.frame(logout_frame)
+                logout_confirm = driver.find_element_by_css_selector(
+                    "#confirm > table > tbody > tr:nth-child(2) > td:nth-child(1) > button > span")
+                logout_confirm.click()
+                if (self.is_element_present(driver, "//input[@id='loginform-password']") == True):
+                    print("Клиент вышел из ОВ")
+                else:
+                    print("ОШИБКА!!! Поле для ввода пароля не найдено. Клиент не разлогинился!")
+                    assert (self.is_element_present(driver, "//input[@id='loginform-password']") == True)
             if (self.is_element_present(driver, "//input[@id='loginform-password']") == True):
-                print("Клиент вышел из ОВ")
+                print("ОВ доступна")
             else:
-                print("ОШИБКА!!! Поле для ввода пароля не найдено. Клиент не разлогинился!")
-                assert (self.is_element_present(driver, "//input[@id='loginform-password']") == True)
-        if (self.is_element_present(driver, "//input[@id='loginform-password']") == True):
-            print("ОВ доступна")
+                print("ОШИБКА!!! Онлайн Версия не доступна! - Не найдено поле 'Логин' для авторизации")
+                assert (self.is_element_present(driver, "//input[@id='loginform-login']") == True)
+        elif resource == "dt":
+            driver.get(ov_url)
+            if (self.is_element_present(driver, "//*[@id='logout']/div[1]") == True):
+                print("ОВ доступна. Клиент авторизован. Видимо, предыдущий тест упал.")
+                # Нажатие на кнопку "Выйти"
+                button_logout = driver.find_element_by_xpath("//*[@id='logout']/div[1]")
+                button_logout.click()
+                # Переход во фрейм "Вы действительно хотите выйти из системы?"
+                logout_frame = driver.find_element_by_css_selector("#dialogFrame2 iframe")
+                driver.switch_to.frame(logout_frame)
+                logout_confirm = driver.find_element_by_css_selector(
+                    "#confirm > table > tbody > tr:nth-child(2) > td:nth-child(1) > button > span")
+                logout_confirm.click()
+                if (self.is_element_present(driver, "//input[@id='login']") == True):
+                    print("Клиент вышел из ОВ")
+                else:
+                    print("ОШИБКА!!! Поле для ввода пароля не найдено. Клиент не разлогинился!")
+                    assert (self.is_element_present(driver, "//input[@id='login']") == True)
+            if (self.is_element_present(driver, "//input[@id='login']") == True):
+                print("ОВ доступна")
+            else:
+                print("ОШИБКА!!! Онлайн Версия не доступна! - Не найдено поле 'Логин' для авторизации")
+                assert (self.is_element_present(driver, "//input[@id='login']") == True)
         else:
-            print("ОШИБКА!!! Онлайн Версия не доступна! - Не найдено поле 'Логин' для авторизации")
-            assert (self.is_element_present(driver, "//input[@id='loginform-login']") == True)
+            raise ValueError("Неизвестный ресурс %s" % resource)
 
     @allure.step('Онлайн-версия: Авторизация')
     def login_client(self):
         driver = self.driver
         client_login = self.client_login
         client_password = self.client_password
-        input_field_login = driver.find_element_by_id("loginform-login")
-        input_field_login.send_keys(client_login)
-        input_field_password = driver.find_element_by_id("loginform-password")
-        input_field_password.send_keys(client_password)
-        button_login = driver.find_element_by_id("buttonLogin")
-        button_login.click()
-        if (self.is_element_present(driver, "//div[@id='logout']") == True):
-            print("Клиент залогинился в ОВ")
-        else:
-            print("ОШИБКА!!! Клиент не залогинился в ОВ! - Не найдена кнопка 'Выйти'")
-            assert (self.is_element_present(driver, "//div[@id='logout']") == True)
+        resource = self.resource
+        if resource == "zv":
+            input_field_login = driver.find_element_by_id("loginform-login")
+            input_field_login.send_keys(client_login)
+            input_field_password = driver.find_element_by_id("loginform-password")
+            input_field_password.send_keys(client_password)
+            button_login = driver.find_element_by_id("buttonLogin")
+            button_login.click()
+            if (self.is_element_present(driver, "//div[@id='logout']") == True):
+                print("Клиент залогинился в ОВ")
+            else:
+                print("ОШИБКА!!! Клиент не залогинился в ОВ! - Не найдена кнопка 'Выйти'")
+                assert (self.is_element_present(driver, "//div[@id='logout']") == True)
+        elif resource == "dt":
+            input_field_login = driver.find_element_by_id("login")
+            input_field_login.send_keys(client_login)
+            input_field_password = driver.find_element_by_id("pwd")
+            input_field_password.send_keys(client_password)
+            button_login = driver.find_element_by_id("btnOk")
+            button_login.click()
+            time.sleep(5)
+            if (self.is_element_present(driver, "//div[@id='logout']") == True):
+                print("Клиент залогинился в ОВ")
+            else:
+                print("ОШИБКА!!! Клиент не залогинился в ОВ! - Не найдена кнопка 'Выйти'")
+                assert (self.is_element_present(driver, "//div[@id='logout']") == True)
 
     @allure.step('Онлайн-версия: Переход в окно сервиса Задать вопрос (окно "Сервис поддержки клиентов")')
     def go_to_customer_support_service(self):
@@ -178,22 +259,35 @@ class Application:
     @allure.step('Онлайн-версия: Выход')
     def logout_client(self):
         driver = self.driver
+        resource = self.resource
         # Возврат в основной фрейм
         driver.switch_to.parent_frame()
         # Нажатие на кнопку "Выйти"
         button_logout = driver.find_element_by_xpath("//*[@id='logout']/div[1]")
         button_logout.click()
         # Переход во фрейм "Вы действительно хотите выйти из системы?"
-        logout_frame = driver.find_element_by_css_selector("#dialogFrame1 iframe")
-        driver.switch_to.frame(logout_frame)
-        logout_confirm = driver.find_element_by_css_selector(
-            "#confirm > table > tbody > tr:nth-child(2) > td:nth-child(1) > button > span")
-        logout_confirm.click()
-        if (self.is_element_present(driver, "//input[@id='loginform-password']") == True):
-            print("Клиент вышел из ОВ")
-        else:
-            print("ОШИБКА!!! Поле для ввода пароля не найдено. Клиент не разлогинился!")
-            assert (self.is_element_present(driver, "//input[@id='loginform-password']") == True)
+        if resource == "zv":
+            logout_frame = driver.find_element_by_css_selector("#dialogFrame1 iframe")
+            driver.switch_to.frame(logout_frame)
+            logout_confirm = driver.find_element_by_css_selector(
+                "#confirm > table > tbody > tr:nth-child(2) > td:nth-child(1) > button > span")
+            logout_confirm.click()
+            if (self.is_element_present(driver, "//input[@id='loginform-password']") == True):
+                print("Клиент вышел из ОВ")
+            else:
+                print("ОШИБКА!!! Поле для ввода пароля не найдено. Клиент не разлогинился!")
+                assert (self.is_element_present(driver, "//input[@id='loginform-password']") == True)
+        elif resource == "dt":
+            logout_frame = driver.find_element_by_css_selector("#dialogFrame2 iframe")
+            driver.switch_to.frame(logout_frame)
+            logout_confirm = driver.find_element_by_css_selector(
+                "#confirm > table > tbody > tr:nth-child(2) > td:nth-child(1) > button > span")
+            logout_confirm.click()
+            if (self.is_element_present(driver, "//input[@id='login']") == True):
+                print("Клиент вышел из ОВ")
+            else:
+                print("ОШИБКА!!! Поле для ввода пароля не найдено. Клиент не разлогинился!")
+                assert (self.is_element_present(driver, "//input[@id='login']") == True)
 
     @allure.step('Онлайн-версия: Переход на вкладку "Написать эксперту" в окне "Сервис поддержки клиентов"')
     def go_to_expcons(self):
@@ -396,9 +490,10 @@ class Application:
         'Онлайн-версия: Получение информации о Горячей линии РИЦ со вкладки "Горячая линия/Контактная информация РИЦ" в окне "Сервис поддержки клиентов"')
     def get_hotline_info_ov(self):
         driver = self.driver
-        #hotline_info = str(driver.find_element_by_xpath("//div[@class='p16t']/div[1]").get_attribute("textContent"))
-        hotline_info = str(driver.find_element_by_xpath("//*[@id='ContactInfo']/div/div[1]/div[2]").get_attribute("textContent"))
-        #//*[@id="ContactInfo"]/div/div[1]/div[2]/text()
+        # hotline_info = str(driver.find_element_by_xpath("//div[@class='p16t']/div[1]").get_attribute("textContent"))
+        hotline_info = str(
+            driver.find_element_by_xpath("//*[@id='ContactInfo']/div/div[1]/div[2]").get_attribute("textContent"))
+        # //*[@id="ContactInfo"]/div/div[1]/div[2]/text()
         hotline_info = hotline_info.strip()
         hotline_info = re.sub("^\s+|\n|\r|\s+$", "", hotline_info)
         print(
@@ -497,28 +592,30 @@ class Application:
                                             "//div[@class='title']/div[contains(text(),'Контактная информация о РИЦ')]") == True and self.is_element_present(
                 driver, "//div[@class='button blue fl-lt']") == True)
 
-    @allure.step('АРМ РИЦ: Поиск комплекта BUHUL_866712 на вкладке Настройка доступности сервиса ‎Задать вопрос')
+    @allure.step('АРМ РИЦ: Поиск комплекта на вкладке Настройка доступности сервиса ‎Задать вопрос')
     def kit_search(self):
         driver = self.driver
+        kit = self.kit
         button_configure = driver.find_element_by_xpath("//div[@class='button blue fl-lt']")
         button_configure.click()
         field_kit_list = driver.find_element_by_xpath("//input[@type='text']")
         field_kit_list.click()
-        field_kit_list.send_keys("BUHUL_866712")
+        field_kit_list.send_keys(kit)
         field_kit_list.send_keys(Keys.ENTER)
         if (self.is_element_present(driver,
-                                    "//div[@class='tab-cell fl-lt tCell Supported' and contains(text(),'BUHUL_866712')]") == True):
-            print("Комплект BUHUL_866712 найден: строка комплекта отображается в результатах поиска")
+                                    "//div[@class='tab-cell fl-lt tCell Supported' and contains(text(),'" + kit + "')]") == True):
+            print("Комплект ", kit, " найден: строка комплекта отображается в результатах поиска")
         else:
-            print("ОШИБКА!!! Комплект BUHUL_866712 НЕ найден! - Строка комплекта НЕ отображается в результатах поиска")
+            print("ОШИБКА!!! Комплект ", kit, " НЕ найден! - Строка комплекта НЕ отображается в результатах поиска")
             assert (self.is_element_present(driver,
-                                            "//div[@class='tab-cell fl-lt tCell Supported' and contains(text(),'BUHUL_866712')]") == True)
+                                            "//div[@class='tab-cell fl-lt tCell Supported' and contains(text(),'" + kit + "')]") == True)
 
-    @allure.step('АРМ РИЦ: Получение id комплекта BUHUL_866712 на вкладке Настройка доступности сервиса ‎Задать вопрос')
+    @allure.step('АРМ РИЦ: Получение id комплекта на вкладке Настройка доступности сервиса ‎Задать вопрос')
     def get_kit_id(self):
         driver = self.driver
+        kit = self.kit
         kit_id = driver.find_element_by_xpath(
-            "//div[@class='tab-cell fl-lt tCell Supported' and contains(text(),'BUHUL_866712')]//input[1]").get_attribute(
+            "//div[@class='tab-cell fl-lt tCell Supported' and contains(text(),'" + kit + "')]//input[1]").get_attribute(
             "value")
         print("kit_id = ", kit_id)
         return kit_id
@@ -916,14 +1013,14 @@ class Application:
             NoAlertPresentException
         time.sleep(3)
         if (self.is_element_present(driver,
-                                    "//div[@class='Title' and contains(text(),'РИЦ №997')]") == True and self.is_element_present(
+                                    "//div[@class='Title' and contains(text(),'РИЦ №')]") == True and self.is_element_present(
             driver,
             "//div[@class='HelperQueue' and contains(text(),'В очереди клиентов на консультацию:')]") == True):
             print("Агент перешел на вкладку Онлайн-диалог")
         else:
             print("ОШИБКА!!! Агент не перешел на вкладку Онлайн-диалог!")
             assert (self.is_element_present(driver,
-                                            "//div[@class='Title' and contains(text(),'РИЦ №997')]") == True and self.is_element_present(
+                                            "//div[@class='Title' and contains(text(),'РИЦ №')]") == True and self.is_element_present(
                 driver,
                 "//div[@class='HelperQueue' and contains(text(),'В очереди клиентов на консультацию:')]") == True)
 
@@ -1018,7 +1115,8 @@ class Application:
         ActionChains(driver).send_keys(Keys.CONTROL + 'a').perform()
         ActionChains(driver).send_keys(Keys.DELETE).perform()
         field_contact_info.click()
-        field_contact_info.send_keys("123") #не знаю почему, но без этой строчки последующий ввод символов не происходит
+        field_contact_info.send_keys(
+            "123")  # не знаю почему, но без этой строчки последующий ввод символов не происходит
         field_contact_info.send_keys(contact_info)
         # Возврат в основной фрейм
         driver.switch_to.parent_frame()
@@ -1052,18 +1150,23 @@ class Application:
             driver.find_element_by_xpath("//button[@name='Submit']").click()
             print("Настройки рабочего времени изменены: периоды нерабочего времени не заданы")
         else:
-            driver.find_element_by_xpath("//div[@class='Setting']/div[" + str(weekday_num) + "]/div[25]/label/input[@name='wholeDay']").click()
+            driver.find_element_by_xpath(
+                "//div[@class='Setting']/div[" + str(weekday_num) + "]/div[25]/label/input[@name='wholeDay']").click()
             driver.find_element_by_xpath("//input[@name='" + weekday + "' and @value='" + hour + "']").click()
             driver.find_element_by_xpath("//button[@name='Submit']").click()
-            print("Настройки рабочего времени изменены. Установлено нерабочее время: " + weekday + " c " + hour + ":00 до " + str(int(hour) + 1) + ":00")
+            print(
+                "Настройки рабочего времени изменены. Установлено нерабочее время: " + weekday + " c " + hour + ":00 до " + str(
+                    int(hour) + 1) + ":00")
 
-    @allure.step('АРМ РИЦ: Получение текста о недоступности РИЦ, задаваемого в АРМ РИЦ на вкладке Настройки рабочего времени РИЦ')
+    @allure.step(
+        'АРМ РИЦ: Получение текста о недоступности РИЦ, задаваемого в АРМ РИЦ на вкладке Настройки рабочего времени РИЦ')
     def get_agent_unavailable_text(self):
         driver = self.driver
-        unavailable_text = driver.find_element_by_xpath("//textarea[@id='TextUnavailable']").get_attribute("textContent")
-        print("Текст о недоступности РИЦ, задаваемый в АРМ РИЦ на вкладке Настройки рабочего времени РИЦ: ", unavailable_text)
+        unavailable_text = driver.find_element_by_xpath("//textarea[@id='TextUnavailable']").get_attribute(
+            "textContent")
+        print("Текст о недоступности РИЦ, задаваемый в АРМ РИЦ на вкладке Настройки рабочего времени РИЦ: ",
+              unavailable_text)
         return unavailable_text
-
 
     # BASIC METHODS
 
