@@ -2,7 +2,7 @@
 
 import random
 import time
-
+import pytest
 import allure
 
 
@@ -140,11 +140,9 @@ def test_changing_client_email_cut_tab(app):
             'ОШИБКА: В ОД email Клиента не совпадает с новым значением - ТЕСТ НЕ УСПЕШНЫЙ!!!')
         assert (app.is_element_present_main(locator1) == True)
 
-    app.go_out_customer_support_service()
-    #Страницу приходится обновлять, т.к. до обновления новое значение записывается в text(), а не присваивается value, а, следовательно, пробелы и табуляция не распознаются
-    app.refresh()
+    app.refresh() # Страницу приходится обновлять, т.к. до обновления новое значение записывается в text(), а не присваивается value, а, следовательно, пробелы и табуляция не распознаются
     time.sleep(3)
-    app.go_to_customer_support_service()
+    app.go_to_customer_support_service_go_frame()
     time.sleep(7)
     app.go_to_client_info()
 

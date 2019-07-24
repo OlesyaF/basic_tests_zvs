@@ -240,8 +240,11 @@ class Application:
         driver = self.driver
         # Возврат в основной фрейм
         driver.switch_to.parent_frame()
+        time.sleep(5)
         button_close_chat = driver.find_element_by_xpath("//div[@class='icon livechatclose-16']")
-        button_close_chat.click()
+        time.sleep(5)
+        ActionChains(driver).move_to_element(button_close_chat).click().perform()
+        time.sleep(5)
         print("Клиент закрыл окно 'Сервис поддержки клиентов'")
 
     @allure.step('Онлайн-версия: Выход из окна "Изменить контактные данные"')
@@ -278,7 +281,14 @@ class Application:
                 print("ОШИБКА!!! Поле для ввода пароля не найдено. Клиент не разлогинился!")
                 assert (self.is_element_present(driver, "//input[@id='loginform-password']") == True)
         elif resource == "dt":
-            logout_frame = driver.find_element_by_css_selector("#dialogFrame2 iframe")
+            logout_frame = None
+            if (self.is_element_present(driver, "//iframe[@name='dialogFrame2']") == True):
+                logout_frame = driver.find_element_by_xpath("//iframe[@name='dialogFrame2']")
+            elif (self.is_element_present(driver, "//iframe[@name='dialogFrame1']") == True):
+                logout_frame = driver.find_element_by_xpath("//iframe[@name='dialogFrame1']")
+            else:
+                print("ОШИБКА!!! Фрейм 'Вы действительно хотите выйти из системы?' не найден!")
+                assert (logout_frame != None)
             driver.switch_to.frame(logout_frame)
             logout_confirm = driver.find_element_by_css_selector(
                 "#confirm > table > tbody > tr:nth-child(2) > td:nth-child(1) > button > span")
