@@ -112,7 +112,14 @@ class Application:
                 button_logout = driver.find_element_by_xpath("//*[@id='logout']/div[1]")
                 button_logout.click()
                 # Переход во фрейм "Вы действительно хотите выйти из системы?"
-                logout_frame = driver.find_element_by_css_selector("#dialogFrame2 iframe")
+                logout_frame = None
+                if (self.is_element_present(driver, "//iframe[@name='dialogFrame2']") == True):
+                    logout_frame = driver.find_element_by_xpath("//iframe[@name='dialogFrame2']")
+                elif (self.is_element_present(driver, "//iframe[@name='dialogFrame1']") == True):
+                    logout_frame = driver.find_element_by_xpath("//iframe[@name='dialogFrame1']")
+                else:
+                    print("ОШИБКА!!! Фрейм 'Вы действительно хотите выйти из системы?' не найден!")
+                    assert (logout_frame != None)
                 driver.switch_to.frame(logout_frame)
                 logout_confirm = driver.find_element_by_css_selector(
                     "#confirm > table > tbody > tr:nth-child(2) > td:nth-child(1) > button > span")
