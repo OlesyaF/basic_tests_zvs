@@ -155,12 +155,12 @@ class Application:
             input_field_password.send_keys(client_password)
             button_login = driver.find_element_by_id("btnOk")
             button_login.click()
-            time.sleep(5)
             if (self.is_element_present(driver, "//div[@id='logout']") == True):
                 print("Клиент залогинился в ОВ")
             else:
                 print("ОШИБКА!!! Клиент не залогинился в ОВ! - Не найдена кнопка 'Выйти'")
                 assert (self.is_element_present(driver, "//div[@id='logout']") == True)
+            time.sleep(5)
 
     @allure.step('Онлайн-версия: Переход в окно сервиса Задать вопрос (окно "Сервис поддержки клиентов")')
     def go_to_customer_support_service(self):
@@ -1208,7 +1208,7 @@ class Application:
     # Проверка существования элемента(для использования в методах application.py)
     def is_element_present(self, driver, locator):
         try:
-            WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, locator)))
+            WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, locator)))
             return True
         except:
             return False
