@@ -242,16 +242,13 @@ class Application:
         input_field_name.send_keys(phone)
         print("В поле 'Телефон' введено новое значение")
 
-    @allure.step('Онлайн-версия: Выход из окна сервиса Задать вопрос')
+    @allure.step('Онлайн-версия: Выход из окна сервиса Задать вопрос') # метод не используется, т.к. в ОВ ДТ не отрабатывает клик по //div[@class='icon livechatclose-16']
     def go_out_customer_support_service(self):
         driver = self.driver
         # Возврат в основной фрейм
         driver.switch_to.parent_frame()
-        time.sleep(5)
         button_close_chat = driver.find_element_by_xpath("//div[@class='icon livechatclose-16']")
-        time.sleep(5)
         ActionChains(driver).move_to_element(button_close_chat).click().perform()
-        time.sleep(5)
         print("Клиент закрыл окно 'Сервис поддержки клиентов'")
 
     @allure.step('Онлайн-версия: Выход из окна "Изменить контактные данные"')
@@ -1270,6 +1267,12 @@ class Application:
         driver = self.driver
         count = len(driver.find_elements_by_xpath(elements))
         return count
+
+    # Клик по объекту (для использования во внешних методах)
+    def check_click(self, locator):
+        driver = self.driver
+        object_click = driver.find_element_by_xpath(locator)
+        object_click.click()
 
     def destroy(self):
         self.driver.quit()

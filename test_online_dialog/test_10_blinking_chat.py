@@ -1,7 +1,6 @@
 # -*- encoding: utf-8 -*-
 
 import time
-
 import allure
 
 
@@ -52,21 +51,20 @@ def test_blinking_chat(app):
     app.go_to_customer_support_service_go_frame()
     time.sleep(7)
     app.is_agent_message_in_ov_chat(mess_agent_1)
-    app.go_out_customer_support_service()
-
+    app.check_click("//textarea[@id='MsgInput']")
     time.sleep(3)
 
-    if (app.is_element_present_main_css("div.livechat.right.hidden") != True):
-        print("Меню 'Задать вопрос' отображается")
-    else:
-        print("ОШИБКА!!! Меню 'Задать вопрос' скрыто")
-        assert (app.is_element_present_main_css("div.livechat.right.hidden") != True)
+    app.logout_client()
 
-    if (app.is_element_present_main_css("div.livechat.right.blink") != True):
-        print("Меню 'Задать вопрос' не мигает")
-    else:
-        print("ОШИБКА!!! Меню 'Задать вопрос' мигает")
+    app.go_to_online_version()
+    app.login_client()
+    time.sleep(3)
+
+    if (app.is_element_present_main_css("div.livechat.right.blink") == True):
+        print("ОШИБКА!!! После прочтения Клиентом сообщения и перевхода в ОВ меню 'Задать вопрос' мигает!")
         assert (app.is_element_present_main_css("div.livechat.right.blink") != True)
+    elif (app.is_element_present_main_css("div.livechat.right") == True and app.is_element_present_main_css("div.livechat.right.blink") != True):
+        print("После прочтения Клиентом сообщения и перевхода в ОВ меню 'Задать вопрос' не мигает")
 
     app.logout_client()
 

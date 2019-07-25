@@ -40,6 +40,7 @@ def test_send_question(app):
     question_client = str(app.calc_check_sum_from_date()) + "#question"
     print("question_client: ", question_client)
     app.client_send_question(question_client)
+    time.sleep(10)
     app.check_expcons_after_question(question_client, client_name, client_email, client_phone)
     app.logout_client()
     print("test_view_hotline_info.py is done successfully")
