@@ -55,6 +55,8 @@ def test_chat_off_hours(app):
     mess_client_2 = "BasicATClient_message_2_" + str(num)
     app.client_send_message(mess_client_2)
     app.is_client_message_in_ov_chat(mess_client_2)
+    app.check_click("//textarea[@id='MsgInput']")
+    time.sleep(10)
     if (app.is_element_visible_main("//div[contains(text(),'" + unavailable_text + "')]") != True):
         print(
             "В ОД ОВ не отображается сообщение о недоступности онлайн-диалога, заданное в АРМ РИЦ на вкладке Настройки рабочего времени РИЦ")
@@ -101,6 +103,7 @@ def test_queue_off_hours(app):
     mess_client_1 = "BasicATClient_message_1_" + str(num)
     app.client_send_message(mess_client_1)
     app.is_client_message_in_ov_chat(mess_client_1)
+    time.sleep(10)
     app.logout_client()
 
     weekday = time.strftime("%a", time.localtime(time.time()))
@@ -113,6 +116,9 @@ def test_queue_off_hours(app):
     app.go_to_arm_ric()
     app.login_agent()
     time.sleep(10)
+    if (app.is_element_visible_main("//div[@class='HelperQueue' and text()='В очереди клиентов на консультацию: 0 человек']") == True):
+        print("ОШИБКА!!! Перед переходом на нерабочее время очередь пуста!")
+        assert(app.is_element_visible_main("//div[@class='HelperQueue' and text()='В очереди клиентов на консультацию: 0 человек']") != True)
     app.go_to_work_time_settings()
     unavailable_text = app.get_agent_unavailable_text()
     app.set_up_work_time(weekday, hour, weekday_num)
