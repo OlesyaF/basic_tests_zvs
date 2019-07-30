@@ -838,16 +838,34 @@ class Application:
             button_close_chat = driver.find_element_by_xpath(
                 "//button[contains(@name,'CloseSession') and @class='HelperButton']")
             button_close_chat.click()
+
+            time.sleep(5)
+
             try:
-                driver.switch_to.alert.accept()
-            except:
-                NoAlertPresentException
+                alert = driver.switch_to.alert
+                print("Alert text: " + alert.text)
+                alert.accept()
+                print("Alert detected, accept it.")
+            except UnexpectedAlertPresentException:
+                print("UnexpectedAlertPresentException!")
+            except NoAlertPresentException:
+                print("NoAlertPresentException!")
+
             button_remove_chat = driver.find_element_by_xpath("//button[@class='RemoveSessionRow']")
             button_remove_chat.click()
+
+            time.sleep(5)
+
             try:
-                driver.switch_to.alert.accept()
-            except:
-                NoAlertPresentException
+                alert = driver.switch_to.alert
+                print("Alert text: " + alert.text)
+                alert.accept()
+                print("Alert detected, accept it.")
+            except UnexpectedAlertPresentException:
+                print("UnexpectedAlertPresentException!")
+            except NoAlertPresentException:
+                print("NoAlertPresentException!")
+
             i = i + 1
         print("Агент завершил Чатов:", i)
 
