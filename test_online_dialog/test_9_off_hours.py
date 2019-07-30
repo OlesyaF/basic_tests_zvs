@@ -234,7 +234,7 @@ def test_start_chat_off_hours(app):
 
     print("test_start_chat_off_hours.py is done successfully")
 
-    
+
 @allure.title("Проверка работы Чата, начатого в рабочее время, при переходе на нерабочее время")
 def test_chat_off_hours(app):
     print("test_chat_off_hours.py is running")

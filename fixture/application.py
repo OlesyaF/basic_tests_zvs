@@ -7,6 +7,7 @@ import time
 import allure
 from winreg import *
 from selenium.common.exceptions import NoAlertPresentException
+from selenium.common.exceptions import UnexpectedAlertPresentException
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
@@ -66,6 +67,7 @@ class Application:
         self.agent_password = agent_password
         self.resource = resource
         self.kit = kit
+        self.browser = browser
 
     def is_valid(self):
         try:
@@ -242,7 +244,8 @@ class Application:
         input_field_name.send_keys(phone)
         print("В поле 'Телефон' введено новое значение")
 
-    @allure.step('Онлайн-версия: Выход из окна сервиса Задать вопрос') # метод не используется, т.к. в ОВ ДТ не отрабатывает клик по //div[@class='icon livechatclose-16']
+    @allure.step(
+        'Онлайн-версия: Выход из окна сервиса Задать вопрос')  # метод не используется, т.к. в ОВ ДТ не отрабатывает клик по //div[@class='icon livechatclose-16']
     def go_out_customer_support_service(self):
         driver = self.driver
         # Возврат в основной фрейм
@@ -638,17 +641,32 @@ class Application:
     def setting_checkbox(self, checkbox_status, checkbox_field, checkbox_click):
         driver = self.driver
         checkbox = driver.find_element_by_xpath(checkbox_field)
-        print("checkbox.get_attribute('checked')=", checkbox.get_attribute('checked'))
-        if (checkbox_status == "off") and (not checkbox.get_attribute('checked')):
-            print("Чек-бокс в требуемом положении - выключен")
-        if (checkbox_status == "on") and (checkbox.get_attribute('checked') == 'true'):
-            print("Чек-бокс в требуемом положении - включен")
-        if (checkbox_status == "off") and (checkbox.get_attribute('checked') == 'true'):
-            driver.find_element_by_xpath(checkbox_click).click()
-            print("Чек-бокс установлен в требуемое положение: выключен")
-        if (checkbox_status == "on") and (not checkbox.get_attribute('checked')):
-            driver.find_element_by_xpath(checkbox_click).click()
-            print("Чек-бокс установлен в требуемое положение: включен")
+
+        # Через checkbox.get_attribute('checked') - не работает в Edge
+        # print("checkbox.get_attribute('checked')=", checkbox.get_attribute('checked'))
+        # if (checkbox_status == "off") and (not checkbox.get_attribute('checked')):
+        #     print("Чек-бокс в требуемом положении - выключен")
+        # if (checkbox_status == "on") and (checkbox.get_attribute('checked') == 'true'):
+        #     print("Чек-бокс в требуемом положении - включен")
+        # if (checkbox_status == "off") and (checkbox.get_attribute('checked') == 'true'):
+        #     driver.find_element_by_xpath(checkbox_click).click()
+        #     print("Чек-бокс установлен в требуемое положение: выключен")
+        # if (checkbox_status == "on") and (not checkbox.get_attribute('checked')):
+        #     driver.find_element_by_xpath(checkbox_click).click()
+        #     print("Чек-бокс установлен в требуемое положение: включен")
+
+        if (checkbox_status == "off"):
+            if (checkbox.is_selected()):
+                driver.find_element_by_xpath(checkbox_click).click()
+                print("Чек-бокс установлен в требуемое положение: выключен")
+            else:
+                print("Чек-бокс в требуемом положении - выключен")
+        if (checkbox_status == "on"):
+            if (checkbox.is_selected()):
+                print("Чек-бокс в требуемом положении - включен")
+            else:
+                driver.find_element_by_xpath(checkbox_click).click()
+                print("Чек-бокс установлен в требуемое положение: включен")
 
     @allure.step('АРМ РИЦ: Сохранение настроек доступности сервиса ‎Задать вопрос для онлайн-версии')
     def save_setting_checkbox(self):
@@ -918,10 +936,19 @@ class Application:
             list = [num for num in range(fast_answers_count_before)]
             deleted_fast_answer = fast_answers_before[random.choice(list)]
             deleted_fast_answer.click()
+            time.sleep(5)
+
             try:
-                driver.switch_to.alert.accept()
-            except:
-                NoAlertPresentException
+                alert = driver.switch_to.alert
+                print("Alert text: " + alert.text)
+                alert.accept()
+                print("Alert detected, accept it.")
+            except UnexpectedAlertPresentException:
+                print("UnexpectedAlertPresentException!")
+            except NoAlertPresentException:
+                print("NoAlertPresentException!")
+
+            time.sleep(5)
 
             fast_answers_count_after = len(
                 driver.find_elements_by_xpath("//a[@class='AsBlock' and contains(text(),'Удалить')]"))
@@ -1121,6 +1148,7 @@ class Application:
     @allure.step('АРМ РИЦ: Изменение контактной информации о РИЦ на вкладке По телефону')
     def change_ric_info(self, contact_info):
         driver = self.driver
+        browser = self.browser
         # Переход во фрейм визуального тестового редактора
         logout_frame = driver.find_element_by_xpath("//*[@id='cke_1_contents']/iframe")
         driver.switch_to.frame(logout_frame)
@@ -1129,8 +1157,9 @@ class Application:
         ActionChains(driver).send_keys(Keys.CONTROL + 'a').perform()
         ActionChains(driver).send_keys(Keys.DELETE).perform()
         field_contact_info.click()
-        field_contact_info.send_keys(
-            "123")  # не знаю почему, но без этой строчки последующий ввод символов не происходит
+        if browser == "chrome":
+            field_contact_info.send_keys(
+                "123")  # не знаю почему, но в chrome без этой строчки последующий ввод символов не происходит
         field_contact_info.send_keys(contact_info)
         # Возврат в основной фрейм
         driver.switch_to.parent_frame()
