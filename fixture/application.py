@@ -1169,14 +1169,14 @@ class Application:
         if (self.is_element_present(driver,
                                     "//div[@class='Title' and contains(text(),'РИЦ №')]") == True and self.is_element_present(
             driver,
-            "//div[@class='HelperQueue' and contains(text(),'В очереди клиентов на консультацию:')]") == True):
+            "//div[@class='HelperQueue' and contains(text(),'В очереди')]") == True):
             print("Агент перешел на вкладку Онлайн-диалог")
         else:
             print("ОШИБКА!!! Агент не перешел на вкладку Онлайн-диалог!")
             assert (self.is_element_present(driver,
                                             "//div[@class='Title' and contains(text(),'РИЦ №')]") == True and self.is_element_present(
                 driver,
-                "//div[@class='HelperQueue' and contains(text(),'В очереди клиентов на консультацию:')]") == True)
+                "//div[@class='HelperQueue' and contains(text(),'В очереди')]") == True)
 
     @allure.step('АРМ РИЦ: Переход на вкладку История сеансов общения')
     def go_to_history(self):
