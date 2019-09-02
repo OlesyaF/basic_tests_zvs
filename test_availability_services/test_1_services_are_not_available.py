@@ -14,6 +14,7 @@ def test_services_are_not_available(app):
     app.go_to_arm_ric()
     app.login_agent()
     app.go_to_service_settings()
+    app.press_configure()
     app.kit_search()
     kit_id = app.get_kit_id()
     time.sleep(2)

@@ -609,12 +609,64 @@ class Application:
                                             "//div[@class='title']/div[contains(text(),'Контактная информация о РИЦ')]") == True and self.is_element_present(
                 driver, "//div[@class='button blue fl-lt']") == True)
 
+    @allure.step('АРМ РИЦ: Нажатие "Настроить" на вкладке Настройка доступности сервиса ‎Задать вопрос')
+    def press_configure(self):
+        driver = self.driver
+        button_configure = driver.find_element_by_xpath("//div[@class='button blue fl-lt']")
+        button_configure.click()
+
+    @allure.step('АРМ РИЦ: Открытие фильтра на вкладке Настройка доступности сервиса ‎Задать вопрос')
+    def go_to_filter(self):
+        driver = self.driver
+        button_filter = driver.find_element_by_xpath("//div[@class='filter-name']")
+        button_filter.click()
+
+    @allure.step('АРМ РИЦ: Заполнение фильтра на вкладке Настройка доступности сервиса ‎Задать вопрос (Показать все)')
+    def select_show_all(self):
+        driver = self.driver
+        button_show_all = driver.find_element_by_xpath("//div[@class='submenu']//div[@class='item all']")
+        button_show_all.click()
+
+    @allure.step('АРМ РИЦ: Заполнение фильтра на вкладке Настройка доступности сервиса ‎Задать вопрос (Показать комплекты на сопровождении)')
+    def select_show_supported_kits(self):
+        driver = self.driver
+        button_show_supported_kits = driver.find_element_by_xpath("//div[@class='submenu']//div[@class='item unsupported rel']")
+        button_show_supported_kits.click()
+
+    @allure.step('АРМ РИЦ: Заполнение фильтра на вкладке Настройка доступности сервиса ‎Задать вопрос (Показать комплекты, отключенные от сопровождения)')
+    def select_show_unsupported_kits(self):
+        driver = self.driver
+        button_show_unsupported_kits = driver.find_element_by_xpath("//div[@class='submenu']//div[@class='item supported rel']")
+        button_show_unsupported_kits.click()
+
+    @allure.step('АРМ РИЦ: Заполнение фильтра на вкладке Настройка доступности сервиса ‎Задать вопрос (Показать комплекты, которым недоступен ОД)')
+    def select_show_hotline_off_kits(self):
+        driver = self.driver
+        button_show_hotline_off_kits = driver.find_element_by_xpath("//div[@class='submenu']//div[@class='item hotline-on rel']")
+        button_show_hotline_off_kits.click()
+
+    @allure.step('АРМ РИЦ: Заполнение фильтра на вкладке Настройка доступности сервиса ‎Задать вопрос (Показать комплекты, которым недоступно Написать эксперту)')
+    def select_show_expcons_off_kits(self):
+        driver = self.driver
+        button_show_expcons_off_kits = driver.find_element_by_xpath("//div[@class='submenu']//div[@class='item expcons-on rel']")
+        button_show_expcons_off_kits.click()
+
+    @allure.step('АРМ РИЦ: Установка шага отображения комплектов =50 на вкладке Настройка доступности сервиса ‎Задать вопрос')
+    def show_50_kits(self):
+        driver = self.driver
+        button_show_50_kits = driver.find_element_by_xpath("//a[@href='#' and @class='pagesize pagesize_50']")
+        button_show_50_kits.click()
+
+    @allure.step('АРМ РИЦ: Установка шага отображения комплектов =100 на вкладке Настройка доступности сервиса ‎Задать вопрос')
+    def show_100_kits(self):
+        driver = self.driver
+        button_show_100_kits = driver.find_element_by_xpath("//a[@href='#' and @class='pagesize pagesize_100']")
+        button_show_100_kits.click()
+
     @allure.step('АРМ РИЦ: Поиск комплекта на вкладке Настройка доступности сервиса ‎Задать вопрос')
     def kit_search(self):
         driver = self.driver
         kit = self.kit
-        button_configure = driver.find_element_by_xpath("//div[@class='button blue fl-lt']")
-        button_configure.click()
         field_kit_list = driver.find_element_by_xpath("//input[@type='text']")
         field_kit_list.click()
         field_kit_list.send_keys(kit)
@@ -636,6 +688,49 @@ class Application:
             "value")
         print("kit_id = ", kit_id)
         return kit_id
+
+    @allure.step('АРМ РИЦ: Получение общего количества комплектов на вкладке Настройка доступности сервиса ‎Задать вопрос')
+    def get_total_kits(self):
+        driver = self.driver
+        total_kits = driver.find_element_by_xpath("//div[@id='stat_total']//div[1]//strong[1]").get_attribute("textContent")
+        print("total_kits = ", total_kits)
+        return total_kits
+
+    @allure.step('АРМ РИЦ: Получение количества комплектов на сопровождении на вкладке Настройка доступности сервиса ‎Задать вопрос')
+    def get_supported_kits(self):
+        driver = self.driver
+        supp_kits = driver.find_element_by_xpath("//div[@id='stat_supp']//div[1]//strong[1]").get_attribute("textContent")
+        print("supp_kits = ", supp_kits)
+        return supp_kits
+
+    @allure.step('АРМ РИЦ: Получение количества не подключенных комплектов на вкладке Настройка доступности сервиса ‎Задать вопрос')
+    def get_unconnected_kits(self):
+        driver = self.driver
+        unconn_kits = driver.find_element_by_xpath("//div[@id='stat_unconn']//div[1]//strong[1]").get_attribute("textContent")
+        print("unconn_kits = ", unconn_kits)
+        return unconn_kits
+
+    @allure.step('АРМ РИЦ: Получение количества выбранных комплектов на вкладке Настройка доступности сервиса ‎Задать вопрос')
+    def get_selected_kits(self):
+        driver = self.driver
+        selected_kits = driver.find_element_by_xpath("//div[@class='total fl-lt mr32 f-grey']//strong[@class='value']").get_attribute("textContent")
+        print("Выбрано комплектов:", selected_kits)
+        return selected_kits
+
+    @allure.step('АРМ РИЦ: Получение количества комплектов, отображающихся на вкладке Настройка доступности сервиса ‎Задать вопрос')
+    def get_len_list_kits(self):
+        driver = self.driver
+        elements = driver.find_elements_by_xpath("//div[@class='table-content']//div//div//input[@name='distr_id']")
+        len_list_kits = len(elements)
+        print("Отображается комплектов:", len_list_kits, " комплектов")
+        return len_list_kits
+
+    @allure.step('АРМ РИЦ: Включение ОД у случайного комплекта на вкладке Настройка доступности сервиса ‎Задать вопрос')
+    def reconn_hotline(self):
+        driver = self.driver
+        elements = driver.find_elements_by_xpath("//div[@class='CheckboxBlock']//label[@class='Hotline']")
+        random.choice(elements).click()
+        print("Случайному комплекту добавлен доступ к ОД")
 
     @allure.step('АРМ РИЦ: Настройка доступности сервиса ‎Задать вопрос для онлайн-версии (заполнение чек-боксов)')
     def setting_checkbox(self, checkbox_status, checkbox_field, checkbox_click):
