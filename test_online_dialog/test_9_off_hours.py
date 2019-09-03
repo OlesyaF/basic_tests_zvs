@@ -2,7 +2,6 @@
 
 import time
 import allure
-import pytest
 
 
 # Проверка работы Чата при переходе на нерабочее время и обратно
@@ -91,7 +90,6 @@ def test_queue_off_hours(app):
 
 
 @allure.title("Проверка завершения Чата в нерабочее время")
-@pytest.mark.skip(reason='This test is skipped')
 def test_completion_off_hours(app):
     print("test_completion_off_hours.py is running")
 
@@ -174,7 +172,6 @@ def test_completion_off_hours(app):
 
 
 @allure.title("Проверка невозможности начать Чат в нерабочее время")
-@pytest.mark.skip(reason='This test is skipped')
 def test_start_chat_off_hours(app):
     print("test_start_chat_off_hours.py is running")
 
@@ -239,7 +236,6 @@ def test_start_chat_off_hours(app):
 
 
 @allure.title("Проверка работы Чата, начатого в рабочее время, при переходе на нерабочее время")
-@pytest.mark.skip(reason='This test is skipped')
 def test_chat_off_hours(app):
     print("test_chat_off_hours.py is running")
 
