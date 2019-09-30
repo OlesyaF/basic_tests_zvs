@@ -122,6 +122,7 @@ def test_view_unconn_kits(app):
     app.go_to_service_settings()
     time.sleep(2)
     unconn_kits = app.get_unconnected_kits()
+
     app.press_configure()
     app.go_to_filter()
     app.select_show_hotline_off_kits()
@@ -132,10 +133,12 @@ def test_view_unconn_kits(app):
         print("Общее количество комплектов совпадает")
     else:
         print("ОШИБКА!!! Общее количество комплектов не совпадает!")
-        assert (app.is_element_present_main("//div[@class='total fl-lt mr32 f-grey']//strong[@class='value' and text()='" + unconn_kits + "']") == True)
+        assert (app.is_element_present_main(
+            "//div[@class='total fl-lt mr32 f-grey']//strong[@class='value' and text()='" + unconn_kits + "']") == True)
 
     app.logout_agent()
     print("test_view_unconn_kits.py is done successfully")
+
 
 @allure.title("Проверка расстраничивания на вкладке 'Настройка доступности сервиса ‎Задать вопрос'")
 def test_page_settings(app):

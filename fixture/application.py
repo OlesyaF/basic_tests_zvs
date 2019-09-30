@@ -707,7 +707,11 @@ class Application:
     def get_unconnected_kits(self):
         driver = self.driver
         unconn_kits = driver.find_element_by_xpath("//div[@id='stat_unconn']//div[1]//strong[1]").get_attribute("textContent")
-        print("unconn_kits = ", unconn_kits)
+        if (unconn_kits is ''):
+            print("Неподключенных комплектов = 0")
+            unconn_kits = "0"
+        else:
+            print("Неподключенных комплектов = ", unconn_kits)
         return unconn_kits
 
     @allure.step('АРМ РИЦ: Получение количества выбранных комплектов на вкладке Настройка доступности сервиса ‎Задать вопрос')
