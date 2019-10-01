@@ -645,6 +645,12 @@ class Application:
         button_show_hotline_off_kits = driver.find_element_by_xpath("//div[@class='submenu']//div[@class='item hotline-on rel']")
         button_show_hotline_off_kits.click()
 
+    @allure.step('АРМ РИЦ: Заполнение фильтра на вкладке Настройка доступности сервиса ‎Задать вопрос (Показать комплекты, которым доступен ОД)')
+    def select_show_hotline_kits(self):
+        driver = self.driver
+        button_show_hotline_kits = driver.find_element_by_xpath("//div[@class='submenu']//div[@class='item hotline-off rel']")
+        button_show_hotline_kits.click()
+
     @allure.step('АРМ РИЦ: Заполнение фильтра на вкладке Настройка доступности сервиса ‎Задать вопрос (Показать комплекты, которым недоступно Написать эксперту)')
     def select_show_expcons_off_kits(self):
         driver = self.driver
@@ -734,7 +740,6 @@ class Application:
         driver = self.driver
         elements = driver.find_elements_by_xpath("//div[@class='CheckboxBlock']//label[@class='Hotline']")
         random.choice(elements).click()
-        print("Случайному комплекту добавлен доступ к ОД")
 
     @allure.step('АРМ РИЦ: Настройка доступности сервиса ‎Задать вопрос для онлайн-версии (заполнение чек-боксов)')
     def setting_checkbox(self, checkbox_status, checkbox_field, checkbox_click):

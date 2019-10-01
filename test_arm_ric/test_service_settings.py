@@ -201,9 +201,10 @@ def test_page_settings(app):
     app.logout_agent()
     print("test_page_settings.py is done successfully")
 
-@allure.title("Проверка включения ОД у случайного комплекта на вкладке 'Настройка доступности сервиса ‎Задать вопрос'")
-def test_reconn_hotline(app):
-    print("test_reconn_hotline.py is running")
+
+@allure.title("Проверка изменения доступности ОД у случайного комплекта на вкладке 'Настройка доступности сервиса ‎Задать вопрос'")
+def test_change_hotline(app):
+    print("test_change_hotline.py is running")
 
     app.go_to_arm_ric()
     app.login_agent()
@@ -212,59 +213,58 @@ def test_reconn_hotline(app):
     app.press_configure()
     app.go_to_filter()
     app.select_show_hotline_off_kits()
+    print("Настройка фильтра: показать комплекты с выключенным ОД")
     time.sleep(2)
     before_selected_kits = app.get_selected_kits()
-    app.show_100_kits()
-    time.sleep(2)
 
-    if int(before_selected_kits) < 100:
-        len_list_kits = app.get_len_list_kits()
-        print(
-            "Проверка отображения комплектов на вкладке 'Настройка доступности сервиса ‎Задать вопрос':")
-        if (int(before_selected_kits) == len_list_kits):
-            print("Количество выбранных и отображающихся комплектов совпадает")
+
+    if int(before_selected_kits) == 0:
+        print("Комплекты с выключенным ОД не найдены")
+        app.go_to_service_settings()
+        time.sleep(2)
+        app.press_configure()
+        app.go_to_filter()
+        app.select_show_hotline_kits()
+        print("Настройка фильтра: показать комплекты с включенным ОД")
+        time.sleep(2)
+        before_selected_kits = app.get_selected_kits()
+        if int(before_selected_kits) == 0:
+            print("Не найдены комплекты ни с выключенным, ни с включенным ОД!")
+        elif (int(before_selected_kits) > 0 and int(before_selected_kits) <= 100):
+            app.show_100_kits()
+            time.sleep(2)
+            before_len_list_kits = app.get_len_list_kits()
+            app.reconn_hotline()
+            print("Случайному комплекту добавлен доступ к ОД")
+            app.save_setting_checkbox()
+            time.sleep(2)
+            after_len_list_kits = app.get_len_list_kits()
+            if (int(before_len_list_kits) == after_len_list_kits + 1):
+                print("Количество комплектов, отображающихся после включения ОД (", after_len_list_kits,
+                      "), на 1 меньше, количества комплектов, отображавшихся до включения ОД (", before_len_list_kits,
+                      ")")
+            else:
+                print("ОШИБКА!!! Количество отображающихся комплектов некорректно: после включения ОД -",
+                      after_len_list_kits, ", до включения ОД -", before_len_list_kits)
+                assert (int(before_len_list_kits) == after_len_list_kits + 1)
         else:
-            print("ОШИБКА!!! Количество выбранных и отображающихся комплектов не совпадает!")
-            assert (int(before_selected_kits) == len_list_kits)
-
-    app.reconn_hotline()
-    app.save_setting_checkbox()
-    time.sleep(2)
-
-    if int(before_selected_kits) < 100:
-        len_list_kits = app.get_len_list_kits()
-        print(
-            "Проверка отображения комплектов на вкладке 'Настройка доступности сервиса ‎Задать вопрос' после включения ОД у случайного комплекта:")
-        if ((int(before_selected_kits) - 1) == len_list_kits):
-            print("Количество отображающихся комплектов на 1 меньше")
+            print("Найдено более 100 комплектов с включенным ОД!")
+    elif (int(before_selected_kits) > 0 and int(before_selected_kits) <= 100):
+        app.show_100_kits()
+        time.sleep(2)
+        before_len_list_kits = app.get_len_list_kits()
+        app.reconn_hotline()
+        print("У случайного комплекта удален доступ к ОД")
+        app.save_setting_checkbox()
+        time.sleep(2)
+        after_len_list_kits = app.get_len_list_kits()
+        if (int(before_len_list_kits) == after_len_list_kits + 1):
+            print("Количество комплектов, отображающихся после отключения ОД (", after_len_list_kits, "), на 1 меньше, количества комплектов, отображавшихся до отключения ОД (", before_len_list_kits, ")")
         else:
-            print("ОШИБКА!!! Количество отображающихся комплектов не корректно!")
-            assert ((int(before_selected_kits) - 1) == len_list_kits)
-
-    app.go_to_service_settings()
-    time.sleep(2)
-    app.press_configure()
-    app.go_to_filter()
-    app.select_show_hotline_off_kits()
-    time.sleep(2)
-    after_selected_kits = app.get_selected_kits()
-
-    print("Проверка отображения комплектов на вкладке 'Настройка доступности сервиса ‎Задать вопрос' после включения ОД у случайного комплекта и обновления фильтра:")
-    if ((int(before_selected_kits) - 1) == int(after_selected_kits)):
-        print("Количество выбранных комплектов на 1 меньше")
+            print("ОШИБКА!!! Количество отображающихся комплектов некорректно: после отключения ОД -", after_len_list_kits, ", до отключения ОД -", before_len_list_kits)
+            assert (int(before_len_list_kits) == after_len_list_kits + 1)
     else:
-        print("ОШИБКА!!! Количество выбранных комплектов некорректно!")
-        assert ((int(before_selected_kits) - 1) == int(after_selected_kits))
-
-    if int(after_selected_kits) < 100:
-        len_list_kits = app.get_len_list_kits()
-        print(
-            "Проверка отображения комплектов на вкладке 'Настройка доступности сервиса ‎Задать вопрос' после включения ОД у случайного комплекта и обновления фильтра:")
-        if (int(after_selected_kits) == len_list_kits):
-            print("Количество выбранных и отображающихся комплектов совпадает")
-        else:
-            print("ОШИБКА!!! Количество выбранных и отображающихся комплектов не совпадает!")
-            assert (int(after_selected_kits) == len_list_kits)
+        print("Найдено более 100 комплектов с выключенным ОД!")
 
     app.logout_agent()
-    print("test_reconn_hotline.py is done successfully")
+    print("test_change_hotline.py is done successfully")
